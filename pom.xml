@@ -63,6 +63,7 @@
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
 			<version>23.0.0</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -74,6 +75,7 @@
 			<groupId>dev.kalenchukov</groupId>
 			<artifactId>string-regexp</artifactId>
 			<version>1.2.1</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
