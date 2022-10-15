@@ -849,9 +849,9 @@ public enum Entity
 	 * Конструктор для {@code Entity}.
 	 *
 	 * @param symbol Специальный символ.
-	 * @param name HTML-сущностейа специального символа в виде имени.
-	 * @param numeric HTML-сущностейа специального символа в виде числа.
-	 * @param unicode HTML-сущностейа специального символа в виде unicode.
+	 * @param name HTML-сущность специального символа в виде имени.
+	 * @param numeric HTML-сущность специального символа в виде числа.
+	 * @param unicode HTML-сущность специального символа в виде unicode.
 	 */
 	Entity(@NotNull final Character symbol,
 		   @NotNull final String name,
