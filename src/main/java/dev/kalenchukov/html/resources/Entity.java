@@ -828,19 +828,19 @@ public enum Entity
 	private final Character symbol;
 
 	/**
-	 * HTML-сущностейа специального символа в виде имени.
+	 * HTML-сущность специального символа в виде имени.
 	 */
 	@NotNull
 	private final String name;
 
 	/**
-	 * HTML-сущностейа специального символа в виде числа.
+	 * HTML-сущность специального символа в виде числа.
 	 */
 	@NotNull
 	private final String numeric;
 
 	/**
-	 * HTML-сущностейа специального символа в виде unicode.
+	 * HTML-сущность специального символа в виде unicode.
 	 */
 	@NotNull
 	private final String unicode;
@@ -928,7 +928,7 @@ public enum Entity
 	/**
 	 * Возвращает HTML-сущностейу специального символа в указанном типе.
 	 *
-	 * @return HTML-сущностейа специального символа.
+	 * @return HTML-сущность специального символа.
 	 */
 	@NotNull
 	public String getMnemonic(@NotNull final EntityType entityType)
@@ -944,7 +944,7 @@ public enum Entity
 	/**
 	 * Возвращает HTML-сущностейу специального символа в виде имени.
 	 *
-	 * @return HTML-сущностейа специального символа в виде имени.
+	 * @return HTML-сущность специального символа в виде имени.
 	 */
 	@NotNull
 	public String getMnemonicName()
@@ -953,9 +953,9 @@ public enum Entity
 	}
 
 	/**
-	 * Возвращает HTML-сущностейа специального символа в виде числа.
+	 * Возвращает HTML-сущность специального символа в виде числа.
 	 *
-	 * @return HTML-сущностейа специального символа в виде числа.
+	 * @return HTML-сущность специального символа в виде числа.
 	 */
 	@NotNull
 	public String getMnemonicNumeric()
@@ -964,9 +964,9 @@ public enum Entity
 	}
 
 	/**
-	 * Возвращает HTML-сущностейа специального символа в виде unicode.
+	 * Возвращает HTML-сущность специального символа в виде unicode.
 	 *
-	 * @return HTML-сущностейа специального символа в виде unicode.
+	 * @return HTML-сущность специального символа в виде unicode.
 	 */
 	@NotNull
 	public String getMnemonicUnicode()
