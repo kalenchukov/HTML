@@ -394,11 +394,3 @@ AC/DC
 &lt;&lt;&lt;переменный ток/постоянный ток&#62;&#X0003E;>
 */
 ```
-
-## Версии
-
-Доступные [версии](https://github.com/kalenchukov/HTML/releases).
-
-## Лицензия
-
-[MIT](https://opensource.org/licenses/MIT)
