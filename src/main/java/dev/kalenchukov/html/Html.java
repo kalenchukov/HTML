@@ -61,7 +61,7 @@ public class Html implements Hipertext
 	/**
 	 * Конструктор для {@code Html}.
 	 *
-	 * @param text Текст для обработки.
+	 * @param text текст для обработки.
 	 */
 	public Html(@NotNull final String text)
 	{

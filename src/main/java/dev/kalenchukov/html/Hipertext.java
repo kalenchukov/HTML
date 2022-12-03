@@ -40,14 +40,14 @@ public interface Hipertext
 	/**
 	 * Устанавливает текст для обработки.
 	 *
-	 * @param text Текст для обработки.
+	 * @param text текст для обработки.
 	 */
 	void setText(@NotNull String text);
 
 	/**
 	 * Возвращает обработанный текст.
 	 *
-	 * @return Обработанный текст.
+	 * @return обработанный текст.
 	 */
 	String getText();
 
@@ -77,7 +77,7 @@ public interface Hipertext
 	 * Удаляет HTML-тег.
 	 *
 	 * @param tag HTML-тег.
-	 * @param tagType Тип HTML-тега.
+	 * @param tagType тип HTML-тега.
 	 */
 	void deleteTag(@NotNull Tag tag, @NotNull TagType tagType);
 
@@ -89,22 +89,22 @@ public interface Hipertext
 	/**
 	 * Удаляет все HTML-теги.
 	 *
-	 * @param tagType Тип HTML-тега.
+	 * @param tagType тип HTML-тега.
 	 */
 	void deleteTags(@NotNull TagType tagType);
 
 	/**
 	 * Удаляет все HTML-теги.
 	 *
-	 * @param excludeTags Коллекция HTML-тегов которые не будут удалены.
+	 * @param excludeTags коллекция HTML-тегов которые не будут удалены.
 	 */
 	void deleteTags(@NotNull List<@NotNull Tag> excludeTags);
 
 	/**
 	 * Удаляет все HTML-теги.
 	 *
-	 * @param tagType Тип HTML-тега.
-	 * @param excludeTags Коллекция HTML-тегов которые не будут удалены.
+	 * @param tagType тип HTML-тега.
+	 * @param excludeTags коллекция HTML-тегов которые не будут удалены.
 	 */
 	void deleteTags(@NotNull TagType tagType, @NotNull List<@NotNull Tag> excludeTags);
 
@@ -119,7 +119,7 @@ public interface Hipertext
 	 * Удаляет HTML-сущность.
 	 *
 	 * @param entity HTML-сущность.
-	 * @param entityType Тип HTML-сущностей.
+	 * @param entityType тип HTML-сущностей.
 	 */
 	void deleteEntity(@NotNull Entity entity, @NotNull EntityType entityType);
 
@@ -131,30 +131,30 @@ public interface Hipertext
 	/**
 	 * Удаляет все HTML-сущности.
 	 *
-	 * @param excludeEntities Коллекция HTML-сущностей которые не будут удалены.
+	 * @param excludeEntities коллекция HTML-сущностей которые не будут удалены.
 	 */
 	void deleteEntities(@NotNull List<@NotNull Entity> excludeEntities);
 
 	/**
 	 * Преобразует специальный символ на соответствующую HTML-сущность.
 	 *
-	 * @param entity Символ.
-	 * @param entityType Тип HTML-сущностей.
+	 * @param entity символ.
+	 * @param entityType тип HTML-сущностей.
 	 */
 	void encodeEntity(@NotNull Entity entity, @NotNull EntityType entityType);
 
 	/**
 	 * Преобразует все специальные символы на соответствующие HTML-сущности.
 	 *
-	 * @param entityType Тип HTML-сущностей.
+	 * @param entityType тип HTML-сущностей.
 	 */
 	void encodeEntities(@NotNull EntityType entityType);
 
 	/**
 	 * Преобразует все специальные символы на соответствующие HTML-сущности.
 	 *
-	 * @param entityType Тип HTML-сущностей.
-	 * @param excludeEntities Коллекция символов которые не будут преобразованы.
+	 * @param entityType тип HTML-сущностей.
+	 * @param excludeEntities коллекция символов которые не будут преобразованы.
 	 */
 	void encodeEntities(@NotNull EntityType entityType, @NotNull List<@NotNull Entity> excludeEntities);
 
@@ -169,7 +169,7 @@ public interface Hipertext
 	 * Преобразует HTML-сущность в соответствующий специальный символ.
 	 *
 	 * @param entity HTML-сущность.
-	 * @param entityType Тип HTML-сущностей.
+	 * @param entityType тип HTML-сущностей.
 	 */
 	void decodeEntity(@NotNull Entity entity, @NotNull EntityType entityType);
 
@@ -181,22 +181,22 @@ public interface Hipertext
 	/**
 	 * Преобразует все HTML-сущности в соответствующие специальные символы.
 	 *
-	 * @param entityType Тип HTML-сущностей.
+	 * @param entityType тип HTML-сущностей.
 	 */
 	void decodeEntities(@NotNull EntityType entityType);
 
 	/**
 	 * Преобразует все HTML-сущности в соответствующие специальные символы.
 	 *
-	 * @param excludeEntities Коллекция HTML-сущностей которые не будут преобразованы.
+	 * @param excludeEntities коллекция HTML-сущностей которые не будут преобразованы.
 	 */
 	void decodeEntities(@NotNull List<@NotNull Entity> excludeEntities);
 
 	/**
 	 * Преобразует все HTML-сущности в соответствующие специальные символы.
 	 *
-	 * @param excludeEntities Коллекция HTML-сущностей которые не будут преобразованы.
-	 * @param entityType Тип HTML-сущностей.
+	 * @param excludeEntities коллекция HTML-сущностей которые не будут преобразованы.
+	 * @param entityType тип HTML-сущностей.
 	 */
 	void decodeEntities(@NotNull EntityType entityType, @NotNull List<@NotNull Entity> excludeEntities);
 }
