@@ -259,7 +259,7 @@ public class HtmlTest
 	}
 
 	@Test
-	public void testDeleteStartTags()
+	public void testDeleteOpenTags()
 	{
 		String text = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -284,7 +284,7 @@ public class HtmlTest
 	}
 
 	@Test
-	public void testDeleteStartTagsExclude()
+	public void testDeleteOpenTagsExclude()
 	{
 		String text = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -309,7 +309,7 @@ public class HtmlTest
 	}
 
 	@Test
-	public void testDeleteStartTag()
+	public void testDeleteOpenTag()
 	{
 		String text = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -334,7 +334,7 @@ public class HtmlTest
 	}
 
 	@Test
-	public void testDeleteEndTags()
+	public void testDeleteCloseTags()
 	{
 		String text = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -359,7 +359,7 @@ public class HtmlTest
 	}
 
 	@Test
-	public void testDeleteEndTagsExclude()
+	public void testDeleteCloseTagsExclude()
 	{
 		String text = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -384,7 +384,7 @@ public class HtmlTest
 	}
 
 	@Test
-	public void testDeleteEndTag()
+	public void testDeleteCloseTag()
 	{
 		String text = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -1062,7 +1062,7 @@ public class HtmlTest
 	 * Проверка корректного HTML комментария.
 	 */
 	@Test
-	public void isCommentCorrect()
+	public void testIsCommentCorrect()
 	{
 		assertTrue(new Html("<!---->").isComment());
 		assertTrue(new Html("<!-- -->").isComment());
@@ -1094,7 +1094,7 @@ public class HtmlTest
 	 * Проверка некорректного HTML комментария.
 	 */
 	@Test
-	public void isCommentNotCorrect()
+	public void testIsCommentNotCorrect()
 	{
 		assertFalse(new Html("").isComment());
 		assertFalse(new Html(" ").isComment());
@@ -1135,7 +1135,7 @@ public class HtmlTest
 	 * Проверка корректной HTML сущности в виде имени.
 	 */
 	@Test
-	public void isEntityNameCorrect()
+	public void testIsEntityNameCorrect()
 	{
 		assertTrue(new Html("&dd;").isEntityName());
 		assertTrue(new Html("&dollar;").isEntityName());
@@ -1149,7 +1149,7 @@ public class HtmlTest
 	 * Проверка некорректной HTML сущности в виде имени.
 	 */
 	@Test
-	public void isEntityNameNotCorrect()
+	public void testIsEntityNameNotCorrect()
 	{
 		assertFalse(new Html("").isEntityName());
 		assertFalse(new Html(" ").isEntityName());
@@ -1170,7 +1170,7 @@ public class HtmlTest
 	 * Проверка корректной HTML сущности в виде числа.
 	 */
 	@Test
-	public void isEntityNumericCorrect()
+	public void testIsEntityNumericCorrect()
 	{
 		assertTrue(new Html("&#038;").isEntityNumeric());
 		assertTrue(new Html("&#38;").isEntityNumeric());
@@ -1187,7 +1187,7 @@ public class HtmlTest
 	 * Проверка некорректной HTML сущности в виде числа.
 	 */
 	@Test
-	public void isEntityNumericNotCorrect()
+	public void testIsEntityNumericNotCorrect()
 	{
 		assertFalse(new Html("").isEntityNumeric());
 		assertFalse(new Html(" ").isEntityNumeric());
@@ -1207,7 +1207,7 @@ public class HtmlTest
 	 * Проверка корректной HTML сущности в виде unicode.
 	 */
 	@Test
-	public void isEntityUnicodeCorrect()
+	public void testIsEntityUnicodeCorrect()
 	{
 		assertTrue(new Html("&#XB0;").isEntityUnicode());
 		assertTrue(new Html("&#x394;").isEntityUnicode());
@@ -1220,7 +1220,7 @@ public class HtmlTest
 	 * Проверка некорректной HTML сущности в виде unicode.
 	 */
 	@Test
-	public void isEntityUnicodeNotCorrect()
+	public void testIsEntityUnicodeNotCorrect()
 	{
 		assertFalse(new Html("").isEntityUnicode());
 		assertFalse(new Html(" ").isEntityUnicode());
@@ -1239,7 +1239,7 @@ public class HtmlTest
 	 * Проверка корректной типа HTML документа.
 	 */
 	@Test
-	public void isDoctypeCorrect()
+	public void testIsDoctypeCorrect()
 	{
 		assertTrue(new Html("<!DOCTYPE html>").isDoctype());
 		assertTrue(new Html("<!DOCTYPE  html >").isDoctype());
@@ -1268,7 +1268,7 @@ public class HtmlTest
 	 * Проверка некорректного типа HTML документа.
 	 */
 	@Test
-	public void isDoctypeNotCorrect()
+	public void testIsDoctypeNotCorrect()
 	{
 		assertFalse(new Html("").isDoctype());
 		assertFalse(new Html(" ").isDoctype());
@@ -1308,7 +1308,7 @@ public class HtmlTest
 	 * Проверка корректного закрывающего HTML тега.
 	 */
 	@Test
-	public void isCloseTagCorrect()
+	public void testIsCloseTagCorrect()
 	{
 		assertTrue(new Html("</form>").isCloseTag());
 		assertTrue(new Html("</form >").isCloseTag());
@@ -1319,7 +1319,7 @@ public class HtmlTest
 	 * Проверка некорректного закрывающего HTML тега.
 	 */
 	@Test
-	public void isCloseTagNotCorrect()
+	public void testIsCloseTagNotCorrect()
 	{
 		assertFalse(new Html("").isCloseTag());
 		assertFalse(new Html(" ").isCloseTag());
@@ -1334,7 +1334,7 @@ public class HtmlTest
 	 * Проверка корректного самозакрывающегося HTML тега.
 	 */
 	@Test
-	public void isSelfClosingTagCorrect()
+	public void testIsSelfClosingTagCorrect()
 	{
 		assertTrue(new Html("<meta/>").isSelfClosingTag());
 		assertTrue(new Html("<meta />").isSelfClosingTag());
@@ -1384,7 +1384,7 @@ public class HtmlTest
 	 * Проверка некорректного самозакрывающегося HTML тега.
 	 */
 	@Test
-	public void isSelfClosingTagNotCorrect()
+	public void testIsSelfClosingTagNotCorrect()
 	{
 		assertFalse(new Html("").isSelfClosingTag());
 		assertFalse(new Html(" ").isSelfClosingTag());
@@ -1474,7 +1474,7 @@ public class HtmlTest
 	 * Проверка некорректного открывающего HTML тега.
 	 */
 	@Test
-	public void itestIsOpenTagNotCorrect()
+	public void testIsOpenTagNotCorrect()
 	{
 		assertFalse(new Html("").isOpenTag());
 		assertFalse(new Html(" ").isOpenTag());
@@ -1517,7 +1517,7 @@ public class HtmlTest
 	 * Проверка корректной области CDATA.
 	 */
 	@Test
-	public void isCDataCorrect()
+	public void testIsCDataCorrect()
 	{
 		assertTrue(new Html("<![CDATA[]]>").isCData());
 		assertTrue(new Html("<![CDATA[ ]]>").isCData());
@@ -1549,7 +1549,7 @@ public class HtmlTest
 	 * Проверка некорректной области CDATA.
 	 */
 	@Test
-	public void isCDataNotCorrect()
+	public void testIsCDataNotCorrect()
 	{
 		assertFalse(new Html("").isCData());
 		assertFalse(new Html(" ").isCData());
@@ -1577,7 +1577,7 @@ public class HtmlTest
 	 * Проверка поиска HTML комментариев.
 	 */
 	@Test
-	public void findComment()
+	public void testFindComment()
 	{
 		String[] htmlComment = {
 			"<!--Всё в свое время, зима и весна-->",
@@ -1625,7 +1625,7 @@ public class HtmlTest
 	 * Проверка поиска областей CDATA.
 	 */
 	@Test
-	public void findCData()
+	public void testFindCData()
 	{
 		String[] cData = {
 			"<![CDATA[Здесь не понятно, где лицо, а где рыло,]]>",
@@ -1678,7 +1678,7 @@ public class HtmlTest
 	 * Проверка поиска HTML-сущностей в виде имени.
 	 */
 	@Test
-	public void findEntityName()
+	public void testFindEntityName()
 	{
 		String[] htmlEntityName = {
 			"&frac14;",
@@ -1722,7 +1722,7 @@ public class HtmlTest
 	 * Проверка поиска HTML-сущностей в виде числа.
 	 */
 	@Test
-	public void findEntityNumeric()
+	public void testFindEntityNumeric()
 	{
 		String[] htmlEntityNumeric = {
 			"&#44;",
@@ -1774,7 +1774,7 @@ public class HtmlTest
 	 * Проверка поиска HTML-сущностей в виде unicode.
 	 */
 	@Test
-	public void findEntityUnicode()
+	public void testFindEntityUnicode()
 	{
 		String[] htmlEntityUnicode = {
 			"&#X22C8;",
@@ -1821,7 +1821,7 @@ public class HtmlTest
 	 * Проверка поиска типов HTML документа.
 	 */
 	@Test
-	public void findDoctype()
+	public void testFindDoctype()
 	{
 		String[] htmlDoctype = {
 			"<!DOCTYPE html>",
@@ -1864,7 +1864,7 @@ public class HtmlTest
 	@Test
 	public void testFindCloseTag()
 	{
-		String[] htmlEndTag = {
+		String[] htmlCloseTag = {
 			"</form>",
 			"</b >",
 			"</table>",
@@ -1896,7 +1896,7 @@ public class HtmlTest
 
 		Hipertext html = new Html(text);
 
-		assertArrayEquals(htmlEndTag, html.findCloseTag().toArray());
+		assertArrayEquals(htmlCloseTag, html.findCloseTag().toArray());
 	}
 
 	/**
@@ -1905,7 +1905,7 @@ public class HtmlTest
 	@Test
 	public void testFindOpenTag()
 	{
-		String[] htmlStartTag = {
+		String[] htmlOpenTag = {
 			"<b>",
 			"<meta charset='UTF-8'>",
 			"<input type='checkbox'  >",
@@ -1940,16 +1940,16 @@ public class HtmlTest
 
 		Hipertext html = new Html(text);
 
-		assertArrayEquals(htmlStartTag, html.findOpenTag().toArray());
+		assertArrayEquals(htmlOpenTag, html.findOpenTag().toArray());
 	}
 
 	/**
 	 * Проверка поиска самозакрывающихся HTML тегов.
 	 */
 	@Test
-	public void findSelfClosingTag()
+	public void testFindSelfClosingTag()
 	{
-		String[] htmlStartTag = {
+		String[] htmlOpenTag = {
 			"<br/>",
 			"<meta charset='UTF-8'/>",
 			"<input type='checkbox'  />",
@@ -1988,6 +1988,6 @@ public class HtmlTest
 
 		Hipertext html = new Html(text);
 
-		assertArrayEquals(htmlStartTag, html.findSelfClosingTag().toArray());
+		assertArrayEquals(htmlOpenTag, html.findSelfClosingTag().toArray());
 	}
 }

@@ -149,7 +149,7 @@ public class RegexpTest
 	 * Проверка групп.
 	 */
 	@Test
-	public void testRegexpEndTag()
+	public void testRegexpCloseTag()
 	{
 		String string = "</form >";
 
@@ -196,7 +196,7 @@ public class RegexpTest
 	 * Проверка групп.
 	 */
 	@Test
-	public void testRegexpStartTag()
+	public void testRegexpOpenTag()
 	{
 		String string = "<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">";
 

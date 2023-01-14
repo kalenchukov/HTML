@@ -31,13 +31,13 @@ import static org.junit.Assert.*;
 public class EntityTest
 {
 	@Test
-	public void getSymbol()
+	public void testGetSymbol()
 	{
 		assertEquals(Character.valueOf('#'), Entity.NUM.getSymbol());
 	}
 
 	@Test
-	public void getEntity()
+	public void testGetEntity()
 	{
 		assertEquals("num", Entity.NUM.getEntity(EntityType.NAME));
 		assertEquals("35", Entity.NUM.getEntity(EntityType.NUMERIC));
@@ -45,7 +45,7 @@ public class EntityTest
 	}
 
 	@Test
-	public void getMnemonic()
+	public void testGetMnemonic()
 	{
 		assertEquals("&num;", Entity.NUM.getMnemonic(EntityType.NAME));
 		assertEquals("&#35;", Entity.NUM.getMnemonic(EntityType.NUMERIC));
@@ -53,37 +53,37 @@ public class EntityTest
 	}
 
 	@Test
-	public void getEntityName()
+	public void testGetEntityName()
 	{
 		assertEquals("num", Entity.NUM.getEntityName());
 	}
 
 	@Test
-	public void getEntityNumeric()
+	public void testGetEntityNumeric()
 	{
 		assertEquals("35", Entity.NUM.getEntityNumeric());
 	}
 
 	@Test
-	public void getEntityUnicode()
+	public void testGetEntityUnicode()
 	{
 		assertEquals("23", Entity.NUM.getEntityUnicode());
 	}
 
 	@Test
-	public void getMnemonicName()
+	public void testGetMnemonicName()
 	{
 		assertEquals("&num;", Entity.NUM.getMnemonicName());
 	}
 
 	@Test
-	public void getMnemonicNumeric()
+	public void testGetMnemonicNumeric()
 	{
 		assertEquals("&#35;", Entity.NUM.getMnemonicNumeric());
 	}
 
 	@Test
-	public void getMnemonicUnicode()
+	public void testGetMnemonicUnicode()
 	{
 		assertEquals("&#X23;", Entity.NUM.getMnemonicUnicode());
 	}
