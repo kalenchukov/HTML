@@ -252,7 +252,7 @@ public interface Hipertext
 	 *
 	 * @return {@code true}, если строка является открывающим HTML тегом, иначе {@code false}.
 	 */
-	boolean isStartTag();
+	boolean isOpenTag();
 
 	/**
 	 * Проверяет, является ли строка самозакрывающимся HTML тегом.
@@ -277,7 +277,7 @@ public interface Hipertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findStartTag();
+	List<@NotNull String> findOpenTag();
 
 	/**
 	 * Выполняет поиск закрывающих HTML тегов.

@@ -1427,82 +1427,82 @@ public class HtmlTest
 	 * Проверка корректного открывающего HTML тега.
 	 */
 	@Test
-	public void isStartTagCorrect()
+	public void testIsOpenTagCorrect()
 	{
-		assertTrue(new Html("<form>").isStartTag());
-		assertTrue(new Html("<form >").isStartTag());
-		assertTrue(new Html("<form  >").isStartTag());
+		assertTrue(new Html("<form>").isOpenTag());
+		assertTrue(new Html("<form >").isOpenTag());
+		assertTrue(new Html("<form  >").isOpenTag());
 
-		assertTrue(new Html("<input value>").isStartTag());
-		assertTrue(new Html("<input value=yes>").isStartTag());
-		assertTrue(new Html("<input value = yes >").isStartTag());
-		assertTrue(new Html("<input value  =  yes  >").isStartTag());
+		assertTrue(new Html("<input value>").isOpenTag());
+		assertTrue(new Html("<input value=yes>").isOpenTag());
+		assertTrue(new Html("<input value = yes >").isOpenTag());
+		assertTrue(new Html("<input value  =  yes  >").isOpenTag());
 
-		assertTrue(new Html("<input id=''>").isStartTag());
-		assertTrue(new Html("<input id=\"\">").isStartTag());
+		assertTrue(new Html("<input id=''>").isOpenTag());
+		assertTrue(new Html("<input id=\"\">").isOpenTag());
 
-		assertTrue(new Html("<input type=\"checkbox\">").isStartTag());
-		assertTrue(new Html("<input type='checkbox'>").isStartTag());
+		assertTrue(new Html("<input type=\"checkbox\">").isOpenTag());
+		assertTrue(new Html("<input type='checkbox'>").isOpenTag());
 
-		assertTrue(new Html("<input name='123'>").isStartTag());
-		assertTrue(new Html("<input name=' текст'>").isStartTag());
-		assertTrue(new Html("<input name=' текст 123'>").isStartTag());
+		assertTrue(new Html("<input name='123'>").isOpenTag());
+		assertTrue(new Html("<input name=' текст'>").isOpenTag());
+		assertTrue(new Html("<input name=' текст 123'>").isOpenTag());
 
-		assertTrue(new Html("<input name=\"input name\">").isStartTag());
-		assertTrue(new Html("<input name=\"0123456789\">").isStartTag());
+		assertTrue(new Html("<input name=\"input name\">").isOpenTag());
+		assertTrue(new Html("<input name=\"0123456789\">").isOpenTag());
 
-		assertTrue(new Html("<input id='input-id'>").isStartTag());
-		assertTrue(new Html("<input id=\"input-id-123\">").isStartTag());
+		assertTrue(new Html("<input id='input-id'>").isOpenTag());
+		assertTrue(new Html("<input id=\"input-id-123\">").isOpenTag());
 
-		assertTrue(new Html("<meta charset=\"UTF-8\">").isStartTag());
+		assertTrue(new Html("<meta charset=\"UTF-8\">").isOpenTag());
 
-		assertTrue(new Html("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\">").isStartTag());
-		assertTrue(new Html("<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">").isStartTag());
+		assertTrue(new Html("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\">").isOpenTag());
+		assertTrue(new Html("<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">").isOpenTag());
 
-		assertTrue(new Html("<input id  ='ID' qwe-attr =  \"my_attribute\"  >").isStartTag());
-		assertTrue(new Html("<input qwe_attr =  \"my_attribute\"  >").isStartTag());
+		assertTrue(new Html("<input id  ='ID' qwe-attr =  \"my_attribute\"  >").isOpenTag());
+		assertTrue(new Html("<input qwe_attr =  \"my_attribute\"  >").isOpenTag());
 
 		assertTrue(new Html("""
 			<link
 				rel="icon"
 			type='image/png'
 				sizes=""
-				href=''>""").isStartTag());
+				href=''>""").isOpenTag());
 	}
 
 	/**
 	 * Проверка некорректного открывающего HTML тега.
 	 */
 	@Test
-	public void isStartTagNotCorrect()
+	public void itestIsOpenTagNotCorrect()
 	{
-		assertFalse(new Html("").isStartTag());
-		assertFalse(new Html(" ").isStartTag());
+		assertFalse(new Html("").isOpenTag());
+		assertFalse(new Html(" ").isOpenTag());
 
-		assertFalse(new Html("text<input>").isStartTag());
+		assertFalse(new Html("text<input>").isOpenTag());
 
-		assertFalse(new Html("<link href=>").isStartTag());
+		assertFalse(new Html("<link href=>").isOpenTag());
 
-		assertFalse(new Html("<input name='text\">").isStartTag());
+		assertFalse(new Html("<input name='text\">").isOpenTag());
 
-		assertFalse(new Html("<input name=text'>").isStartTag());
-		assertFalse(new Html("<input name='text>").isStartTag());
-		assertFalse(new Html("<input name='te'xt'>").isStartTag());
+		assertFalse(new Html("<input name=text'>").isOpenTag());
+		assertFalse(new Html("<input name='text>").isOpenTag());
+		assertFalse(new Html("<input name='te'xt'>").isOpenTag());
 
-		assertFalse(new Html("<input name=text\">").isStartTag());
-		assertFalse(new Html("<input name=\"text>").isStartTag());
-		assertFalse(new Html("<input name=\"te\"xt\">").isStartTag());
+		assertFalse(new Html("<input name=text\">").isOpenTag());
+		assertFalse(new Html("<input name=\"text>").isOpenTag());
+		assertFalse(new Html("<input name=\"te\"xt\">").isOpenTag());
 
-		assertFalse(new Html("< input>").isStartTag());
+		assertFalse(new Html("< input>").isOpenTag());
 
-		assertFalse(new Html("<input").isStartTag());
-		assertFalse(new Html("input>").isStartTag());
+		assertFalse(new Html("<input").isOpenTag());
+		assertFalse(new Html("input>").isOpenTag());
 
-		assertFalse(new Html("<input id=='input-id'>").isStartTag());
-		assertFalse(new Html("<input id = = 'input-id'>").isStartTag());
+		assertFalse(new Html("<input id=='input-id'>").isOpenTag());
+		assertFalse(new Html("<input id = = 'input-id'>").isOpenTag());
 
-		assertFalse(new Html("<input id=''input-id'>").isStartTag());
-		assertFalse(new Html("<input id='input-id''>").isStartTag());
+		assertFalse(new Html("<input id=''input-id'>").isOpenTag());
+		assertFalse(new Html("<input id='input-id''>").isOpenTag());
 
 		assertFalse(new Html("""
 			<link
@@ -1510,7 +1510,7 @@ public class HtmlTest
 			type='image/png'
 				sizes=""
 				href=>
-			""").isStartTag());
+			""").isOpenTag());
 	}
 
 	/**
@@ -1903,7 +1903,7 @@ public class HtmlTest
 	 * Проверка поиска открывающих HTML тегов.
 	 */
 	@Test
-	public void findStartTag()
+	public void testFindOpenTag()
 	{
 		String[] htmlStartTag = {
 			"<b>",
@@ -1940,7 +1940,7 @@ public class HtmlTest
 
 		Hipertext html = new Html(text);
 
-		assertArrayEquals(htmlStartTag, html.findStartTag().toArray());
+		assertArrayEquals(htmlStartTag, html.findOpenTag().toArray());
 	}
 
 	/**

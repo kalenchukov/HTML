@@ -514,9 +514,9 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isStartTag()
+	 * @see Hipertext#isOpenTag()
 	 */
-	public boolean isStartTag()
+	public boolean isOpenTag()
 	{
 		return this.is(
 			Regexp.OPEN_TAG,
@@ -549,11 +549,11 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findStartTag()
+	 * @see Hipertext#findOpenTag()
 	 */
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findStartTag()
+	public List<@NotNull String> findOpenTag()
 	{
 		return this.find(
 			Regexp.OPEN_TAG,

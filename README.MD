@@ -118,7 +118,7 @@ html.isDoctype();
 String text = "<input type='checkbox'>";
 
 Html html = new Html(text);
-html.isStartTag();
+html.isOpenTag();
 // Результат выполнения: true
 ```
 
@@ -312,7 +312,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findStartTag();
+html.findOpenTag();
 /*
 Результат выполнения: 
 [
