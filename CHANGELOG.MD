@@ -7,28 +7,29 @@
 * Добавлен INSTALL.MD.
 * Добавлен CHANGELOG.MD.
 * Добавлено перечисление Regexp.
-* Добавлен метод Html.isCData().
-* Добавлен метод Html.isComment().
-* Добавлен метод Html.isDoctype().
-* Добавлен метод Html.isEndTag().
-* Добавлен метод Html.isEntityName().
-* Добавлен метод Html.isEntityNumeric().
-* Добавлен метод Html.isEntityUnicode().
-* Добавлен метод Html.isSelfClosingTag().
-* Добавлен метод Html.isStartTag().
-* Добавлен метод Html.findCData().
-* Добавлен метод Html.findComment().
-* Добавлен метод Html.findDoctype().
-* Добавлен метод Html.findEndTag().
-* Добавлен метод Html.findEntityName().
-* Добавлен метод Html.findEntityNumeric().
-* Добавлен метод Html.findEntityUnicode().
-* Добавлен метод Html.findSelfClosingTag().
-* Добавлен метод Html.findStartTag().
+* Добавлен метод Hipertext.isCData().
+* Добавлен метод Hipertext.isComment().
+* Добавлен метод Hipertext.isDoctype().
+* Добавлен метод Hipertext.isEndTag().
+* Добавлен метод Hipertext.isEntityName().
+* Добавлен метод Hipertext.isEntityNumeric().
+* Добавлен метод Hipertext.isEntityUnicode().
+* Добавлен метод Hipertext.isSelfClosingTag().
+* Добавлен метод Hipertext.isStartTag().
+* Добавлен метод Hipertext.findCData().
+* Добавлен метод Hipertext.findComment().
+* Добавлен метод Hipertext.findDoctype().
+* Добавлен метод Hipertext.findEndTag().
+* Добавлен метод Hipertext.findEntityName().
+* Добавлен метод Hipertext.findEntityNumeric().
+* Добавлен метод Hipertext.findEntityUnicode().
+* Добавлен метод Hipertext.findSelfClosingTag().
+* Добавлен метод Hipertext.findStartTag().
 * Переименовано Regexp.START_TAG -> Regexp.OPEN_TAG.
 * Переименовано Regexp.END_TAG -> Regexp.CLOSE_TAG.
 * Переименовано TagType.START -> TagType.OPEN.
 * Переименовано TagType.END -> TagType.CLOSE.
+* Переименован метод Hipertext.isEndTag() -> Hipertext.isCloseTag().
 
 ### Изменено
 * Обновлён README.MD.

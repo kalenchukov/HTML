@@ -138,7 +138,7 @@ html.isSelfClosingTag();
 String text = "</form>";
 
 Html html = new Html(text);
-html.isEndTag();
+html.isCloseTag();
 // Результат выполнения: true
 ```
 

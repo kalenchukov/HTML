@@ -1308,26 +1308,26 @@ public class HtmlTest
 	 * Проверка корректного закрывающего HTML тега.
 	 */
 	@Test
-	public void isEndTagCorrect()
+	public void isCloseTagCorrect()
 	{
-		assertTrue(new Html("</form>").isEndTag());
-		assertTrue(new Html("</form >").isEndTag());
-		assertTrue(new Html("</form  >").isEndTag());
+		assertTrue(new Html("</form>").isCloseTag());
+		assertTrue(new Html("</form >").isCloseTag());
+		assertTrue(new Html("</form  >").isCloseTag());
 	}
 
 	/**
 	 * Проверка некорректного закрывающего HTML тега.
 	 */
 	@Test
-	public void isEndTagNotCorrect()
+	public void isCloseTagNotCorrect()
 	{
-		assertFalse(new Html("").isEndTag());
-		assertFalse(new Html(" ").isEndTag());
+		assertFalse(new Html("").isCloseTag());
+		assertFalse(new Html(" ").isCloseTag());
 
-		assertFalse(new Html("</ form>").isEndTag());
-		assertFalse(new Html("< /form>").isEndTag());
+		assertFalse(new Html("</ form>").isCloseTag());
+		assertFalse(new Html("< /form>").isCloseTag());
 
-		assertFalse(new Html("text</form>").isEndTag());
+		assertFalse(new Html("text</form>").isCloseTag());
 	}
 
 	/**

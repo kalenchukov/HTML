@@ -28,11 +28,7 @@ import dev.kalenchukov.html.resources.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Интерфейс для реализации класса работы с гипертекстом.
@@ -249,7 +245,7 @@ public interface Hipertext
 	 *
 	 * @return {@code true}, если строка является закрывающим HTML тегом, иначе {@code false}.
 	 */
-	boolean isEndTag();
+	boolean isCloseTag();
 
 	/**
 	 * Проверяет, является ли строка открывающим HTML тегом.

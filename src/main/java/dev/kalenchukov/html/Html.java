@@ -503,9 +503,9 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isEndTag()
+	 * @see Hipertext#isCloseTag()
 	 */
-	public boolean isEndTag()
+	public boolean isCloseTag()
 	{
 		return this.is(
 			Regexp.CLOSE_TAG,
