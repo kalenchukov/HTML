@@ -335,7 +335,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findEndTag();
+html.findCloseTag();
 /*
 Результат выполнения: 
 [

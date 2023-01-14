@@ -562,11 +562,11 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findEndTag()
+	 * @see Hipertext#findCloseTag()
 	 */
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findEndTag()
+	public List<@NotNull String> findCloseTag()
 	{
 		return this.find(
 			Regexp.CLOSE_TAG,

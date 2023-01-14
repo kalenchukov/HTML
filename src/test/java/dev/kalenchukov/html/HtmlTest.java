@@ -1862,7 +1862,7 @@ public class HtmlTest
 	 * Проверка поиска закрывающих HTML тегов.
 	 */
 	@Test
-	public void findEndTag()
+	public void testFindCloseTag()
 	{
 		String[] htmlEndTag = {
 			"</form>",
@@ -1896,7 +1896,7 @@ public class HtmlTest
 
 		Hipertext html = new Html(text);
 
-		assertArrayEquals(htmlEndTag, html.findEndTag().toArray());
+		assertArrayEquals(htmlEndTag, html.findCloseTag().toArray());
 	}
 
 	/**

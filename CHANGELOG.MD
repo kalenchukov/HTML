@@ -30,6 +30,7 @@
 * Переименовано TagType.START -> TagType.OPEN.
 * Переименовано TagType.END -> TagType.CLOSE.
 * Переименован метод Hipertext.isEndTag() -> Hipertext.isCloseTag().
+* Переименован метод Hipertext.findEndTag() -> Hipertext.findCloseTag().
 
 ### Изменено
 * Обновлён README.MD.

@@ -286,7 +286,7 @@ public interface Hipertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findEndTag();
+	List<@NotNull String> findCloseTag();
 
 	/**
 	 * Выполняет поиск областей CDATA.
