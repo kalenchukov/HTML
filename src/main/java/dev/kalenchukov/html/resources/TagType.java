@@ -37,7 +37,7 @@ public enum TagType
 	/**
 	 * Открывающий.
 	 */
-	START,
+	OPEN,
 
 	/**
 	 * Закрывающий.

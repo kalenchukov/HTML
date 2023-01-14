@@ -457,7 +457,7 @@ text <a href="/link" target='_blank'>ссылка</a> Текст
 """;
 
 Html html = new Html(text);
-html.deleteTag(Tag.A, TagType.START);
+html.deleteTag(Tag.A, TagType.OPEN);
 
 /*
 Результат выполнения:
@@ -489,7 +489,7 @@ String text = """
 """;
 
 Html html = new Html(text);
-html.deleteTags(TagType.START);
+html.deleteTags(TagType.OPEN);
 
 /*
 Результат выполнения:
@@ -521,7 +521,7 @@ String text = """
 """;
 
 Html html = new Html(text);
-html.deleteTags(TagType.START, List.of(Tag.B));
+html.deleteTags(TagType.OPEN, List.of(Tag.B));
 
 /*
 Результат выполнения:

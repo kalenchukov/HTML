@@ -27,6 +27,7 @@
 * Добавлен метод Html.findStartTag().
 * Переименовано Regexp.START_TAG -> Regexp.OPEN_TAG.
 * Переименовано Regexp.END_TAG -> Regexp.CLOSE_TAG.
+* Переименовано TagType.START -> TagType.OPEN.
 
 ### Изменено
 * Обновлён README.MD.
