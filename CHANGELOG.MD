@@ -3,6 +3,9 @@
 ## vX.X.X - XX.XX.XXXX
 
 ### Добавлено
+* Добавлен AUTHOR.MD.
+* Добавлен INSTALL.MD.
+* Добавлен CHANGELOG.MD.
 * Добавлено перечисление Regexp.
 * Добавлен метод Html.isCData().
 * Добавлен метод Html.isComment().
@@ -22,9 +25,7 @@
 * Добавлен метод Html.findEntityUnicode().
 * Добавлен метод Html.findSelfClosingTag().
 * Добавлен метод Html.findStartTag().
-* Добавлен AUTHOR.MD.
-* Добавлен INSTALL.MD.
-* Добавлен CHANGELOG.MD.
+* Переименовано Regexp.START_TAG -> Regexp.OPEN_TAG.
 
 ### Изменено
 * Обновлён README.MD.

@@ -21,7 +21,7 @@ Regexp.HTML_SELF_CLOSING_TAG;
 #### Открывающий HTML-тег
 
 ```java
-Regexp.HTML_START_TAG;
+Regexp.HTML_OPEN_TAG;
 ```
 
 #### Закрывающий HTML-тег

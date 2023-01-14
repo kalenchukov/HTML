@@ -120,7 +120,7 @@ public class Html implements Hipertext
 		patterns.put(
 			TagType.START,
 			Pattern.compile(
-				Regexp.START_TAG.getPattern().replace(
+				Regexp.OPEN_TAG.getPattern().replace(
 					"(?<name>[a-z]+)",
 					"(?<name>" + tag.getName() + ")"
 				),
@@ -519,7 +519,7 @@ public class Html implements Hipertext
 	public boolean isStartTag()
 	{
 		return this.is(
-			Regexp.START_TAG,
+			Regexp.OPEN_TAG,
 			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE + Pattern.DOTALL
 		);
 	}
@@ -556,7 +556,7 @@ public class Html implements Hipertext
 	public List<@NotNull String> findStartTag()
 	{
 		return this.find(
-			Regexp.START_TAG,
+			Regexp.OPEN_TAG,
 			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE + Pattern.DOTALL
 		);
 	}

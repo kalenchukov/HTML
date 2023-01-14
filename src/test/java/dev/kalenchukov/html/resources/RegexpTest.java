@@ -201,7 +201,7 @@ public class RegexpTest
 		String string = "<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">";
 
 		Pattern pattern = Pattern.compile(
-			Regexp.START_TAG.getPattern(),
+			Regexp.OPEN_TAG.getPattern(),
 			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 		);
 		Matcher matcher = pattern.matcher(string);
@@ -210,7 +210,7 @@ public class RegexpTest
 
 		assertEquals(
 			"<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">",
-			matcher.group(Regexp.START_TAG.getGroup())
+			matcher.group(Regexp.OPEN_TAG.getGroup())
 		);
 		assertEquals("meta", matcher.group("name"));
 		assertEquals(
