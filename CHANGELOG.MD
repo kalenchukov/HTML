@@ -3,6 +3,25 @@
 ## vX.X.X - XX.XX.XXXX
 
 ### Добавлено
+* Добавлено перечисление Regexp.
+* Добавлен метод Html.isCData().
+* Добавлен метод Html.isComment().
+* Добавлен метод Html.isDoctype().
+* Добавлен метод Html.isEndTag().
+* Добавлен метод Html.isEntityName().
+* Добавлен метод Html.isEntityNumeric().
+* Добавлен метод Html.isEntityUnicode().
+* Добавлен метод Html.isSelfClosingTag().
+* Добавлен метод Html.isStartTag().
+* Добавлен метод Html.findCData().
+* Добавлен метод Html.findComment().
+* Добавлен метод Html.findDoctype().
+* Добавлен метод Html.findEndTag().
+* Добавлен метод Html.findEntityName().
+* Добавлен метод Html.findEntityNumeric().
+* Добавлен метод Html.findEntityUnicode().
+* Добавлен метод Html.findSelfClosingTag().
+* Добавлен метод Html.findStartTag().
 * Добавлен AUTHOR.MD.
 * Добавлен INSTALL.MD.
 * Добавлен CHANGELOG.MD.

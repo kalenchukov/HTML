@@ -24,13 +24,15 @@
 
 package dev.kalenchukov.html;
 
-import dev.kalenchukov.html.resources.Entity;
-import dev.kalenchukov.html.resources.EntityType;
-import dev.kalenchukov.html.resources.Tag;
-import dev.kalenchukov.html.resources.TagType;
+import dev.kalenchukov.html.resources.*;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Интерфейс для реализации класса работы с гипертекстом.
@@ -199,4 +201,148 @@ public interface Hipertext
 	 * @param entityType тип HTML-сущностей.
 	 */
 	void decodeEntities(@NotNull EntityType entityType, @NotNull List<@NotNull Entity> excludeEntities);
+
+	/**
+	 * Проверяет, является ли строка HTML комментарием.
+	 *
+	 * @return {@code true}, если строка является HTML комментарием, иначе {@code false}.
+	 */
+	boolean isComment();
+
+	/**
+	 * Проверяет, является ли строка HTML сущностью в виде имени.
+	 *
+	 * @return {@code true}, если строка является HTML сущностью в виде имени, иначе {@code false}.
+	 */
+	boolean isEntityName();
+
+	/**
+	 * Проверяет, является ли строка HTML сущностью в виде числа.
+	 *
+	 * @return {@code true}, если строка является HTML сущностью в виде числа, иначе {@code false}.
+	 */
+	boolean isEntityNumeric();
+
+	/**
+	 * Проверяет, является ли строка HTML сущностью в виде unicode.
+	 *
+	 * @return {@code true}, если строка является HTML сущностью в виде unicode, иначе {@code false}.
+	 */
+	boolean isEntityUnicode();
+
+	/**
+	 * Проверяет, является ли строка типом HTML документа.
+	 *
+	 * @return {@code true}, если строка является типом HTML документа, иначе {@code false}.
+	 */
+	boolean isDoctype();
+
+	/**
+	 * Проверяет, является ли строка областью CDATA.
+	 *
+	 * @return {@code true}, если строка является областью CDATA, иначе {@code false}.
+	 */
+	boolean isCData();
+
+	/**
+	 * Проверяет, является ли строка закрывающим HTML тегом.
+	 *
+	 * @return {@code true}, если строка является закрывающим HTML тегом, иначе {@code false}.
+	 */
+	boolean isEndTag();
+
+	/**
+	 * Проверяет, является ли строка открывающим HTML тегом.
+	 *
+	 * @return {@code true}, если строка является открывающим HTML тегом, иначе {@code false}.
+	 */
+	boolean isStartTag();
+
+	/**
+	 * Проверяет, является ли строка самозакрывающимся HTML тегом.
+	 *
+	 * @return {@code true}, если строка является самозакрывающимся HTML тегом, иначе {@code false}.
+	 */
+	boolean isSelfClosingTag();
+
+	/**
+	 * Выполняет поиск самозакрывающихся HTML тегов.
+	 *
+	 * @return коллекцию с найденными самозакрывающихся HTML тегами.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findSelfClosingTag();
+
+	/**
+	 * Выполняет поиск открывающих HTML тегов.
+	 *
+	 * @return коллекцию с найденными открывающими HTML тегами.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findStartTag();
+
+	/**
+	 * Выполняет поиск закрывающих HTML тегов.
+	 *
+	 * @return коллекцию с найденными закрывающими HTML тегами.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findEndTag();
+
+	/**
+	 * Выполняет поиск областей CDATA.
+	 *
+	 * @return коллекцию с найденными областями CDATA.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findCData();
+
+	/**
+	 * Выполняет поиск типов HTML документа.
+	 *
+	 * @return коллекцию с найденными типами HTML документа.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findDoctype();
+
+	/**
+	 * Выполняет поиск HTML-сущностей в виде имени.
+	 *
+	 * @return коллекцию с найденными HTML сущностями в виде имени.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findEntityName();
+
+	/**
+	 * Выполняет поиск HTML-сущностей в виде числа.
+	 *
+	 * @return коллекцию с найденными HTML сущностями в виде числа.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findEntityNumeric();
+
+	/**
+	 * Выполняет поиск HTML-сущностей в виде unicode.
+	 *
+	 * @return коллекцию с найденными HTML сущностями в виде unicode.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findEntityUnicode();
+
+	/**
+	 * Выполняет поиск HTML комментариев.
+	 *
+	 * @return коллекцию с найденными HTML комментариями.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findComment();
 }
