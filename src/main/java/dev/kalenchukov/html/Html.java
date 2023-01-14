@@ -129,7 +129,7 @@ public class Html implements Hipertext
 		);
 
 		patterns.put(
-			TagType.END,
+			TagType.CLOSE,
 			Pattern.compile(
 				Regexp.CLOSE_TAG.getPattern().replace(
 					"(?<name>[a-z]+)",

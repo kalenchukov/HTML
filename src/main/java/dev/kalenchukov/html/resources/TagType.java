@@ -42,5 +42,5 @@ public enum TagType
 	/**
 	 * Закрывающий.
 	 */
-	END;
+	CLOSE;
 }

@@ -28,6 +28,7 @@
 * Переименовано Regexp.START_TAG -> Regexp.OPEN_TAG.
 * Переименовано Regexp.END_TAG -> Regexp.CLOSE_TAG.
 * Переименовано TagType.START -> TagType.OPEN.
+* Переименовано TagType.END -> TagType.CLOSE.
 
 ### Изменено
 * Обновлён README.MD.

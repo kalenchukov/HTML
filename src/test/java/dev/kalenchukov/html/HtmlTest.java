@@ -353,7 +353,7 @@ public class HtmlTest
 			""";
 
 		Hipertext html = new Html(text);
-		html.deleteTags(TagType.END);
+		html.deleteTags(TagType.CLOSE);
 
 		assertEquals(expected, html.getText());
 	}
@@ -378,7 +378,7 @@ public class HtmlTest
 			""";
 
 		Hipertext html = new Html(text);
-		html.deleteTags(TagType.END, List.of(Tag.B));
+		html.deleteTags(TagType.CLOSE, List.of(Tag.B));
 
 		assertEquals(expected, html.getText());
 	}
@@ -403,7 +403,7 @@ public class HtmlTest
 			""";
 
 		Hipertext html = new Html(text);
-		html.deleteTag(Tag.A, TagType.END);
+		html.deleteTag(Tag.A, TagType.CLOSE);
 
 		assertEquals(expected, html.getText());
 	}
