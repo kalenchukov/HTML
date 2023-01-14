@@ -157,7 +157,7 @@ public enum Regexp
 	 * 		<li>Должен заканчиваться символом "&gt;".</li>
 	 * </ul>
 	 */
-	END_TAG("tag", """
+	CLOSE_TAG("tag", """
 		(?<tag>
 			</
 			(?<name>[a-z]+)

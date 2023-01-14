@@ -131,7 +131,7 @@ public class Html implements Hipertext
 		patterns.put(
 			TagType.END,
 			Pattern.compile(
-				Regexp.END_TAG.getPattern().replace(
+				Regexp.CLOSE_TAG.getPattern().replace(
 					"(?<name>[a-z]+)",
 					"(?<name>" + tag.getName() + ")"
 				),
@@ -508,7 +508,7 @@ public class Html implements Hipertext
 	public boolean isEndTag()
 	{
 		return this.is(
-			Regexp.END_TAG,
+			Regexp.CLOSE_TAG,
 			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 		);
 	}
@@ -569,7 +569,7 @@ public class Html implements Hipertext
 	public List<@NotNull String> findEndTag()
 	{
 		return this.find(
-			Regexp.END_TAG,
+			Regexp.CLOSE_TAG,
 			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 		);
 	}

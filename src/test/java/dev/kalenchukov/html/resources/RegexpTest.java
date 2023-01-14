@@ -154,14 +154,14 @@ public class RegexpTest
 		String string = "</form >";
 
 		Pattern pattern = Pattern.compile(
-			Regexp.END_TAG.getPattern(),
+			Regexp.CLOSE_TAG.getPattern(),
 			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 		);
 		Matcher matcher = pattern.matcher(string);
 
 		assertTrue(matcher.find());
 
-		assertEquals("</form >", matcher.group(Regexp.END_TAG.getGroup()));
+		assertEquals("</form >", matcher.group(Regexp.CLOSE_TAG.getGroup()));
 		assertEquals("form", matcher.group("name"));
 	}
 

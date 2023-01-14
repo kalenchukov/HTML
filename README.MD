@@ -27,7 +27,7 @@ Regexp.OPEN_TAG;
 #### Закрывающий HTML-тег
 
 ```java
-Regexp.END_TAG;
+Regexp.CLOSE_TAG;
 ```
 
 #### HTML-комментарий

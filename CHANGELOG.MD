@@ -26,6 +26,7 @@
 * Добавлен метод Html.findSelfClosingTag().
 * Добавлен метод Html.findStartTag().
 * Переименовано Regexp.START_TAG -> Regexp.OPEN_TAG.
+* Переименовано Regexp.END_TAG -> Regexp.CLOSE_TAG.
 
 ### Изменено
 * Обновлён README.MD.
