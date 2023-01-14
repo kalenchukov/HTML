@@ -15,49 +15,49 @@ Regexp.CDATA;
 #### Самозакрывающийся HTML-тег
 
 ```java
-Regexp.HTML_SELF_CLOSING_TAG;
+Regexp.SELF_CLOSING_TAG;
 ```
 
 #### Открывающий HTML-тег
 
 ```java
-Regexp.HTML_OPEN_TAG;
+Regexp.OPEN_TAG;
 ```
 
 #### Закрывающий HTML-тег
 
 ```java
-Regexp.HTML_END_TAG;
+Regexp.END_TAG;
 ```
 
 #### HTML-комментарий
 
 ```java
-Regexp.HTML_COMMENT;
+Regexp.COMMENT;
 ```
 
 #### Тип HTML-документа
 
 ```java
-Regexp.HTML_DOCTYPE;
+Regexp.DOCTYPE;
 ```
 
 #### HTML-сущность в виде имени
 
 ```java
-Regexp.HTML_ENTITY_NAME;
+Regexp.ENTITY_NAME;
 ```
 
 #### HTML-сущность в виде unicode
 
 ```java
-Regexp.HTML_ENTITY_UNICODE;
+Regexp.ENTITY_UNICODE;
 ```
 
 #### HTML-сущность в виде числа
 
 ```java
-Regexp.HTML_ENTITY_NUMERIC;
+Regexp.ENTITY_NUMERIC;
 ```
 
 ### Проверка
