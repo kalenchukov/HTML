@@ -1,69 +1,55 @@
 # HTML
-
 Работа с HTML.
 
 ## Использование
-
 ### Получение шаблона регулярного выражения
-
 #### Область CDATA
-
 ```java
 Regexp.CDATA;
 ```
 
 #### Самозакрывающийся HTML-тег
-
 ```java
 Regexp.SELF_CLOSING_TAG;
 ```
 
 #### Открывающий HTML-тег
-
 ```java
 Regexp.OPEN_TAG;
 ```
 
 #### Закрывающий HTML-тег
-
 ```java
 Regexp.CLOSE_TAG;
 ```
 
 #### HTML-комментарий
-
 ```java
 Regexp.COMMENT;
 ```
 
 #### Тип HTML-документа
-
 ```java
 Regexp.DOCTYPE;
 ```
 
 #### HTML-сущность в виде имени
-
 ```java
 Regexp.ENTITY_NAME;
 ```
 
 #### HTML-сущность в виде unicode
-
 ```java
 Regexp.ENTITY_UNICODE;
 ```
 
 #### HTML-сущность в виде числа
-
 ```java
 Regexp.ENTITY_NUMERIC;
 ```
 
 ### Проверка
-
 #### Проверка HTML комментария
-
 ```java
 String text = "<!-- Комментарий -->";
 
@@ -73,7 +59,6 @@ html.isComment();
 ```
 
 #### Проверка HTML сущности в виде имени
-
 ```java
 String text = "&asymp;";
 
@@ -83,7 +68,6 @@ html.isEntityName();
 ```
 
 #### Проверка HTML сущности в виде числа
-
 ```java
 String text = "&38;";
 
@@ -93,7 +77,6 @@ html.isEntityNumeric();
 ```
 
 #### Проверка HTML сущности в виде unicode
-
 ```java
 String text = "&#X22C8;";
 
@@ -103,7 +86,6 @@ html.isEntityUnicode();
 ```
 
 #### Проверка типа HTML документа
-
 ```java
 String text = "<!DOCTYPE html>";
 
@@ -113,7 +95,6 @@ html.isDoctype();
 ```
 
 #### Проверка открывающего HTML тега
-
 ```java
 String text = "<input type='checkbox'>";
 
@@ -123,7 +104,6 @@ html.isOpenTag();
 ```
 
 #### Проверка самозакрывающегося HTML тега
-
 ```java
 String text = "<input type='checkbox' />";
 
@@ -133,7 +113,6 @@ html.isSelfClosingTag();
 ```
 
 #### Проверка закрывающего HTML тега
-
 ```java
 String text = "</form>";
 
@@ -143,7 +122,6 @@ html.isCloseTag();
 ```
 
 #### Проверка области CData
-
 ```java
 String text = "<![CDATA[CDATA область]]>";
 
@@ -153,9 +131,7 @@ html.isCData();
 ```
 
 ### Поиск
-
 #### Поиск HTML комментариев
-
 ```java
 String text = """
     Песня без слов, ночь без сна
@@ -180,7 +156,6 @@ html.findComment();
 ```
 
 #### Поиск областей CDATA
-
 ```java
 String text = """
     <![CDATA[Здесь не понятно, где лицо, а где рыло,]]>
@@ -205,7 +180,6 @@ html.findCData();
 ```
 
 #### Поиск HTML-сущностей в виде имени
-
 ```java
 String text = """
     Как много веселых ребят,
@@ -228,7 +202,6 @@ html.findEntityName();
 ```
 
 #### Поиск HTML-сущностей в виде числа
-
 ```java
 String text = """
     В моем доме не видно стены,
@@ -253,7 +226,6 @@ html.findEntityNumeric();
 ```
 
 #### Поиск HTML-сущностей в виде unicode
-
 ```java
 String text = """
     Ночь, день -
@@ -278,7 +250,6 @@ html.findEntityUnicode();
 ```
 
 #### Поиск типа HTML документа
-
 ```java
 String text = """
     <!DOCTYPE html>Они говорят: им нельзя рисковать,
@@ -302,7 +273,6 @@ html.findDoctype();
 ```
 
 #### Поиск открывающих HTML тегов
-
 ```java
 String text = """
     Солдат шел по улице домой
@@ -323,7 +293,6 @@ html.findOpenTag();
 ```
 
 #### Поиск закрывающих HTML тегов
-
 ```java
 String text = """
     О-o, это странное место Камчатка,
@@ -346,7 +315,6 @@ html.findCloseTag();
 
 ```
 #### Поиск самозакрывающихся HTML тегов
-
 ```java
 String text = """
     У меня есть дом, только нет ключей,
@@ -371,9 +339,7 @@ html.findSelfClosingTag();
 ```
 
 ### Преобразование
-
 #### Удаление HTML-комментариев
-
 ```java
 String text = """
 <html><!-- Комментарий --></html>
@@ -393,7 +359,6 @@ html.deleteComments();
 ```
 
 #### Удаление разделов CDATA
-
 ```java
 String text = """
 <html>
@@ -416,7 +381,6 @@ html.deleteCData();
 ```
 
 #### Удаление типа документа
-
 ```java
 String text = """
 <!DOCTYPE html>
@@ -434,7 +398,6 @@ html.deleteDoctype();
 ```
 
 #### Удаление HTML-тега
-
 ```java
 String text = """
 text <a href="/link" target='_blank'>ссылка</a> Текст
@@ -450,7 +413,6 @@ text ссылка Текст
 ```
 
 #### Удаление HTML-тега указанного типа
-
 ```java
 String text = """
 text <a href="/link" target='_blank'>ссылка</a> Текст
@@ -466,7 +428,6 @@ text ссылка</a> Текст
 ```
 
 #### Удаление всех HTML-тегов
-
 ```java
 String text = """
 <b>text</b> <a href="/link" target='_blank'>ссылка</a> Текст <br/>
@@ -482,7 +443,6 @@ text ссылка Текст
 ```
 
 #### Удаление всех HTML-тегов указанного типа
-
 ```java
 String text = """
 <b>text</b> <a href="/link" target='_blank'>ссылка</a> Текст <br/>
@@ -498,7 +458,6 @@ text</b> ссылка</a> Текст <br/>
 ```
 
 #### Удаление всех HTML-тегов с указанием исключений
-
 ```java
 String text = """
 <b>text</b> <a href="/link" target='_blank'>ссылка</a> Текст <br/>
@@ -514,7 +473,6 @@ text ссылка Текст <br/>
 ```
 
 #### Удаление всех HTML-тегов с указанного типа и исключений
-
 ```java
 String text = """
 <b>text</b> <a href="/link" target='_blank'>ссылка</a> Текст <br/>
@@ -530,7 +488,6 @@ html.deleteTags(TagType.OPEN, List.of(Tag.B));
 ```
 
 #### Удаление HTML-сущности
-
 ```java
 String text = """
 AC&sol;DC
@@ -548,7 +505,6 @@ AC&sol;DC
 ```
 
 #### Удаление HTML-сущности указанного типа
-
 ```java
 String text = """
 AC&sol;DC
@@ -566,7 +522,6 @@ AC&sol;DC
 ```
 
 #### Удаление всех HTML-сущностей
-
 ```java
 String text = """
 AC&sol;DC
@@ -584,7 +539,6 @@ ACDC
 ```
 
 #### Удаление всех HTML-сущностей с указанием исключений
-
 ```java
 String text = """
 AC&sol;DC
@@ -602,7 +556,6 @@ ACDC
 ```
 
 #### Преобразование специальных символов в соответствующие HTML-сущности с указанием типа
-
 ```java
 String text = """
 AC/DC
@@ -620,7 +573,6 @@ AC/DC
 ```
 
 #### Преобразование всех специальных символов в соответствующие HTML-сущности с указанием типа
-
 ```java
 String text = """
 AC/DC
@@ -638,7 +590,6 @@ AC&sol;DC
 ```
 
 #### Преобразование всех специальных символов в соответствующие HTML-сущности с указанием типа и исключений
-
 ```java
 String text = """
 AC/DC
@@ -656,7 +607,6 @@ AC&sol;DC
 ```
 
 #### Преобразование HTML-сущности в соответствующий специальный символ
-
 ```java
 String text = """
 AC&sol;DC
@@ -674,7 +624,6 @@ AC&sol;DC
 ```
 
 #### Преобразование HTML-сущности в соответствующий специальный символ с указанием типа
-
 ```java
 String text = """
 AC&sol;DC
@@ -692,7 +641,6 @@ AC&sol;DC
 ```
 
 #### Преобразование всех HTML-сущностей в соответствующие специальные символы
-
 ```java
 String text = """
 AC&sol;DC
@@ -710,7 +658,6 @@ AC/DC
 ```
 
 #### Преобразование всех HTML-сущностей в соответствующие специальные символы с указанием типа
-
 ```java
 String text = """
 AC&sol;DC
@@ -728,7 +675,6 @@ AC/DC
 ```
 
 #### Преобразование всех HTML-сущностей в соответствующие специальные символы с указанием исключений
-
 ```java
 String text = """
 AC&sol;DC
@@ -746,7 +692,6 @@ AC/DC
 ```
 
 #### Преобразование всех HTML-сущностей в соответствующие специальные символы с указанием типа и исключений
-
 ```java
 String text = """
 AC&sol;DC
