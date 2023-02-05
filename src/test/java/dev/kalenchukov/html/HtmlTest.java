@@ -28,11 +28,11 @@ import dev.kalenchukov.html.resources.Entity;
 import dev.kalenchukov.html.resources.EntityType;
 import dev.kalenchukov.html.resources.Tag;
 import dev.kalenchukov.html.resources.TagType;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HtmlTest
 {
