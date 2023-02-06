@@ -34,8 +34,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Класс проверки методов класса {@link Html}.
+ */
 public class HtmlTest
 {
+	/**
+	 * Проверка метода {@link Html#getText()}.
+	 */
 	@Test
 	public void testGetText()
 	{
@@ -47,6 +53,9 @@ public class HtmlTest
 		assertEquals(text, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#setText(String)}.
+	 */
 	@Test
 	public void testSetText()
 	{
@@ -58,6 +67,9 @@ public class HtmlTest
 		assertEquals(text, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteDoctype()}.
+	 */
 	@Test
 	public void testDeleteDoctype()
 	{
@@ -73,6 +85,9 @@ public class HtmlTest
 		assertEquals("<b></b>", html.getText().trim());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteComments()}.
+	 */
 	@Test
 	public void testDeleteComments()
 	{
@@ -90,6 +105,9 @@ public class HtmlTest
 		assertEquals("<html></html>", html.getText().trim());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteCData()}.
+	 */
 	@Test
 	public void testDeleteCData()
 	{
@@ -108,6 +126,9 @@ public class HtmlTest
 		assertEquals("<html>\nТекст\n</html>", html.getText().trim());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTag(Tag)}.
+	 */
 	@Test
 	public void testDeleteTag()
 	{
@@ -133,6 +154,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTags()}.
+	 */
 	@Test
 	public void testDeleteTags()
 	{
@@ -158,6 +182,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTags(List)}.
+	 */
 	@Test
 	public void testDeleteTagsExclude()
 	{
@@ -183,6 +210,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTags(TagType)}.
+	 */
 	@Test
 	public void testDeleteSelfClosingTags()
 	{
@@ -208,6 +238,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTags(TagType, List)}.
+	 */
 	@Test
 	public void testDeleteSelfClosingTagsExclude()
 	{
@@ -233,6 +266,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTag(Tag, TagType)}.
+	 */
 	@Test
 	public void testDeleteSelfClosingTag()
 	{
@@ -258,6 +294,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTags(TagType)}.
+	 */
 	@Test
 	public void testDeleteOpenTags()
 	{
@@ -283,6 +322,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTags(TagType, List)}.
+	 */
 	@Test
 	public void testDeleteOpenTagsExclude()
 	{
@@ -308,6 +350,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTag(Tag, TagType)}.
+	 */
 	@Test
 	public void testDeleteOpenTag()
 	{
@@ -333,6 +378,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTags(TagType)}.
+	 */
 	@Test
 	public void testDeleteCloseTags()
 	{
@@ -358,6 +406,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTags(TagType, List)}.
+	 */
 	@Test
 	public void testDeleteCloseTagsExclude()
 	{
@@ -383,6 +434,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteTag(Tag, TagType)}.
+	 */
 	@Test
 	public void testDeleteCloseTag()
 	{
@@ -408,6 +462,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testDeleteEntityName()
 	{
@@ -433,6 +490,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testDeleteEntityNumeric()
 	{
@@ -458,6 +518,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testDeleteEntityUnicode()
 	{
@@ -483,6 +546,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteEntities()}.
+	 */
 	@Test
 	public void testDeleteEntities()
 	{
@@ -508,6 +574,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#deleteEntities(List)}.
+	 */
 	@Test
 	public void testDeleteEntitiesExclude()
 	{
@@ -533,6 +602,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testEncodeEntityName()
 	{
@@ -558,6 +630,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testEncodeEntityNumeric()
 	{
@@ -583,6 +658,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testEncodeEntityUnicode()
 	{
@@ -608,6 +686,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntities(EntityType)}.
+	 */
 	@Test
 	public void testEncodeEntitiesName()
 	{
@@ -633,6 +714,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntities(EntityType)}.
+	 */
 	@Test
 	public void testEncodeEntitiesNumeric()
 	{
@@ -658,6 +742,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntities(EntityType)}.
+	 */
 	@Test
 	public void testEncodeEntitiesUnicode()
 	{
@@ -683,6 +770,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntities(EntityType, List)}.
+	 */
 	@Test
 	public void testEncodeEntitiesNameExclude()
 	{
@@ -708,6 +798,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntities(EntityType, List)}.
+	 */
 	@Test
 	public void testEncodeEntitiesNumericExclude()
 	{
@@ -733,6 +826,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#encodeEntities(EntityType, List)}.
+	 */
 	@Test
 	public void testEncodeEntitiesUnicodeExclude()
 	{
@@ -758,6 +854,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntity(Entity)}.
+	 */
 	@Test
 	public void testDecodeEntity()
 	{
@@ -783,6 +882,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testDecodeEntityName()
 	{
@@ -808,6 +910,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testDecodeEntityNumeric()
 	{
@@ -833,6 +938,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntity(Entity, EntityType)}.
+	 */
 	@Test
 	public void testDecodeEntityUnicode()
 	{
@@ -858,6 +966,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntities()}.
+	 */
 	@Test
 	public void testDecodeEntities()
 	{
@@ -883,6 +994,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntities(EntityType)}.
+	 */
 	@Test
 	public void testDecodeEntitiesName()
 	{
@@ -908,6 +1022,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntities(EntityType)}.
+	 */
 	@Test
 	public void testDecodeEntitiesNumeric()
 	{
@@ -933,6 +1050,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntities(EntityType)}.
+	 */
 	@Test
 	public void testDecodeEntitiesUnicode()
 	{
@@ -958,6 +1078,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntities(List)}.
+	 */
 	@Test
 	public void testDecodeEntitiesExclude()
 	{
@@ -983,6 +1106,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntities(EntityType, List)}.
+	 */
 	@Test
 	public void testDecodeEntitiesNameExclude()
 	{
@@ -1008,6 +1134,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntities(EntityType, List)}.
+	 */
 	@Test
 	public void testDecodeEntitiesNumericExclude()
 	{
@@ -1033,6 +1162,9 @@ public class HtmlTest
 		assertEquals(expected, html.getText());
 	}
 
+	/**
+	 * Проверка метода {@link Html#decodeEntities(EntityType, List)}.
+	 */
 	@Test
 	public void testDecodeEntitiesUnicodeExclude()
 	{
@@ -1059,10 +1191,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректного HTML комментария.
+	 * Проверка метода {@link Html#isComment()}.
 	 */
 	@Test
-	public void testIsCommentCorrect()
+	public void testIsComment()
 	{
 		assertTrue(new Html("<!---->").isComment());
 		assertTrue(new Html("<!-- -->").isComment());
@@ -1091,7 +1223,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректного HTML комментария.
+	 * Проверка метода {@link Html#isComment()} с некорректным значением.
 	 */
 	@Test
 	public void testIsCommentNotCorrect()
@@ -1132,10 +1264,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректной HTML сущности в виде имени.
+	 * Проверка метода {@link Html#isEntityName()}.
 	 */
 	@Test
-	public void testIsEntityNameCorrect()
+	public void testIsEntityName()
 	{
 		assertTrue(new Html("&dd;").isEntityName());
 		assertTrue(new Html("&dollar;").isEntityName());
@@ -1146,7 +1278,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректной HTML сущности в виде имени.
+	 * Проверка метода {@link Html#isEntityName} с некорректным значением.
 	 */
 	@Test
 	public void testIsEntityNameNotCorrect()
@@ -1167,10 +1299,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректной HTML сущности в виде числа.
+	 * Проверка метода {@link Html#isEntityNumeric()}.
 	 */
 	@Test
-	public void testIsEntityNumericCorrect()
+	public void testIsEntityNumeric()
 	{
 		assertTrue(new Html("&#038;").isEntityNumeric());
 		assertTrue(new Html("&#38;").isEntityNumeric());
@@ -1184,7 +1316,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректной HTML сущности в виде числа.
+	 * Проверка метода {@link Html#isEntityNumeric} с некорректным значением.
 	 */
 	@Test
 	public void testIsEntityNumericNotCorrect()
@@ -1204,10 +1336,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректной HTML сущности в виде unicode.
+	 * Проверка метода {@link Html#isEntityUnicode()}.
 	 */
 	@Test
-	public void testIsEntityUnicodeCorrect()
+	public void testIsEntityUnicode()
 	{
 		assertTrue(new Html("&#XB0;").isEntityUnicode());
 		assertTrue(new Html("&#x394;").isEntityUnicode());
@@ -1217,7 +1349,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректной HTML сущности в виде unicode.
+	 * Проверка метода {@link Html#isEntityUnicode()} с некорректным значением.
 	 */
 	@Test
 	public void testIsEntityUnicodeNotCorrect()
@@ -1236,10 +1368,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректной типа HTML документа.
+	 * Проверка метода {@link Html#isDoctype()}.
 	 */
 	@Test
-	public void testIsDoctypeCorrect()
+	public void testIsDoctype()
 	{
 		assertTrue(new Html("<!DOCTYPE html>").isDoctype());
 		assertTrue(new Html("<!DOCTYPE  html >").isDoctype());
@@ -1265,7 +1397,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректного типа HTML документа.
+	 * Проверка метода {@link Html#isDoctype()} с некорректным значением.
 	 */
 	@Test
 	public void testIsDoctypeNotCorrect()
@@ -1305,10 +1437,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректного закрывающего HTML тега.
+	 * Проверка метода {@link Html#isCloseTag()}.
 	 */
 	@Test
-	public void testIsCloseTagCorrect()
+	public void testIsCloseTag()
 	{
 		assertTrue(new Html("</form>").isCloseTag());
 		assertTrue(new Html("</form >").isCloseTag());
@@ -1316,7 +1448,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректного закрывающего HTML тега.
+	 * Проверка метода {@link Html#isCloseTag()}.
 	 */
 	@Test
 	public void testIsCloseTagNotCorrect()
@@ -1331,10 +1463,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректного самозакрывающегося HTML тега.
+	 * Проверка метода {@link Html#isSelfClosingTag()}.
 	 */
 	@Test
-	public void testIsSelfClosingTagCorrect()
+	public void testIsSelfClosingTag()
 	{
 		assertTrue(new Html("<meta/>").isSelfClosingTag());
 		assertTrue(new Html("<meta />").isSelfClosingTag());
@@ -1381,7 +1513,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректного самозакрывающегося HTML тега.
+	 * Проверка метода {@link Html#isSelfClosingTag()} с некорректным значением.
 	 */
 	@Test
 	public void testIsSelfClosingTagNotCorrect()
@@ -1424,10 +1556,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректного открывающего HTML тега.
+	 * Проверка метода {@link Html#isOpenTag()}.
 	 */
 	@Test
-	public void testIsOpenTagCorrect()
+	public void testIsOpenTag()
 	{
 		assertTrue(new Html("<form>").isOpenTag());
 		assertTrue(new Html("<form >").isOpenTag());
@@ -1471,7 +1603,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректного открывающего HTML тега.
+	 * Проверка метода {@link Html#isOpenTag()} с некорректным значением.
 	 */
 	@Test
 	public void testIsOpenTagNotCorrect()
@@ -1514,10 +1646,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка корректной области CDATA.
+	 * Проверка метода {@link Html#isCData()}.
 	 */
 	@Test
-	public void testIsCDataCorrect()
+	public void testIsCData()
 	{
 		assertTrue(new Html("<![CDATA[]]>").isCData());
 		assertTrue(new Html("<![CDATA[ ]]>").isCData());
@@ -1546,7 +1678,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка некорректной области CDATA.
+	 * Проверка метода {@link Html#isCData()} с некорректным значением.
 	 */
 	@Test
 	public void testIsCDataNotCorrect()
@@ -1574,7 +1706,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска HTML комментариев.
+	 * Проверка метода {@link Html#findComment()}.
 	 */
 	@Test
 	public void testFindComment()
@@ -1622,7 +1754,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска областей CDATA.
+	 * Проверка метода {@link Html#findCData()}.
 	 */
 	@Test
 	public void testFindCData()
@@ -1675,7 +1807,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска HTML-сущностей в виде имени.
+	 * Проверка метода {@link Html#findEntityName()}.
 	 */
 	@Test
 	public void testFindEntityName()
@@ -1719,7 +1851,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска HTML-сущностей в виде числа.
+	 * Проверка метода {@link Html#findEntityNumeric()}.
 	 */
 	@Test
 	public void testFindEntityNumeric()
@@ -1771,7 +1903,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска HTML-сущностей в виде unicode.
+	 * Проверка метода {@link Html#findEntityUnicode()}.
 	 */
 	@Test
 	public void testFindEntityUnicode()
@@ -1818,7 +1950,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска типов HTML документа.
+	 * Проверка метода {@link Html#findDoctype()}.
 	 */
 	@Test
 	public void testFindDoctype()
@@ -1859,7 +1991,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска закрывающих HTML тегов.
+	 * Проверка метода {@link Html#findCloseTag()}.
 	 */
 	@Test
 	public void testFindCloseTag()
@@ -1900,7 +2032,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска открывающих HTML тегов.
+	 * Проверка метода {@link Html#findOpenTag()}.
 	 */
 	@Test
 	public void testFindOpenTag()
@@ -1944,7 +2076,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка поиска самозакрывающихся HTML тегов.
+	 * Проверка метода {@link Html#findSelfClosingTag()}.
 	 */
 	@Test
 	public void testFindSelfClosingTag()

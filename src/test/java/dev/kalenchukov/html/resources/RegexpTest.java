@@ -31,13 +31,16 @@ import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Класс проверки констант и методов перечисления {@link Regexp}.
+ */
 public class RegexpTest
 {
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#COMMENT}.
 	 */
 	@Test
-	public void testRegexpComment()
+	public void testRegexpGroupComment()
 	{
 		String string = "<!-- Комментарий -->";
 
@@ -54,10 +57,10 @@ public class RegexpTest
 	}
 
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#ENTITY_NAME}.
 	 */
 	@Test
-	public void testRegexpEntityName()
+	public void testRegexpGroupEntityName()
 	{
 		String string = "&DownArrowBar;";
 
@@ -74,10 +77,10 @@ public class RegexpTest
 	}
 
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#ENTITY_NUMERIC}.
 	 */
 	@Test
-	public void testRegexpEntityNumeric()
+	public void testRegexpGroupEntityNumeric()
 	{
 		String string = "&#0010590;";
 
@@ -95,10 +98,10 @@ public class RegexpTest
 	}
 
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#ENTITY_UNICODE}.
 	 */
 	@Test
-	public void testRegexpEntityUnicode()
+	public void testRegexpGroupEntityUnicode()
 	{
 		String string = "&#X000154;";
 
@@ -116,10 +119,10 @@ public class RegexpTest
 	}
 
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#DOCTYPE}.
 	 */
 	@Test
-	public void testRegexpDoctype()
+	public void testRegexpGroupDoctype()
 	{
 		String string = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">";
 
@@ -146,10 +149,10 @@ public class RegexpTest
 	}
 
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#CLOSE_TAG}.
 	 */
 	@Test
-	public void testRegexpCloseTag()
+	public void testRegexpGroupCloseTag()
 	{
 		String string = "</form >";
 
@@ -166,10 +169,10 @@ public class RegexpTest
 	}
 
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#SELF_CLOSING_TAG}.
 	 */
 	@Test
-	public void testRegexpSelfClosingTag()
+	public void testRegexpGroupSelfClosingTag()
 	{
 		String string = "<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>";
 
@@ -193,10 +196,10 @@ public class RegexpTest
 	}
 
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#OPEN_TAG}.
 	 */
 	@Test
-	public void testRegexpOpenTag()
+	public void testRegexpGroupOpenTag()
 	{
 		String string = "<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">";
 
@@ -219,10 +222,10 @@ public class RegexpTest
 	}
 
 	/**
-	 * Проверка групп.
+	 * Проверка групп константы {@link Regexp#CDATA}.
 	 */
 	@Test
-	public void testRegexpCData()
+	public void testRegexpGroupCData()
 	{
 		String string = "<![CDATA[ Текст ]]>";
 

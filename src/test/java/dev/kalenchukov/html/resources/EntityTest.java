@@ -28,14 +28,23 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Класс проверки констант и методов перечисления {@link Entity}.
+ */
 public class EntityTest
 {
+	/**
+	 * Проверка метода {@link Entity#getSymbol()}.
+	 */
 	@Test
 	public void testGetSymbol()
 	{
 		assertEquals(Character.valueOf('#'), Entity.NUM.getSymbol());
 	}
 
+	/**
+	 * Проверка метода {@link Entity#getEntity(EntityType)}.
+	 */
 	@Test
 	public void testGetEntity()
 	{
@@ -44,6 +53,9 @@ public class EntityTest
 		assertEquals("23", Entity.NUM.getEntity(EntityType.UNICODE));
 	}
 
+	/**
+	 * Проверка метода {@link Entity#getMnemonic(EntityType)}.
+	 */
 	@Test
 	public void testGetMnemonic()
 	{
@@ -52,36 +64,54 @@ public class EntityTest
 		assertEquals("&#X23;", Entity.NUM.getMnemonic(EntityType.UNICODE));
 	}
 
+	/**
+	 * Проверка метода {@link Entity#getEntityName()}.
+	 */
 	@Test
 	public void testGetEntityName()
 	{
 		assertEquals("num", Entity.NUM.getEntityName());
 	}
 
+	/**
+	 * Проверка метода {@link Entity#getEntityNumeric()}.
+	 */
 	@Test
 	public void testGetEntityNumeric()
 	{
 		assertEquals("35", Entity.NUM.getEntityNumeric());
 	}
 
+	/**
+	 * Проверка метода {@link Entity#getEntityUnicode()}.
+	 */
 	@Test
 	public void testGetEntityUnicode()
 	{
 		assertEquals("23", Entity.NUM.getEntityUnicode());
 	}
 
+	/**
+	 * Проверка метода {@link Entity#getMnemonicName()}.
+	 */
 	@Test
 	public void testGetMnemonicName()
 	{
 		assertEquals("&num;", Entity.NUM.getMnemonicName());
 	}
 
+	/**
+	 * Проверка метода {@link Entity#getMnemonicNumeric()}.
+	 */
 	@Test
 	public void testGetMnemonicNumeric()
 	{
 		assertEquals("&#35;", Entity.NUM.getMnemonicNumeric());
 	}
 
+	/**
+	 * Проверка метода {@link Entity#getMnemonicUnicode()}.
+	 */
 	@Test
 	public void testGetMnemonicUnicode()
 	{
