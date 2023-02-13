@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
 /**
  * Класс работы с HTML.
  */
-public class Html implements Hipertext
+public class Html implements Hypertext
 {
 	/**
 	 * Текст для обработки.
@@ -70,7 +70,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#setText(String)
+	 * @see Hypertext#setText(String)
 	 */
 	@Override
 	public void setText(@NotNull final String text)
@@ -79,7 +79,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#getText()
+	 * @see Hypertext#getText()
 	 */
 	@NotNull
 	@Override
@@ -89,7 +89,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteTag(Tag)
+	 * @see Hypertext#deleteTag(Tag)
 	 */
 	@Override
 	public void deleteTag(@NotNull final Tag tag)
@@ -99,7 +99,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteTag(Tag, TagType)
+	 * @see Hypertext#deleteTag(Tag, TagType)
 	 */
 	@Override
 	public void deleteTag(@NotNull final Tag tag, @NotNull final TagType tagType)
@@ -146,7 +146,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteTags()
+	 * @see Hypertext#deleteTags()
 	 */
 	@Override
 	public void deleteTags()
@@ -155,7 +155,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteTags(TagType)
+	 * @see Hypertext#deleteTags(TagType)
 	 */
 	@Override
 	public void deleteTags(@NotNull final TagType tagType)
@@ -165,7 +165,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteTags(List)
+	 * @see Hypertext#deleteTags(List)
 	 */
 	@Override
 	public void deleteTags(@NotNull final List<@NotNull Tag> excludeTags)
@@ -176,7 +176,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteTags(TagType, List)
+	 * @see Hypertext#deleteTags(TagType, List)
 	 */
 	@Override
 	public void deleteTags(@NotNull final TagType tagType, @NotNull final List<@NotNull Tag> excludeTags)
@@ -187,7 +187,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteEntities()
+	 * @see Hypertext#deleteEntities()
 	 */
 	@Override
 	public void deleteEntities()
@@ -196,7 +196,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteEntities(List)
+	 * @see Hypertext#deleteEntities(List)
 	 */
 	@Override
 	public void deleteEntities(@NotNull final List<@NotNull Entity> excludeEntities)
@@ -207,7 +207,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteEntity(Entity)
+	 * @see Hypertext#deleteEntity(Entity)
 	 */
 	@Override
 	public void deleteEntity(@NotNull final Entity entity)
@@ -217,7 +217,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteEntity(Entity, EntityType)
+	 * @see Hypertext#deleteEntity(Entity, EntityType)
 	 */
 	@Override
 	public void deleteEntity(@NotNull final Entity entity, @NotNull EntityType entityType)
@@ -262,7 +262,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteComments()
+	 * @see Hypertext#deleteComments()
 	 */
 	@Override
 	public void deleteComments()
@@ -278,7 +278,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteCData()
+	 * @see Hypertext#deleteCData()
 	 */
 	@Override
 	public void deleteCData()
@@ -294,7 +294,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#deleteDoctype()
+	 * @see Hypertext#deleteDoctype()
 	 */
 	@Override
 	public void deleteDoctype()
@@ -310,7 +310,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#encodeEntity(Entity, EntityType)
+	 * @see Hypertext#encodeEntity(Entity, EntityType)
 	 */
 	@Override
 	public void encodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
@@ -322,7 +322,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#encodeEntities(EntityType)
+	 * @see Hypertext#encodeEntities(EntityType)
 	 */
 	public void encodeEntities(@NotNull final EntityType entityType)
 	{
@@ -330,7 +330,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#encodeEntities(EntityType, List)
+	 * @see Hypertext#encodeEntities(EntityType, List)
 	 */
 	public void encodeEntities(@NotNull final EntityType entityType,
 							   @NotNull final List<@NotNull Entity> excludeEntities)
@@ -347,7 +347,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#decodeEntity(Entity)
+	 * @see Hypertext#decodeEntity(Entity)
 	 */
 	@Override
 	public void decodeEntity(@NotNull final Entity entity)
@@ -398,7 +398,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#decodeEntities()
+	 * @see Hypertext#decodeEntities()
 	 */
 	@Override
 	public void decodeEntities()
@@ -407,7 +407,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#decodeEntities(EntityType)
+	 * @see Hypertext#decodeEntities(EntityType)
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType)
@@ -417,7 +417,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#decodeEntities(List)
+	 * @see Hypertext#decodeEntities(List)
 	 */
 	@Override
 	public void decodeEntities(@NotNull final List<@NotNull Entity> excludeEntities)
@@ -428,7 +428,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#decodeEntities(EntityType, List)
+	 * @see Hypertext#decodeEntities(EntityType, List)
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType,
@@ -440,7 +440,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isComment()
+	 * @see Hypertext#isComment()
 	 */
 	public boolean isComment()
 	{
@@ -451,7 +451,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isEntityName()
+	 * @see Hypertext#isEntityName()
 	 */
 	public boolean isEntityName()
 	{
@@ -462,7 +462,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isEntityNumeric()
+	 * @see Hypertext#isEntityNumeric()
 	 */
 	public boolean isEntityNumeric()
 	{
@@ -470,7 +470,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isEntityUnicode()
+	 * @see Hypertext#isEntityUnicode()
 	 */
 	public boolean isEntityUnicode()
 	{
@@ -481,7 +481,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isDoctype()
+	 * @see Hypertext#isDoctype()
 	 */
 	public boolean isDoctype()
 	{
@@ -492,7 +492,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isCData()
+	 * @see Hypertext#isCData()
 	 */
 	public boolean isCData()
 	{
@@ -503,7 +503,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isCloseTag()
+	 * @see Hypertext#isCloseTag()
 	 */
 	public boolean isCloseTag()
 	{
@@ -514,7 +514,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isOpenTag()
+	 * @see Hypertext#isOpenTag()
 	 */
 	public boolean isOpenTag()
 	{
@@ -525,7 +525,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#isSelfClosingTag()
+	 * @see Hypertext#isSelfClosingTag()
 	 */
 	public boolean isSelfClosingTag()
 	{
@@ -536,7 +536,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findSelfClosingTag()
+	 * @see Hypertext#findSelfClosingTag()
 	 */
 	@Unmodifiable
 	@NotNull
@@ -549,7 +549,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findOpenTag()
+	 * @see Hypertext#findOpenTag()
 	 */
 	@Unmodifiable
 	@NotNull
@@ -562,7 +562,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findCloseTag()
+	 * @see Hypertext#findCloseTag()
 	 */
 	@Unmodifiable
 	@NotNull
@@ -575,7 +575,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findCData()
+	 * @see Hypertext#findCData()
 	 */
 	@Unmodifiable
 	@NotNull
@@ -588,7 +588,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findDoctype()
+	 * @see Hypertext#findDoctype()
 	 */
 	@Unmodifiable
 	@NotNull
@@ -601,7 +601,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findEntityName()
+	 * @see Hypertext#findEntityName()
 	 */
 	@Unmodifiable
 	@NotNull
@@ -614,7 +614,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findEntityNumeric()
+	 * @see Hypertext#findEntityNumeric()
 	 */
 	@Unmodifiable
 	@NotNull
@@ -624,7 +624,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findEntityUnicode()
+	 * @see Hypertext#findEntityUnicode()
 	 */
 	@Unmodifiable
 	@NotNull
@@ -637,7 +637,7 @@ public class Html implements Hipertext
 	}
 
 	/**
-	 * @see Hipertext#findComment()
+	 * @see Hypertext#findComment()
 	 */
 	@Unmodifiable
 	@NotNull

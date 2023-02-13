@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * Интерфейс для реализации класса работы с гипертекстом.
  */
-public interface Hipertext
+public interface Hypertext
 {
 	/**
 	 * Устанавливает текст для обработки.

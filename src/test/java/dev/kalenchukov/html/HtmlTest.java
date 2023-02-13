@@ -47,7 +47,7 @@ public class HtmlTest
 	{
 		String text = "text 123 текст";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.getText();
 
 		assertEquals(text, html.getText());
@@ -61,7 +61,7 @@ public class HtmlTest
 	{
 		String text = "text 123 текст";
 
-		Hipertext html = new Html("text");
+		Hypertext html = new Html("text");
 		html.setText(text);
 
 		assertEquals(text, html.getText());
@@ -79,7 +79,7 @@ public class HtmlTest
 				"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></b>
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteDoctype();
 
 		assertEquals("<b></b>", html.getText().trim());
@@ -99,7 +99,7 @@ public class HtmlTest
 			-->
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteComments();
 
 		assertEquals("<html></html>", html.getText().trim());
@@ -120,7 +120,7 @@ public class HtmlTest
 			</html>
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteCData();
 
 		assertEquals("<html>\nТекст\n</html>", html.getText().trim());
@@ -148,7 +148,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTag(Tag.A);
 
 		assertEquals(expected, html.getText());
@@ -176,7 +176,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTags();
 
 		assertEquals(expected, html.getText());
@@ -204,7 +204,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTags(List.of(Tag.B, Tag.BR));
 
 		assertEquals(expected, html.getText());
@@ -232,7 +232,7 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом</a> и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTags(TagType.SELF_CLOSING);
 
 		assertEquals(expected, html.getText());
@@ -260,7 +260,7 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом</a> и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTags(TagType.SELF_CLOSING, List.of(Tag.BR));
 
 		assertEquals(expected, html.getText());
@@ -288,7 +288,7 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом</a> и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTag(Tag.BR, TagType.SELF_CLOSING);
 
 		assertEquals(expected, html.getText());
@@ -316,7 +316,7 @@ public class HtmlTest
 			братьями Малькольмом</a> и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTags(TagType.OPEN);
 
 		assertEquals(expected, html.getText());
@@ -344,7 +344,7 @@ public class HtmlTest
 			братьями Малькольмом</a> и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTags(TagType.OPEN, List.of(Tag.B));
 
 		assertEquals(expected, html.getText());
@@ -372,7 +372,7 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом</a> и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTag(Tag.B, TagType.OPEN);
 
 		assertEquals(expected, html.getText());
@@ -400,7 +400,7 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTags(TagType.CLOSE);
 
 		assertEquals(expected, html.getText());
@@ -428,7 +428,7 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTags(TagType.CLOSE, List.of(Tag.B));
 
 		assertEquals(expected, html.getText());
@@ -456,7 +456,7 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteTag(Tag.A, TagType.CLOSE);
 
 		assertEquals(expected, html.getText());
@@ -484,7 +484,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteEntity(Entity.LT, EntityType.NAME);
 
 		assertEquals(expected, html.getText());
@@ -512,7 +512,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteEntity(Entity.LT, EntityType.NUMERIC);
 
 		assertEquals(expected, html.getText());
@@ -540,7 +540,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteEntity(Entity.LT, EntityType.UNICODE);
 
 		assertEquals(expected, html.getText());
@@ -568,7 +568,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteEntities();
 
 		assertEquals(expected, html.getText());
@@ -596,7 +596,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.deleteEntities(List.of(Entity.LT, Entity.GT));
 
 		assertEquals(expected, html.getText());
@@ -624,7 +624,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntity(Entity.LT, EntityType.NAME);
 
 		assertEquals(expected, html.getText());
@@ -652,7 +652,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntity(Entity.LT, EntityType.NUMERIC);
 
 		assertEquals(expected, html.getText());
@@ -680,7 +680,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntity(Entity.LT, EntityType.UNICODE);
 
 		assertEquals(expected, html.getText());
@@ -708,7 +708,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&period;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntities(EntityType.NAME);
 
 		assertEquals(expected, html.getText());
@@ -736,7 +736,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntities(EntityType.NUMERIC);
 
 		assertEquals(expected, html.getText());
@@ -764,7 +764,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#X2E;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntities(EntityType.UNICODE);
 
 		assertEquals(expected, html.getText());
@@ -792,7 +792,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&period;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntities(EntityType.NAME, List.of(Entity.LT, Entity.GT));
 
 		assertEquals(expected, html.getText());
@@ -820,7 +820,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntities(EntityType.NUMERIC, List.of(Entity.LT, Entity.GT));
 
 		assertEquals(expected, html.getText());
@@ -848,7 +848,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#X2E;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.encodeEntities(EntityType.UNICODE, List.of(Entity.LT, Entity.GT));
 
 		assertEquals(expected, html.getText());
@@ -876,7 +876,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntity(Entity.LT);
 
 		assertEquals(expected, html.getText());
@@ -904,7 +904,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntity(Entity.LT, EntityType.NAME);
 
 		assertEquals(expected, html.getText());
@@ -932,7 +932,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntity(Entity.MDASH, EntityType.NUMERIC);
 
 		assertEquals(expected, html.getText());
@@ -960,7 +960,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntity(Entity.MDASH, EntityType.UNICODE);
 
 		assertEquals(expected, html.getText());
@@ -988,7 +988,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntities();
 
 		assertEquals(expected, html.getText());
@@ -1016,7 +1016,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntities(EntityType.NAME);
 
 		assertEquals(expected, html.getText());
@@ -1044,7 +1044,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&period;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntities(EntityType.NUMERIC);
 
 		assertEquals(expected, html.getText());
@@ -1072,7 +1072,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntities(EntityType.UNICODE);
 
 		assertEquals(expected, html.getText());
@@ -1100,7 +1100,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntities(List.of(Entity.LT, Entity.GT));
 
 		assertEquals(expected, html.getText());
@@ -1128,7 +1128,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntities(EntityType.NAME, List.of(Entity.LT, Entity.GT));
 
 		assertEquals(expected, html.getText());
@@ -1156,7 +1156,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&period;
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntities(EntityType.NUMERIC, List.of(Entity.LT, Entity.GT));
 
 		assertEquals(expected, html.getText());
@@ -1184,7 +1184,7 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 		html.decodeEntities(EntityType.UNICODE, List.of(Entity.LT, Entity.GT));
 
 		assertEquals(expected, html.getText());
@@ -1748,7 +1748,7 @@ public class HtmlTest
 			Весь мир идёт на меня войной
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlComment, html.findComment().toArray());
 	}
@@ -1801,7 +1801,7 @@ public class HtmlTest
 			План такой - нам с тобой...
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(cData, html.findCData().toArray());
 	}
@@ -1845,7 +1845,7 @@ public class HtmlTest
 			У меня есть вопрос, на который ты не дашь мне ответ.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlEntityName, html.findEntityName().toArray());
 	}
@@ -1897,7 +1897,7 @@ public class HtmlTest
 			Дождь для нас...
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlEntityNumeric, html.findEntityNumeric().toArray());
 	}
@@ -1944,7 +1944,7 @@ public class HtmlTest
 			Завтра вставать.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlEntityUnicode, html.findEntityUnicode().toArray());
 	}
@@ -1985,7 +1985,7 @@ public class HtmlTest
 			Я ухожу.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlDoctype, html.findDoctype().toArray());
 	}
@@ -2026,7 +2026,7 @@ public class HtmlTest
 			Ну и пусть...
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlCloseTag, html.findCloseTag().toArray());
 	}
@@ -2070,7 +2070,7 @@ public class HtmlTest
 			Папа - стакан портвейна.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlOpenTag, html.findOpenTag().toArray());
 	}
@@ -2118,7 +2118,7 @@ public class HtmlTest
 			И место для шага вперед.
 			""";
 
-		Hipertext html = new Html(text);
+		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlOpenTag, html.findSelfClosingTag().toArray());
 	}
