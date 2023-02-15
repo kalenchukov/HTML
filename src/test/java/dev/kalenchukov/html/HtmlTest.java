@@ -29,6 +29,8 @@ import dev.kalenchukov.html.resources.EntityType;
 import dev.kalenchukov.html.resources.Tag;
 import dev.kalenchukov.html.resources.TagType;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -1261,6 +1263,35 @@ public class HtmlTest
 				Comment
 			-->
 			""").isComment());
+	}
+
+	/**
+	 * Проверка метода {@link Html#isEntity()}.
+	 */
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"&dd;", "&dollar;", "&DownArrowBar;", "&ecir;", "&DD;", "&frac14;",
+		"&#038;", "&#38;", "&#256;", "&#0038;", "&#8501;", "&#10590;", "&#010590;", "&#0010590;", "&#0000000000000010590;",
+		"&#XB0;", "&#x394;", "&#X2223;", "&#X154;", "&#x00000000000000BB;"
+	})
+	public void testIsEntity(String value)
+	{
+		assertTrue(new Html(value).isEntity());
+	}
+
+	/**
+	 * Проверка метода {@link Html#isEntity()}.
+	 */
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"34546&DownArrowBar;", "&", ";", "&;", "&d;", "ecir;", "&ecir", "&3124;", "&1DownArrowBar;",
+		"34546&#8501;", "&#3;", "#256;", "&256;", "&#256", "&#2D56;", "34546&#XB0;",
+		"&#x3;", "#XB0;", "&XB0;", "&#B0;", "&#B0"
+	})
+	public void testIsEntityNotCorrect(String value)
+	{
+		assertFalse(new Html(value).isEntity());
 	}
 
 	/**

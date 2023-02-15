@@ -63,6 +63,19 @@ html.isComment();
 true
 ```
 
+#### Проверка HTML сущности
+```java
+String text = "&asymp;";
+
+Html html = new Html(text);
+html.isEntity();
+```
+
+Результат выполнения:
+```
+true
+```
+
 #### Проверка HTML сущности в виде имени
 ```java
 String text = "&asymp;";

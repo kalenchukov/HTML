@@ -451,6 +451,14 @@ public class Html implements Hypertext
 	}
 
 	/**
+	 * @see Hypertext#isEntity()
+	 */
+	public boolean isEntity()
+	{
+		return this.isEntityName() || this.isEntityUnicode() || this.isEntityNumeric();
+	}
+
+	/**
 	 * @see Hypertext#isEntityName()
 	 */
 	public boolean isEntityName()

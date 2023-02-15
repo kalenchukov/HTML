@@ -206,6 +206,13 @@ public interface Hypertext
 	boolean isComment();
 
 	/**
+	 * Проверяет, является ли строка HTML сущностью.
+	 *
+	 * @return {@code true}, если строка является HTML сущностью, иначе {@code false}.
+	 */
+	boolean isEntity();
+
+	/**
 	 * Проверяет, является ли строка HTML сущностью в виде имени.
 	 *
 	 * @return {@code true}, если строка является HTML сущностью в виде имени, иначе {@code false}.
