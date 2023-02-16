@@ -321,6 +321,15 @@ public interface Hypertext
 	List<@NotNull String> findDoctype();
 
 	/**
+	 * Выполняет поиск HTML-сущностей.
+	 *
+	 * @return коллекцию с найденными HTML сущностями.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findEntity();
+
+	/**
 	 * Выполняет поиск HTML-сущностей в виде имени.
 	 *
 	 * @return коллекцию с найденными HTML сущностями в виде имени.

@@ -3,6 +3,7 @@
 ### Добавлено
 * Добавлен метод Hypertext.isEntity().
 * Добавлен метод Hypertext.isTag().
+* Добавлен метод Hypertext.findEntity().
 
 ### Изменено
 * Переименован интерфейс Hipertext -> Hypertext

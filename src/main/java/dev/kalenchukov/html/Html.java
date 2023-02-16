@@ -639,6 +639,22 @@ public class Html implements Hypertext
 	}
 
 	/**
+	 * @see Hypertext#findEntity()
+	 */
+	@Override
+	@Unmodifiable
+	@NotNull
+	public List<@NotNull String> findEntity()
+	{
+		final List<String> entities = new ArrayList<>();
+		entities.addAll(this.findEntityName());
+		entities.addAll(this.findEntityNumeric());
+		entities.addAll(this.findEntityUnicode());
+
+		return Collections.unmodifiableList(entities);
+	}
+
+	/**
 	 * @see Hypertext#findEntityName()
 	 */
 	@Override
