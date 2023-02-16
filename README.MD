@@ -366,6 +366,28 @@ html.findDoctype();
 ]
 ```
 
+#### Поиск HTML тегов
+```java
+String text = """
+    Солдат шел по улице домой
+    И <b>увидел этих ребят.</b >
+    "Кто ваша мама, ребята?" -
+    <meta charset='UTF-8'>Спросил у ребят солдат.
+    """;
+
+Html html = new Html(text);
+html.findTags();
+```
+
+Результат выполнения:
+```
+[
+    "<b>",
+    "</b >",
+    "<meta charset='UTF-8'>"
+]
+```
+
 #### Поиск открывающих HTML тегов
 ```java
 String text = """

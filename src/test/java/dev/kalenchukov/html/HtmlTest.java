@@ -32,6 +32,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -1890,6 +1891,57 @@ public class HtmlTest
 		Hypertext html = new Html(text);
 
 		assertArrayEquals(htmlDoctype, html.findDoctype().toArray());
+	}
+
+	/**
+	 * Проверка метода {@link Html#findTags()}.
+	 */
+	@Test
+	public void testFindTags()
+	{
+		String[] htmlTags = {
+			"<b>",
+			"<meta charset='UTF-8'>",
+			"<input type='checkbox'  >",
+			"<input value =  yes>",
+
+			"</b>",
+			"</b >",
+			"</table>",
+			"</strong>",
+
+			"<br/>",
+			"<meta charset='UTF-8'/>",
+			"<input type='checkbox'  />",
+			"<input value =  yes/>"
+		};
+
+		String text = """
+			О-o, это <b>странное место Камчатка,
+			О-o, это сладкое слово "Камчатка".<meta charset='UTF-8'>
+			Но на этой земле я не вижу тебя,
+			Я не вижу твоих кораблей,
+			Я не вижу реки, я не вижу моста,
+			Ну и пусть...
+			<input type='checkbox'  >
+			О-o, это странное место Камчатка,<input value =  yes>
+			О-o, это сладкое слово "Камчатка".</b>
+			Я нашел здесь руду, </b >я нашел здесь любовь,
+			Я пытаюсь забыть, забываю и вновь
+			Вспоминаю собаку</table>, она, как звезда,
+			Ну и пусть...</strong>
+			
+			О-o, это странное место Камчатка,<br/>
+			О-o, это сладкое слово "Камчатка".
+			Я не вижу здесь их, <meta charset='UTF-8'/>я не вижу здесь нас,
+			Я искал здесь вино, а нашел третий глаз,
+			Мои руки из дуба, голова из свинца,<input type='checkbox'  />
+			Ну и пусть...<input value =  yes/>
+			""";
+
+		Hypertext html = new Html(text);
+
+		assertArrayEquals(htmlTags, html.findTags().toArray());
 	}
 
 	/**

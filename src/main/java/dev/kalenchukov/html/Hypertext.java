@@ -276,6 +276,15 @@ public interface Hypertext
 	boolean isSelfClosingTag();
 
 	/**
+	 * Выполняет поиск HTML тегов.
+	 *
+	 * @return коллекцию с найденными HTML тегами.
+	 */
+	@Unmodifiable
+	@NotNull
+	List<@NotNull String> findTags();
+
+	/**
 	 * Выполняет поиск самозакрывающихся HTML тегов.
 	 *
 	 * @return коллекцию с найденными самозакрывающихся HTML тегами.

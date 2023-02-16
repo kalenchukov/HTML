@@ -569,6 +569,22 @@ public class Html implements Hypertext
 	}
 
 	/**
+	 * @see Hypertext#findTags()
+	 */
+	@Override
+	@Unmodifiable
+	@NotNull
+	public List<@NotNull String> findTags()
+	{
+		final List<String> tags = new ArrayList<>();
+		tags.addAll(this.findOpenTag());
+		tags.addAll(this.findSelfClosingTag());
+		tags.addAll(this.findCloseTag());
+
+		return Collections.unmodifiableList(tags);
+	}
+
+	/**
 	 * @see Hypertext#findSelfClosingTag()
 	 */
 	@Override
