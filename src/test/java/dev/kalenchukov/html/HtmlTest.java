@@ -1656,10 +1656,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#findEntity()}.
+	 * Проверка метода {@link Html#findEntities()}.
 	 */
 	@Test
-	public void testFindEntity()
+	public void testFindEntities()
 	{
 		String[] htmlEntity = {
 			"&frac14;",
@@ -1706,14 +1706,14 @@ public class HtmlTest
 
 		Hypertext html = new Html(text);
 
-		assertArrayEquals(htmlEntity, html.findEntity().toArray());
+		assertArrayEquals(htmlEntity, html.findEntities().toArray());
 	}
 
 	/**
-	 * Проверка метода {@link Html#findEntityName()}.
+	 * Проверка метода {@link Html#findEntitiesName()}.
 	 */
 	@Test
-	public void testFindEntityName()
+	public void testFindEntitiesName()
 	{
 		String[] htmlEntityName = {
 			"&frac14;",
@@ -1750,14 +1750,14 @@ public class HtmlTest
 
 		Hypertext html = new Html(text);
 
-		assertArrayEquals(htmlEntityName, html.findEntityName().toArray());
+		assertArrayEquals(htmlEntityName, html.findEntitiesName().toArray());
 	}
 
 	/**
-	 * Проверка метода {@link Html#findEntityNumeric()}.
+	 * Проверка метода {@link Html#findEntitiesNumeric()}.
 	 */
 	@Test
-	public void testFindEntityNumeric()
+	public void testFindEntitiesNumeric()
 	{
 		String[] htmlEntityNumeric = {
 			"&#44;",
@@ -1802,14 +1802,14 @@ public class HtmlTest
 
 		Hypertext html = new Html(text);
 
-		assertArrayEquals(htmlEntityNumeric, html.findEntityNumeric().toArray());
+		assertArrayEquals(htmlEntityNumeric, html.findEntitiesNumeric().toArray());
 	}
 
 	/**
-	 * Проверка метода {@link Html#findEntityUnicode()}.
+	 * Проверка метода {@link Html#findEntitiesUnicode()}.
 	 */
 	@Test
-	public void testFindEntityUnicode()
+	public void testFindEntitiesUnicode()
 	{
 		String[] htmlEntityUnicode = {
 			"&#X22C8;",
@@ -1849,7 +1849,7 @@ public class HtmlTest
 
 		Hypertext html = new Html(text);
 
-		assertArrayEquals(htmlEntityUnicode, html.findEntityUnicode().toArray());
+		assertArrayEquals(htmlEntityUnicode, html.findEntitiesUnicode().toArray());
 	}
 
 	/**

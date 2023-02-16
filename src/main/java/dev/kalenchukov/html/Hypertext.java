@@ -336,7 +336,7 @@ public interface Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findEntity();
+	List<@NotNull String> findEntities();
 
 	/**
 	 * Выполняет поиск HTML-сущностей в виде имени.
@@ -345,7 +345,7 @@ public interface Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findEntityName();
+	List<@NotNull String> findEntitiesName();
 
 	/**
 	 * Выполняет поиск HTML-сущностей в виде числа.
@@ -354,7 +354,7 @@ public interface Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findEntityNumeric();
+	List<@NotNull String> findEntitiesNumeric();
 
 	/**
 	 * Выполняет поиск HTML-сущностей в виде unicode.
@@ -363,7 +363,7 @@ public interface Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findEntityUnicode();
+	List<@NotNull String> findEntitiesUnicode();
 
 	/**
 	 * Выполняет поиск HTML комментариев.

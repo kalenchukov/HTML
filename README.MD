@@ -256,7 +256,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findEntity();
+html.findEntities();
 ```
 
 Результат выполнения:
@@ -281,7 +281,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findEntityName();
+html.findEntitiesName();
 ```
 
 Результат выполнения:
@@ -306,7 +306,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findEntityNumeric();
+html.findEntitiesNumeric();
 ```
 
 Результат выполнения:
@@ -331,7 +331,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findEntityUnicode();
+html.findEntitiesUnicode();
 ```
 
 Результат выполнения:

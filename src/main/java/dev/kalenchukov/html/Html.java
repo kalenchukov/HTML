@@ -655,28 +655,28 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findEntity()
+	 * @see Hypertext#findEntities()
 	 */
 	@Override
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findEntity()
+	public List<@NotNull String> findEntities()
 	{
 		final List<String> entities = new ArrayList<>();
-		entities.addAll(this.findEntityName());
-		entities.addAll(this.findEntityNumeric());
-		entities.addAll(this.findEntityUnicode());
+		entities.addAll(this.findEntitiesName());
+		entities.addAll(this.findEntitiesNumeric());
+		entities.addAll(this.findEntitiesUnicode());
 
 		return Collections.unmodifiableList(entities);
 	}
 
 	/**
-	 * @see Hypertext#findEntityName()
+	 * @see Hypertext#findEntitiesName()
 	 */
 	@Override
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findEntityName()
+	public List<@NotNull String> findEntitiesName()
 	{
 		return this.find(
 			Regexp.ENTITY_NAME,
@@ -685,23 +685,23 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findEntityNumeric()
+	 * @see Hypertext#findEntitiesNumeric()
 	 */
 	@Override
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findEntityNumeric()
+	public List<@NotNull String> findEntitiesNumeric()
 	{
 		return this.find(Regexp.ENTITY_NUMERIC);
 	}
 
 	/**
-	 * @see Hypertext#findEntityUnicode()
+	 * @see Hypertext#findEntitiesUnicode()
 	 */
 	@Override
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findEntityUnicode()
+	public List<@NotNull String> findEntitiesUnicode()
 	{
 		return this.find(
 			Regexp.ENTITY_UNICODE,

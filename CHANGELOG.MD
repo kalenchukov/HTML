@@ -12,6 +12,7 @@
 * Переименован метод Hypertext.findSelfClosingTag() -> Hypertext.findSelfClosingTags().
 * Переименован метод Hypertext.findCloseTag() -> Hypertext.findCloseTags().
 * Переименован метод Hypertext.findComment() -> Hypertext.findComments().
+* Переименован метод Hypertext.findEntity*() -> Hypertext.findEntities*().
 
 ## v1.2.0 - 20.01.2023
 ### Добавлено
