@@ -710,12 +710,12 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findComment()
+	 * @see Hypertext#findComments()
 	 */
 	@Override
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findComment()
+	public List<@NotNull String> findComments()
 	{
 		return this.find(
 			Regexp.COMMENT,

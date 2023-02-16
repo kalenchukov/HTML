@@ -1555,10 +1555,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#findComment()}.
+	 * Проверка метода {@link Html#findComments()}.
 	 */
 	@Test
-	public void testFindComment()
+	public void testFindComments()
 	{
 		String[] htmlComment = {
 			"<!--Всё в свое время, зима и весна-->",
@@ -1599,7 +1599,7 @@ public class HtmlTest
 
 		Hypertext html = new Html(text);
 
-		assertArrayEquals(htmlComment, html.findComment().toArray());
+		assertArrayEquals(htmlComment, html.findComments().toArray());
 	}
 
 	/**

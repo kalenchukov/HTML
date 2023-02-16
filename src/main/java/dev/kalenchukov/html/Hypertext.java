@@ -372,5 +372,5 @@ public interface Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findComment();
+	List<@NotNull String> findComments();
 }

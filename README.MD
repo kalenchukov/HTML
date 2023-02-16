@@ -208,7 +208,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findComment();
+html.findComments();
 ```
 
 Результат выполнения:
