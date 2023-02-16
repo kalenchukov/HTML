@@ -128,6 +128,19 @@ html.isDoctype();
 true
 ```
 
+#### Проверка HTML тега
+```java
+String text = "<b class='xa-xa'>";
+
+Html html = new Html(text);
+html.isTag();
+```
+
+Результат выполнения:
+```
+true
+```
+
 #### Проверка открывающего HTML тега
 ```java
 String text = "<input type='checkbox'>";
