@@ -1945,10 +1945,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#findCloseTag()}.
+	 * Проверка метода {@link Html#findCloseTags()}.
 	 */
 	@Test
-	public void testFindCloseTag()
+	public void testFindCloseTags()
 	{
 		String[] htmlCloseTag = {
 			"</form>",
@@ -1982,7 +1982,7 @@ public class HtmlTest
 
 		Hypertext html = new Html(text);
 
-		assertArrayEquals(htmlCloseTag, html.findCloseTag().toArray());
+		assertArrayEquals(htmlCloseTag, html.findCloseTags().toArray());
 	}
 
 	/**

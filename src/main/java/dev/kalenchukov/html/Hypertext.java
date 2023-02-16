@@ -309,7 +309,7 @@ public interface Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findCloseTag();
+	List<@NotNull String> findCloseTags();
 
 	/**
 	 * Выполняет поиск областей CDATA.

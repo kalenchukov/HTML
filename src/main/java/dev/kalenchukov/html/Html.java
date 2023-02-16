@@ -579,7 +579,7 @@ public class Html implements Hypertext
 		final List<String> tags = new ArrayList<>();
 		tags.addAll(this.findOpenTags());
 		tags.addAll(this.findSelfClosingTags());
-		tags.addAll(this.findCloseTag());
+		tags.addAll(this.findCloseTags());
 
 		return Collections.unmodifiableList(tags);
 	}
@@ -613,12 +613,12 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findCloseTag()
+	 * @see Hypertext#findCloseTags()
 	 */
 	@Override
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findCloseTag()
+	public List<@NotNull String> findCloseTags()
 	{
 		return this.find(
 			Regexp.CLOSE_TAG,

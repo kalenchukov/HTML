@@ -421,7 +421,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findCloseTag();
+html.findCloseTags();
 ```
 
 Результат выполнения:

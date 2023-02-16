@@ -10,6 +10,7 @@
 * Переименован интерфейс Hipertext -> Hypertext
 * Переименован метод Hypertext.findOpenTag() -> Hypertext.findOpenTags().
 * Переименован метод Hypertext.findSelfClosingTag() -> Hypertext.findSelfClosingTags().
+* Переименован метод Hypertext.findCloseTag() -> Hypertext.findCloseTags().
 
 ## v1.2.0 - 20.01.2023
 ### Добавлено
@@ -43,7 +44,7 @@
 * Переименовано TagType.START -> TagType.OPEN.
 * Переименовано TagType.END -> TagType.CLOSE.
 * Переименован метод Hypertext.isEndTag() -> Hypertext.isCloseTag().
-* Переименован метод Hypertext.findEndTag() -> Hypertext.findCloseTag().
+* Переименован метод Hypertext.findEndTag() -> Hypertext.findCloseTags().
 * Переименован метод Hypertext.isStartTag() -> Hypertext.isOpenTag().
 * Переименован метод Hypertext.findStartTag() -> Hypertext.findOpenTag().
 
