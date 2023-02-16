@@ -300,7 +300,7 @@ public interface Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findOpenTag();
+	List<@NotNull String> findOpenTags();
 
 	/**
 	 * Выполняет поиск закрывающих HTML тегов.

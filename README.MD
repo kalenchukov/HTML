@@ -398,7 +398,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findOpenTag();
+html.findOpenTags();
 ```
 
 Результат выполнения:

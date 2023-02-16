@@ -577,7 +577,7 @@ public class Html implements Hypertext
 	public List<@NotNull String> findTags()
 	{
 		final List<String> tags = new ArrayList<>();
-		tags.addAll(this.findOpenTag());
+		tags.addAll(this.findOpenTags());
 		tags.addAll(this.findSelfClosingTag());
 		tags.addAll(this.findCloseTag());
 
@@ -599,12 +599,12 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findOpenTag()
+	 * @see Hypertext#findOpenTags()
 	 */
 	@Override
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findOpenTag()
+	public List<@NotNull String> findOpenTags()
 	{
 		return this.find(
 			Regexp.OPEN_TAG,

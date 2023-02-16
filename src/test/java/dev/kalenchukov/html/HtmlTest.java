@@ -1986,10 +1986,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#findOpenTag()}.
+	 * Проверка метода {@link Html#findOpenTags()}.
 	 */
 	@Test
-	public void testFindOpenTag()
+	public void testFindOpenTags()
 	{
 		String[] htmlOpenTag = {
 			"<b>",
@@ -2026,7 +2026,7 @@ public class HtmlTest
 
 		Hypertext html = new Html(text);
 
-		assertArrayEquals(htmlOpenTag, html.findOpenTag().toArray());
+		assertArrayEquals(htmlOpenTag, html.findOpenTags().toArray());
 	}
 
 	/**

@@ -8,6 +8,7 @@
 
 ### Изменено
 * Переименован интерфейс Hipertext -> Hypertext
+* Переименован метод Hypertext.findOpenTag() -> Hypertext.findOpenTags().
 
 ## v1.2.0 - 20.01.2023
 ### Добавлено
