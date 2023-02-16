@@ -324,6 +324,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#encodeEntities(EntityType)
 	 */
+	@Override
 	public void encodeEntities(@NotNull final EntityType entityType)
 	{
 		this.encodeEntities(entityType, Collections.emptyList());
@@ -332,6 +333,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#encodeEntities(EntityType, List)
 	 */
+	@Override
 	public void encodeEntities(@NotNull final EntityType entityType,
 							   @NotNull final List<@NotNull Entity> excludeEntities)
 	{
@@ -356,6 +358,10 @@ public class Html implements Hypertext
 			  .forEach(entityType -> this.decodeEntity(entity, entityType));
 	}
 
+	/**
+	 * @see Hypertext#decodeEntity(Entity, EntityType)
+	 */
+	@Override
 	public void decodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
 	{
 		Map<EntityType, Pattern> patterns = new HashMap<>();
@@ -442,6 +448,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isComment()
 	 */
+	@Override
 	public boolean isComment()
 	{
 		return this.is(
@@ -453,6 +460,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isEntity()
 	 */
+	@Override
 	public boolean isEntity()
 	{
 		return this.isEntityName() || this.isEntityUnicode() || this.isEntityNumeric();
@@ -461,6 +469,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isEntityName()
 	 */
+	@Override
 	public boolean isEntityName()
 	{
 		return this.is(
@@ -472,6 +481,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isEntityNumeric()
 	 */
+	@Override
 	public boolean isEntityNumeric()
 	{
 		return this.is(Regexp.ENTITY_NUMERIC);
@@ -480,6 +490,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isEntityUnicode()
 	 */
+	@Override
 	public boolean isEntityUnicode()
 	{
 		return this.is(
@@ -491,6 +502,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isDoctype()
 	 */
+	@Override
 	public boolean isDoctype()
 	{
 		return this.is(
@@ -502,6 +514,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isCData()
 	 */
+	@Override
 	public boolean isCData()
 	{
 		return this.is(
@@ -513,6 +526,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isCloseTag()
 	 */
+	@Override
 	public boolean isCloseTag()
 	{
 		return this.is(
@@ -524,6 +538,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isTag()
 	 */
+	@Override
 	public boolean isTag()
 	{
 		return this.isOpenTag() || this.isCloseTag() || this.isSelfClosingTag();
@@ -532,6 +547,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isOpenTag()
 	 */
+	@Override
 	public boolean isOpenTag()
 	{
 		return this.is(
@@ -543,6 +559,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#isSelfClosingTag()
 	 */
+	@Override
 	public boolean isSelfClosingTag()
 	{
 		return this.is(
@@ -554,6 +571,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findSelfClosingTag()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findSelfClosingTag()
@@ -567,6 +585,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findOpenTag()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findOpenTag()
@@ -580,6 +599,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findCloseTag()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findCloseTag()
@@ -593,6 +613,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findCData()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findCData()
@@ -606,6 +627,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findDoctype()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findDoctype()
@@ -619,6 +641,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findEntityName()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findEntityName()
@@ -632,6 +655,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findEntityNumeric()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findEntityNumeric()
@@ -642,6 +666,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findEntityUnicode()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findEntityUnicode()
@@ -655,6 +680,7 @@ public class Html implements Hypertext
 	/**
 	 * @see Hypertext#findComment()
 	 */
+	@Override
 	@Unmodifiable
 	@NotNull
 	public List<@NotNull String> findComment()
