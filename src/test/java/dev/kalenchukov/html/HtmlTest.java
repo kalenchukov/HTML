@@ -2030,10 +2030,10 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#findSelfClosingTag()}.
+	 * Проверка метода {@link Html#findSelfClosingTags()}.
 	 */
 	@Test
-	public void testFindSelfClosingTag()
+	public void testFindSelfClosingTags()
 	{
 		String[] htmlOpenTag = {
 			"<br/>",
@@ -2074,6 +2074,6 @@ public class HtmlTest
 
 		Hypertext html = new Html(text);
 
-		assertArrayEquals(htmlOpenTag, html.findSelfClosingTag().toArray());
+		assertArrayEquals(htmlOpenTag, html.findSelfClosingTags().toArray());
 	}
 }

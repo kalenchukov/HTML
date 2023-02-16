@@ -447,7 +447,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.findSelfClosingTag();
+html.findSelfClosingTags();
 ```
 
 Результат выполнения:

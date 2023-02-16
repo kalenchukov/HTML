@@ -578,19 +578,19 @@ public class Html implements Hypertext
 	{
 		final List<String> tags = new ArrayList<>();
 		tags.addAll(this.findOpenTags());
-		tags.addAll(this.findSelfClosingTag());
+		tags.addAll(this.findSelfClosingTags());
 		tags.addAll(this.findCloseTag());
 
 		return Collections.unmodifiableList(tags);
 	}
 
 	/**
-	 * @see Hypertext#findSelfClosingTag()
+	 * @see Hypertext#findSelfClosingTags()
 	 */
 	@Override
 	@Unmodifiable
 	@NotNull
-	public List<@NotNull String> findSelfClosingTag()
+	public List<@NotNull String> findSelfClosingTags()
 	{
 		return this.find(
 			Regexp.SELF_CLOSING_TAG,

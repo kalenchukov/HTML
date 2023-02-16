@@ -291,7 +291,7 @@ public interface Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	List<@NotNull String> findSelfClosingTag();
+	List<@NotNull String> findSelfClosingTags();
 
 	/**
 	 * Выполняет поиск открывающих HTML тегов.

@@ -9,6 +9,7 @@
 ### Изменено
 * Переименован интерфейс Hipertext -> Hypertext
 * Переименован метод Hypertext.findOpenTag() -> Hypertext.findOpenTags().
+* Переименован метод Hypertext.findSelfClosingTag() -> Hypertext.findSelfClosingTags().
 
 ## v1.2.0 - 20.01.2023
 ### Добавлено
@@ -32,7 +33,7 @@
 * Добавлен метод Hypertext.findEntityName().
 * Добавлен метод Hypertext.findEntityNumeric().
 * Добавлен метод Hypertext.findEntityUnicode().
-* Добавлен метод Hypertext.findSelfClosingTag().
+* Добавлен метод Hypertext.findSelfClosingTags().
 * Добавлен метод Hypertext.findStartTag().
 
 ### Изменено
