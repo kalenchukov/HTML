@@ -1195,74 +1195,36 @@ public class HtmlTest
 	/**
 	 * Проверка метода {@link Html#isComment()}.
 	 */
-	@Test
-	public void testIsComment()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"<!---->", "<!-- -->", "<!--  -->",
+		"<!-- 12345 -->", "<!-- Комментарий -->", "<!-- Comment -->",
+		"<!-- Comment-->", "<!--Комментарий -->",
+		"<!--\n\t12345\n-->", "<!--\n12345 -->"
+	})
+	public void testIsComment(String value)
 	{
-		assertTrue(new Html("<!---->").isComment());
-		assertTrue(new Html("<!-- -->").isComment());
-		assertTrue(new Html("<!--  -->").isComment());
-
-		assertTrue(new Html("<!-- 12345 -->").isComment());
-		assertTrue(new Html("<!-- Комментарий -->").isComment());
-		assertTrue(new Html("<!-- Comment -->").isComment());
-
-		assertTrue(new Html("<!-- Comment-->").isComment());
-		assertTrue(new Html("<!--Комментарий -->").isComment());
-
-		assertTrue(new Html("""
-			<!--
-
-			-->""").isComment());
-
-		assertTrue(new Html("""
-			<!--
-				12345
-			-->""").isComment());
-
-		assertTrue(new Html("""
-			<!--
-				12345 -->""").isComment());
+		assertTrue(new Html(value).isComment());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isComment()} с некорректным значением.
 	 */
-	@Test
-	public void testIsCommentNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"34546<!-- Comment -->",
+		"<!- Комментарий -->", "<-- Комментарий -->",
+		"<!-- Комментарий ->", "<!-- Комментарий --",
+		"<!--< Comment -->", "<!---> Comment -->", "<!-- Comment<!--->",
+		"<!-- Comm<!--ent -->", "<!-- Comm-->ent -->", "<!-- Comm--!>ent -->",
+		"<!-- <!--Comment -->", "<!-- -->Comment -->", "<!-- --!>Comment -->",
+		"<!-- Comment<!-- -->", "<!-- Comment--> -->", "<!-- Comment--!> -->",
+		"<!--\n\tComment\n-->\n"
+	})
+	public void testIsCommentNotCorrect(String value)
 	{
-		assertFalse(new Html("").isComment());
-		assertFalse(new Html(" ").isComment());
-
-		assertFalse(new Html("34546<!-- Comment -->").isComment());
-
-		assertFalse(new Html("<!- Комментарий -->").isComment());
-		assertFalse(new Html("<-- Комментарий -->").isComment());
-
-		assertFalse(new Html("<!-- Комментарий ->").isComment());
-		assertFalse(new Html("<!-- Комментарий --").isComment());
-
-		assertFalse(new Html("<!--< Comment -->").isComment());
-		assertFalse(new Html("<!---> Comment -->").isComment());
-		assertFalse(new Html("<!-- Comment<!--->").isComment());
-
-		assertFalse(new Html("<!-- Comm<!--ent -->").isComment());
-		assertFalse(new Html("<!-- Comm-->ent -->").isComment());
-		assertFalse(new Html("<!-- Comm--!>ent -->").isComment());
-
-		assertFalse(new Html("<!-- <!--Comment -->").isComment());
-		assertFalse(new Html("<!-- -->Comment -->").isComment());
-		assertFalse(new Html("<!-- --!>Comment -->").isComment());
-
-		assertFalse(new Html("<!-- Comment<!-- -->").isComment());
-		assertFalse(new Html("<!-- Comment--> -->").isComment());
-		assertFalse(new Html("<!-- Comment--!> -->").isComment());
-
-		// Оканчивается на "-->\n", а должно на "-->".
-		assertFalse(new Html("""
-			<!--
-				Comment
-			-->
-			""").isComment());
+		assertFalse(new Html(value).isComment());
 	}
 
 	/**
@@ -1287,7 +1249,7 @@ public class HtmlTest
 		"", " ",
 		"34546&DownArrowBar;", "&", ";", "&;", "&d;", "ecir;", "&ecir", "&3124;", "&1DownArrowBar;",
 		"34546&#8501;", "&#3;", "#256;", "&256;", "&#256", "&#2D56;", "34546&#XB0;",
-		"&#x3;", "#XB0;", "&XB0;", "&#B0;", "&#B0"
+		"&#x3;", "#XB0;", "&#B0;", "&#B0"
 	})
 	public void testIsEntityNotCorrect(String value)
 	{
@@ -1297,443 +1259,267 @@ public class HtmlTest
 	/**
 	 * Проверка метода {@link Html#isEntityName()}.
 	 */
-	@Test
-	public void testIsEntityName()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"&dd;", "&dollar;", "&DownArrowBar;", "&ecir;", "&DD;", "&frac14;"
+	})
+	public void testIsEntityName(String value)
 	{
-		assertTrue(new Html("&dd;").isEntityName());
-		assertTrue(new Html("&dollar;").isEntityName());
-		assertTrue(new Html("&DownArrowBar;").isEntityName());
-		assertTrue(new Html("&ecir;").isEntityName());
-		assertTrue(new Html("&DD;").isEntityName());
-		assertTrue(new Html("&frac14;").isEntityName());
+		assertTrue(new Html(value).isEntityName());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isEntityName} с некорректным значением.
 	 */
-	@Test
-	public void testIsEntityNameNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"34546&DownArrowBar;",
+		"&", ";", "&;", "&d;", "ecir;", "&ecir", "&3124;", "&1DownArrowBar;"
+	})
+	public void testIsEntityNameNotCorrect(String value)
 	{
-		assertFalse(new Html("").isEntityName());
-		assertFalse(new Html(" ").isEntityName());
-
-		assertFalse(new Html("34546&DownArrowBar;").isEntityName());
-
-		assertFalse(new Html("&").isEntityName());
-		assertFalse(new Html(";").isEntityName());
-		assertFalse(new Html("&;").isEntityName());
-		assertFalse(new Html("&d;").isEntityName());
-		assertFalse(new Html("ecir;").isEntityName());
-		assertFalse(new Html("&ecir").isEntityName());
-		assertFalse(new Html("&3124;").isEntityName());
-		assertFalse(new Html("&1DownArrowBar;").isEntityName());
+		assertFalse(new Html(value).isEntityName());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isEntityNumeric()}.
 	 */
-	@Test
-	public void testIsEntityNumeric()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"&#038;", "&#38;", "&#256;", "&#0038;", "&#8501;",
+		"&#10590;", "&#010590;", "&#0010590;", "&#0000000000000010590;"
+	})
+	public void testIsEntityNumeric(String value)
 	{
-		assertTrue(new Html("&#038;").isEntityNumeric());
-		assertTrue(new Html("&#38;").isEntityNumeric());
-		assertTrue(new Html("&#256;").isEntityNumeric());
-		assertTrue(new Html("&#0038;").isEntityNumeric());
-		assertTrue(new Html("&#8501;").isEntityNumeric());
-		assertTrue(new Html("&#10590;").isEntityNumeric());
-		assertTrue(new Html("&#010590;").isEntityNumeric());
-		assertTrue(new Html("&#0010590;").isEntityNumeric());
-		assertTrue(new Html("&#0000000000000010590;").isEntityNumeric());
+		assertTrue(new Html(value).isEntityNumeric());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isEntityNumeric} с некорректным значением.
 	 */
-	@Test
-	public void testIsEntityNumericNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ", "34546&#8501;", "&#3;",
+		"#256;", "&256;", "&#256", "&#2D56;"
+	})
+	public void testIsEntityNumericNotCorrect(String value)
 	{
-		assertFalse(new Html("").isEntityNumeric());
-		assertFalse(new Html(" ").isEntityNumeric());
-
-		assertFalse(new Html("34546&#8501;").isEntityNumeric());
-
-		assertFalse(new Html("&#3;").isEntityNumeric());
-
-		assertFalse(new Html("#256;").isEntityNumeric());
-		assertFalse(new Html("&256;").isEntityNumeric());
-		assertFalse(new Html("&#256").isEntityNumeric());
-
-		assertFalse(new Html("&#2D56;").isEntityNumeric());
+		assertFalse(new Html(value).isEntityNumeric());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isEntityUnicode()}.
 	 */
-	@Test
-	public void testIsEntityUnicode()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"&#XB0;", "&#x394;", "&#X2223;", "&#X154;", "&#x00000000000000BB;"
+	})
+	public void testIsEntityUnicode(String value)
 	{
-		assertTrue(new Html("&#XB0;").isEntityUnicode());
-		assertTrue(new Html("&#x394;").isEntityUnicode());
-		assertTrue(new Html("&#X2223;").isEntityUnicode());
-		assertTrue(new Html("&#X154;").isEntityUnicode());
-		assertTrue(new Html("&#x00000000000000BB;").isEntityUnicode());
+		assertTrue(new Html(value).isEntityUnicode());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isEntityUnicode()} с некорректным значением.
 	 */
-	@Test
-	public void testIsEntityUnicodeNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"34546&#XB0;", "&#x3;",
+		"#XB0;", "&XB0;", "&#B0;", "&#B0"
+	})
+	public void testIsEntityUnicodeNotCorrect(String value)
 	{
-		assertFalse(new Html("").isEntityUnicode());
-		assertFalse(new Html(" ").isEntityUnicode());
-
-		assertFalse(new Html("34546&#XB0;").isEntityUnicode());
-
-		assertFalse(new Html("&#x3;").isEntityUnicode());
-
-		assertFalse(new Html("#XB0;").isEntityUnicode());
-		assertFalse(new Html("&XB0;").isEntityUnicode());
-		assertFalse(new Html("&#B0;").isEntityUnicode());
-		assertFalse(new Html("&#B0").isEntityUnicode());
+		assertFalse(new Html(value).isEntityUnicode());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isDoctype()}.
 	 */
-	@Test
-	public void testIsDoctype()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"<!DOCTYPE html>",
+		"<!DOCTYPE  html >",
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"+//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC   '-//W3C//DTD HTML 4.01 Transitional//EN' \"http://www.w3.org/TR/html4/loose.dtd\">",
+		"<!DOCTYPE HTML  PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\"  'http://www.w3.org/TR/html4/frameset.dtd'>",
+		"<!DOCTYPE html  PUBLIC  '-//W3C//DTD XHTML 1.0 Strict//EN'   'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd' >",
+		"<!DOCTYPE html PUBLIC\n'-//W3C//DTD XHTML 1.0 Frameset//EN'\n'http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd' \n>",
+		"<!DOCTYPE html PUBLIC\n\t\"-//W3C//DTD XHTML 1.1//EN\"\n\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">"
+	})
+	public void testIsDoctype(String value)
 	{
-		assertTrue(new Html("<!DOCTYPE html>").isDoctype());
-		assertTrue(new Html("<!DOCTYPE  html >").isDoctype());
-
-		assertTrue(new Html("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-		assertTrue(new Html("<!DOCTYPE HTML PUBLIC \"+//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-
-		assertTrue(new Html("<!DOCTYPE HTML PUBLIC   '-//W3C//DTD HTML 4.01 Transitional//EN' \"http://www.w3.org/TR/html4/loose.dtd\">").isDoctype());
-		assertTrue(new Html("<!DOCTYPE HTML  PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\"  'http://www.w3.org/TR/html4/frameset.dtd'>").isDoctype());
-		assertTrue(new Html("<!DOCTYPE html  PUBLIC  '-//W3C//DTD XHTML 1.0 Strict//EN'   'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd' >").isDoctype());
-
-		assertTrue(new Html("""
-			<!DOCTYPE html PUBLIC
-				'-//W3C//DTD XHTML 1.0 Frameset//EN'
-			'http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd'
-			>""").isDoctype()
-		);
-
-		assertTrue(new Html("""
-			<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-				"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">""").isDoctype()
-		);
+		assertTrue(new Html(value).isDoctype());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isDoctype()} с некорректным значением.
 	 */
-	@Test
-	public void testIsDoctypeNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"<DOCTYPE>",
+		"<DOCTYPE html>",
+		"text<!DOCTYPE html>",
+		"<!DOCTYPE HTML PUBLIC>",
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"\">",
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">",
+		"<!DOCTYPE HTML PUBLIC \"//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"-//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"http://www.w3.org/TR/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR'/html4/strict.dtd\">",
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" 'http://www.w3.org/TR\"/html4/strict.dtd'>"
+	})
+	public void testIsDoctypeNotCorrect(String value)
 	{
-		assertFalse(new Html("").isDoctype());
-		assertFalse(new Html(" ").isDoctype());
-
-		assertFalse(new Html("<DOCTYPE>").isDoctype());
-
-		assertFalse(new Html("<DOCTYPE html>").isDoctype());
-
-		assertFalse(new Html("text<!DOCTYPE html>").isDoctype());
-
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC>").isDoctype());
-
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"\">").isDoctype());
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">").isDoctype());
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"-//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"-//W3C//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01\" \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//\" \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"\" \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"http://www.w3.org/TR/html4/strict.dtd\">").isDoctype());
-
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR'/html4/strict.dtd\">").isDoctype());
-		assertFalse(new Html("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" 'http://www.w3.org/TR\"/html4/strict.dtd'>").isDoctype());
-
-		assertFalse(new Html("""
-			<!DOCTYPE html PUBLIC
-				'-//W3C//DTD XHTML 1.0 Frameset//EN'
-			'http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd'
-			>
-			""").isDoctype()
-		);
+		assertFalse(new Html(value).isDoctype());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isCloseTag()}.
 	 */
-	@Test
-	public void testIsCloseTag()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"</form>", "</form >", "</form  >"
+	})
+	public void testIsCloseTag(String value)
 	{
-		assertTrue(new Html("</form>").isCloseTag());
-		assertTrue(new Html("</form >").isCloseTag());
-		assertTrue(new Html("</form  >").isCloseTag());
+		assertTrue(new Html(value).isCloseTag());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isCloseTag()}.
 	 */
-	@Test
-	public void testIsCloseTagNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ", "</ form>", "< /form>", "text</form>"
+	})
+	public void testIsCloseTagNotCorrect(String value)
 	{
-		assertFalse(new Html("").isCloseTag());
-		assertFalse(new Html(" ").isCloseTag());
-
-		assertFalse(new Html("</ form>").isCloseTag());
-		assertFalse(new Html("< /form>").isCloseTag());
-
-		assertFalse(new Html("text</form>").isCloseTag());
+		assertFalse(new Html(value).isCloseTag());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isSelfClosingTag()}.
 	 */
-	@Test
-	public void testIsSelfClosingTag()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"<meta/>", "<meta />",
+		"<meta charset='UTF-8' />", "<meta charset=\"UTF-8\"/>",
+		"<meta />", "<meta  />",
+		"<meta value/>", "<meta value=yes/>", "<meta value = yes />", "<meta value  =  yes  />",
+		"<input id=''/>", "<input id=\"\"/>",
+		"<meta charset='UTF-8'/>", "<meta charset=\"UTF-8\"/>",
+		"<meta name='123'/>", "<meta name=' текст'/>", "<meta name=' текст 123'/>",
+		"<meta name=\"input name\"/>", "<meta name=\"0123456789\"/>",
+		"<input id='input-id'/>", "<input id=\"input-id-123\"/>",
+		"<input name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
+		"<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
+		"<input id  ='ID' qwe-attr =  \"my_attribute\"  />", "<input qwe_attr =  \"my_attribute\"  />",
+		"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=''/>"
+	})
+	public void testIsSelfClosingTag(String value)
 	{
-		assertTrue(new Html("<meta/>").isSelfClosingTag());
-		assertTrue(new Html("<meta />").isSelfClosingTag());
-
-		assertTrue(new Html("<meta charset='UTF-8' />").isSelfClosingTag());
-		assertTrue(new Html("<meta charset=\"UTF-8\"/>").isSelfClosingTag());
-
-		assertTrue(new Html("<meta />").isSelfClosingTag());
-		assertTrue(new Html("<meta  />").isSelfClosingTag());
-
-		assertTrue(new Html("<meta value/>").isSelfClosingTag());
-		assertTrue(new Html("<meta value=yes/>").isSelfClosingTag());
-		assertTrue(new Html("<meta value = yes />").isSelfClosingTag());
-		assertTrue(new Html("<meta value  =  yes  />").isSelfClosingTag());
-
-		assertTrue(new Html("<input id=''/>").isSelfClosingTag());
-		assertTrue(new Html("<input id=\"\"/>").isSelfClosingTag());
-
-		assertTrue(new Html("<meta charset='UTF-8'/>").isSelfClosingTag());
-		assertTrue(new Html("<meta charset=\"UTF-8\"/>").isSelfClosingTag());
-
-		assertTrue(new Html("<meta name='123'/>").isSelfClosingTag());
-		assertTrue(new Html("<meta name=' текст'/>").isSelfClosingTag());
-		assertTrue(new Html("<meta name=' текст 123'/>").isSelfClosingTag());
-
-		assertTrue(new Html("<meta name=\"input name\"/>").isSelfClosingTag());
-		assertTrue(new Html("<meta name=\"0123456789\"/>").isSelfClosingTag());
-
-		assertTrue(new Html("<input id='input-id'/>").isSelfClosingTag());
-		assertTrue(new Html("<input id=\"input-id-123\"/>").isSelfClosingTag());
-
-		assertTrue(new Html("<input name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\"/>").isSelfClosingTag());
-		assertTrue(new Html("<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>").isSelfClosingTag());
-
-		assertTrue(new Html("<input id  ='ID' qwe-attr =  \"my_attribute\"  />").isSelfClosingTag());
-		assertTrue(new Html("<input qwe_attr =  \"my_attribute\"  />").isSelfClosingTag());
-
-		assertTrue(new Html("""
-			<link
-				rel="icon"
-			type='image/png'
-				sizes=""
-				href=''/>""").isSelfClosingTag());
+		assertTrue(new Html(value).isSelfClosingTag());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isSelfClosingTag()} с некорректным значением.
 	 */
-	@Test
-	public void testIsSelfClosingTagNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"text<input/>", "<link href=/>", "<input name='text\"/>",
+		"<input name=text'/>", "<input name='text/>", "<input name='te'xt'/>",
+		"<input name=text\"/>", "<input name=\"text/>", "<input name=\"te\"xt\"/>",
+		"< input/>", "<input/", "input/>",
+		"<input id=='input-id'/>", "<input id = = 'input-id'/>",
+		"<input id=''input-id'/>", "<input id='input-id''/>",
+		"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=/>"
+	})
+	public void testIsSelfClosingTagNotCorrect(String value)
 	{
-		assertFalse(new Html("").isSelfClosingTag());
-		assertFalse(new Html(" ").isSelfClosingTag());
-
-		assertFalse(new Html("text<input/>").isSelfClosingTag());
-
-		assertFalse(new Html("<link href=/>").isSelfClosingTag());
-
-		assertFalse(new Html("<input name='text\"/>").isSelfClosingTag());
-
-		assertFalse(new Html("<input name=text'/>").isSelfClosingTag());
-		assertFalse(new Html("<input name='text/>").isSelfClosingTag());
-		assertFalse(new Html("<input name='te'xt'/>").isSelfClosingTag());
-
-		assertFalse(new Html("<input name=text\"/>").isSelfClosingTag());
-		assertFalse(new Html("<input name=\"text/>").isSelfClosingTag());
-		assertFalse(new Html("<input name=\"te\"xt\"/>").isSelfClosingTag());
-
-		assertFalse(new Html("< input/>").isSelfClosingTag());
-
-		assertFalse(new Html("<input/").isSelfClosingTag());
-		assertFalse(new Html("input/>").isSelfClosingTag());
-
-		assertFalse(new Html("<input id=='input-id'/>").isSelfClosingTag());
-		assertFalse(new Html("<input id = = 'input-id'/>").isSelfClosingTag());
-
-		assertFalse(new Html("<input id=''input-id'/>").isSelfClosingTag());
-		assertFalse(new Html("<input id='input-id''/>").isSelfClosingTag());
-
-		assertFalse(new Html("""
-			<link
-				rel="icon"
-			type='image/png'
-				sizes=""
-				href=/>
-			""").isSelfClosingTag());
+		assertFalse(new Html(value).isSelfClosingTag());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isOpenTag()}.
 	 */
-	@Test
-	public void testIsOpenTag()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"<form>", "<form >", "<form  >",
+		"<input value>", "<input value=yes>", "<input value = yes >", "<input value  =  yes  >",
+		"<input id=''>", "<input id=\"\">",
+		"<input type=\"checkbox\">", "<input type='checkbox'>",
+		"<input name='123'>", "<input name=' текст'>", "<input name=' текст 123'>",
+		"<input name=\"input name\">", "<input name=\"0123456789\">",
+		"<input id='input-id'>", "<input id=\"input-id-123\">",
+		"<meta charset=\"UTF-8\">",
+		"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\">",
+		"<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">",
+		"<input id  ='ID' qwe-attr =  \"my_attribute\"  >",
+		"<input qwe_attr =  \"my_attribute\"  >",
+		"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\nhref=''>"
+	})
+	public void testIsOpenTag(String value)
 	{
-		assertTrue(new Html("<form>").isOpenTag());
-		assertTrue(new Html("<form >").isOpenTag());
-		assertTrue(new Html("<form  >").isOpenTag());
-
-		assertTrue(new Html("<input value>").isOpenTag());
-		assertTrue(new Html("<input value=yes>").isOpenTag());
-		assertTrue(new Html("<input value = yes >").isOpenTag());
-		assertTrue(new Html("<input value  =  yes  >").isOpenTag());
-
-		assertTrue(new Html("<input id=''>").isOpenTag());
-		assertTrue(new Html("<input id=\"\">").isOpenTag());
-
-		assertTrue(new Html("<input type=\"checkbox\">").isOpenTag());
-		assertTrue(new Html("<input type='checkbox'>").isOpenTag());
-
-		assertTrue(new Html("<input name='123'>").isOpenTag());
-		assertTrue(new Html("<input name=' текст'>").isOpenTag());
-		assertTrue(new Html("<input name=' текст 123'>").isOpenTag());
-
-		assertTrue(new Html("<input name=\"input name\">").isOpenTag());
-		assertTrue(new Html("<input name=\"0123456789\">").isOpenTag());
-
-		assertTrue(new Html("<input id='input-id'>").isOpenTag());
-		assertTrue(new Html("<input id=\"input-id-123\">").isOpenTag());
-
-		assertTrue(new Html("<meta charset=\"UTF-8\">").isOpenTag());
-
-		assertTrue(new Html("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\">").isOpenTag());
-		assertTrue(new Html("<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">").isOpenTag());
-
-		assertTrue(new Html("<input id  ='ID' qwe-attr =  \"my_attribute\"  >").isOpenTag());
-		assertTrue(new Html("<input qwe_attr =  \"my_attribute\"  >").isOpenTag());
-
-		assertTrue(new Html("""
-			<link
-				rel="icon"
-			type='image/png'
-				sizes=""
-				href=''>""").isOpenTag());
+		assertTrue(new Html(value).isOpenTag());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isOpenTag()} с некорректным значением.
 	 */
-	@Test
-	public void testIsOpenTagNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"text<input>", "<link href=>", "<input name='text\">",
+		"<input name=text'>", "<input name='text>", "<input name='te'xt'>",
+		"<input name=text\">", "<input name=\"text>", "<input name=\"te\"xt\">",
+		"< input>", "<input", "input>",
+		"<input id=='input-id'>", "<input id = = 'input-id'>",
+		"<input id=''input-id'>", "<input id='input-id''>",
+		"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=>"
+	})
+	public void testIsOpenTagNotCorrect(String value)
 	{
-		assertFalse(new Html("").isOpenTag());
-		assertFalse(new Html(" ").isOpenTag());
-
-		assertFalse(new Html("text<input>").isOpenTag());
-
-		assertFalse(new Html("<link href=>").isOpenTag());
-
-		assertFalse(new Html("<input name='text\">").isOpenTag());
-
-		assertFalse(new Html("<input name=text'>").isOpenTag());
-		assertFalse(new Html("<input name='text>").isOpenTag());
-		assertFalse(new Html("<input name='te'xt'>").isOpenTag());
-
-		assertFalse(new Html("<input name=text\">").isOpenTag());
-		assertFalse(new Html("<input name=\"text>").isOpenTag());
-		assertFalse(new Html("<input name=\"te\"xt\">").isOpenTag());
-
-		assertFalse(new Html("< input>").isOpenTag());
-
-		assertFalse(new Html("<input").isOpenTag());
-		assertFalse(new Html("input>").isOpenTag());
-
-		assertFalse(new Html("<input id=='input-id'>").isOpenTag());
-		assertFalse(new Html("<input id = = 'input-id'>").isOpenTag());
-
-		assertFalse(new Html("<input id=''input-id'>").isOpenTag());
-		assertFalse(new Html("<input id='input-id''>").isOpenTag());
-
-		assertFalse(new Html("""
-			<link
-				rel="icon"
-			type='image/png'
-				sizes=""
-				href=>
-			""").isOpenTag());
+		assertFalse(new Html(value).isOpenTag());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isCData()}.
 	 */
-	@Test
-	public void testIsCData()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"<![CDATA[]]>", "<![CDATA[ ]]>", "<![CDATA[  ]]>",
+		"<![CDATA[ 12345 ]]>", "<![CDATA[ Текст ]]>", "<![CDATA[ Text ]]>",
+		"<![CDATA[ Text]]>", "<![CDATA[Текст ]]>",
+		"<![CDATA[\n\n]]>", "<![CDATA[\n\t12345\n]]>", "<![CDATA[\n\t12345 ]]>"
+	})
+	public void testIsCData(String value)
 	{
-		assertTrue(new Html("<![CDATA[]]>").isCData());
-		assertTrue(new Html("<![CDATA[ ]]>").isCData());
-		assertTrue(new Html("<![CDATA[  ]]>").isCData());
-
-		assertTrue(new Html("<![CDATA[ 12345 ]]>").isCData());
-		assertTrue(new Html("<![CDATA[ Текст ]]>").isCData());
-		assertTrue(new Html("<![CDATA[ Text ]]>").isCData());
-
-		assertTrue(new Html("<![CDATA[ Text]]>").isCData());
-		assertTrue(new Html("<![CDATA[Текст ]]>").isCData());
-
-		assertTrue(new Html("""
-			<![CDATA[
-
-			]]>""").isCData());
-
-		assertTrue(new Html("""
-			<![CDATA[
-				12345
-			]]>""").isCData());
-
-		assertTrue(new Html("""
-			<![CDATA[
-				12345 ]]>""").isCData());
+		assertTrue(new Html(value).isCData());
 	}
 
 	/**
 	 * Проверка метода {@link Html#isCData()} с некорректным значением.
 	 */
-	@Test
-	public void testIsCDataNotCorrect()
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"2134<![CDATA[ Text ]]>", "<[CDATA[ Текст ]]>",
+		"<![CDATA[ Текст ]>", "<![CDATA[ Текст ]]",
+		"<![CDATA[ Te]]>xt ]]>", "<![CDATA[ ]]>Text ]]>", "<![CDATA[ Text]]> ]]>",
+		"<![CDATA[\n\tText\n]]>\n"
+	})
+	public void testIsCDataNotCorrect(String value)
 	{
-		assertFalse(new Html("").isCData());
-		assertFalse(new Html(" ").isCData());
-
-		assertFalse(new Html("2134<![CDATA[ Text ]]>").isCData());
-
-		assertFalse(new Html("<[CDATA[ Текст ]]>").isCData());
-
-		assertFalse(new Html("<![CDATA[ Текст ]>").isCData());
-		assertFalse(new Html("<![CDATA[ Текст ]]").isCData());
-
-		assertFalse(new Html("<![CDATA[ Te]]>xt ]]>").isCData());
-		assertFalse(new Html("<![CDATA[ ]]>Text ]]>").isCData());
-		assertFalse(new Html("<![CDATA[ Text]]> ]]>").isCData());
-
-		// Оканчивается на "]]>\n", а должно на "]]>".
-		assertFalse(new Html("""
-			<![CDATA[
-				Text
-			]]>
-			""").isCData());
+		assertFalse(new Html(value).isCData());
 	}
 
 	/**
