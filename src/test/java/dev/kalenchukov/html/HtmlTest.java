@@ -1382,6 +1382,37 @@ public class HtmlTest
 	}
 
 	/**
+	 * Проверка метода {@link Html#isTag()}.
+	 */
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"<form>", "<b >", "<br  >", "<input value>", "<input value=yes>",
+		"</form>", "</form >", "</form  >",
+		"<meta/>", "<meta />",
+		"<meta charset='UTF-8' />", "<meta charset=\"UTF-8\"/>"
+
+	})
+	public void testIsTag(String value)
+	{
+		assertTrue(new Html(value).isTag());
+	}
+
+	/**
+	 * Проверка метода {@link Html#isTag()} с некорректным значением.
+	 */
+	@ParameterizedTest
+	@ValueSource(strings = {
+		"", " ",
+		"text<input>", "<link href=>", "<input name='text\">",
+		"</ form>", "< /form>", "text</form>",
+		"text<input/>", "<input name='text\"/>"
+	})
+	public void testIsTagNotCorrect(String value)
+	{
+		assertFalse(new Html(value).isTag());
+	}
+
+	/**
 	 * Проверка метода {@link Html#isCloseTag()}.
 	 */
 	@ParameterizedTest

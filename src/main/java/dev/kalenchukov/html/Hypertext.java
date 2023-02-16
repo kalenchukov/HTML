@@ -248,6 +248,13 @@ public interface Hypertext
 	boolean isCData();
 
 	/**
+	 * Проверяет, является ли строка HTML тегом.
+	 *
+	 * @return {@code true}, если строка является HTML тегом, иначе {@code false}.
+	 */
+	boolean isTag();
+
+	/**
 	 * Проверяет, является ли строка закрывающим HTML тегом.
 	 *
 	 * @return {@code true}, если строка является закрывающим HTML тегом, иначе {@code false}.

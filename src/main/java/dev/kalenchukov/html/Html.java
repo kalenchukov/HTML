@@ -522,6 +522,14 @@ public class Html implements Hypertext
 	}
 
 	/**
+	 * @see Hypertext#isTag()
+	 */
+	public boolean isTag()
+	{
+		return this.isOpenTag() || this.isCloseTag() || this.isSelfClosingTag();
+	}
+
+	/**
 	 * @see Hypertext#isOpenTag()
 	 */
 	public boolean isOpenTag()

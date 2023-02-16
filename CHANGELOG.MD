@@ -2,6 +2,7 @@
 ## vX.X.X - XX.XX.XXXX
 ### Добавлено
 * Добавлен метод Hypertext.isEntity().
+* Добавлен метод Hypertext.isTag().
 
 ### Изменено
 * Переименован интерфейс Hipertext -> Hypertext
