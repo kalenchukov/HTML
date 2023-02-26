@@ -70,7 +70,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#setText(String)
+	 * {@inheritDoc}
+	 *
+	 * @param text {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void setText(@NotNull final String text)
@@ -79,7 +82,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#getText()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@NotNull
 	@Override
@@ -89,7 +94,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteTag(Tag)
+	 * {@inheritDoc}
+	 *
+	 * @param tag {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTag(@NotNull final Tag tag)
@@ -99,7 +107,11 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteTag(Tag, TagType)
+	 * {@inheritDoc}
+	 *
+	 * @param tag {@inheritDoc}
+	 * @param tagType {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTag(@NotNull final Tag tag, @NotNull final TagType tagType)
@@ -146,7 +158,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteTags()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTags()
@@ -155,7 +169,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteTags(TagType)
+	 * {@inheritDoc}
+	 *
+	 * @param tagType {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTags(@NotNull final TagType tagType)
@@ -165,7 +182,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteTags(List)
+	 * {@inheritDoc}
+	 *
+	 * @param excludeTags {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTags(@NotNull final List<@NotNull Tag> excludeTags)
@@ -176,7 +196,11 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteTags(TagType, List)
+	 * {@inheritDoc}
+	 *
+	 * @param tagType {@inheritDoc}
+	 * @param excludeTags {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTags(@NotNull final TagType tagType, @NotNull final List<@NotNull Tag> excludeTags)
@@ -187,7 +211,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteEntities()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteEntities()
@@ -196,7 +222,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteEntities(List)
+	 * {@inheritDoc}
+	 *
+	 * @param excludeEntities {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteEntities(@NotNull final List<@NotNull Entity> excludeEntities)
@@ -207,7 +236,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteEntity(Entity)
+	 * {@inheritDoc}
+	 *
+	 * @param entity {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteEntity(@NotNull final Entity entity)
@@ -217,7 +249,11 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteEntity(Entity, EntityType)
+	 * {@inheritDoc}
+	 *
+	 * @param entity {@inheritDoc}
+	 * @param entityType {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteEntity(@NotNull final Entity entity, @NotNull EntityType entityType)
@@ -262,7 +298,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteComments()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteComments()
@@ -278,7 +316,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteCData()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteCData()
@@ -294,7 +334,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#deleteDoctype()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteDoctype()
@@ -310,7 +352,11 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#encodeEntity(Entity, EntityType)
+	 * {@inheritDoc}
+	 *
+	 * @param entity {@inheritDoc}
+	 * @param entityType {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void encodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
@@ -322,7 +368,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#encodeEntities(EntityType)
+	 * {@inheritDoc}
+	 *
+	 * @param entityType {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void encodeEntities(@NotNull final EntityType entityType)
@@ -331,7 +380,11 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#encodeEntities(EntityType, List)
+	 * {@inheritDoc}
+	 *
+	 * @param entityType {@inheritDoc}
+	 * @param excludeEntities {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void encodeEntities(@NotNull final EntityType entityType,
@@ -349,7 +402,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#decodeEntity(Entity)
+	 * {@inheritDoc}
+	 *
+	 * @param entity {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntity(@NotNull final Entity entity)
@@ -359,7 +415,11 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#decodeEntity(Entity, EntityType)
+	 * {@inheritDoc}
+	 *
+	 * @param entity {@inheritDoc}
+	 * @param entityType {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
@@ -404,7 +464,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#decodeEntities()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntities()
@@ -413,7 +475,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#decodeEntities(EntityType)
+	 * {@inheritDoc}
+	 *
+	 * @param entityType {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType)
@@ -423,7 +488,10 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#decodeEntities(List)
+	 * {@inheritDoc}
+	 *
+	 * @param excludeEntities {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntities(@NotNull final List<@NotNull Entity> excludeEntities)
@@ -434,7 +502,11 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#decodeEntities(EntityType, List)
+	 * {@inheritDoc}
+	 *
+	 * @param entityType {@inheritDoc}
+	 * @param excludeEntities {@inheritDoc}
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType,
@@ -446,7 +518,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isComment()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isComment()
@@ -458,7 +532,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isEntity()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isEntity()
@@ -467,7 +543,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isEntityName()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isEntityName()
@@ -479,7 +557,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isEntityNumeric()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isEntityNumeric()
@@ -488,7 +568,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isEntityUnicode()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isEntityUnicode()
@@ -500,7 +582,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isDoctype()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isDoctype()
@@ -512,7 +596,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isCData()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isCData()
@@ -524,7 +610,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isCloseTag()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isCloseTag()
@@ -536,7 +624,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isTag()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isTag()
@@ -545,7 +635,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isOpenTag()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isOpenTag()
@@ -557,7 +649,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#isSelfClosingTag()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	public boolean isSelfClosingTag()
@@ -569,7 +663,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findTags()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -585,7 +681,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findSelfClosingTags()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -599,7 +697,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findOpenTags()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -613,7 +713,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findCloseTags()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -627,7 +729,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findCData()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -641,7 +745,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findDoctype()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -655,7 +761,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findEntities()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -671,7 +779,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findEntitiesName()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -685,7 +795,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findEntitiesNumeric()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -696,7 +808,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findEntitiesUnicode()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
@@ -710,7 +824,9 @@ public class Html implements Hypertext
 	}
 
 	/**
-	 * @see Hypertext#findComments()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Override
 	@Unmodifiable
