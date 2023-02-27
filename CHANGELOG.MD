@@ -14,6 +14,9 @@
 * Переименован метод Hypertext.findComment() -> Hypertext.findComments().
 * Переименован метод Hypertext.findEntity*() -> Hypertext.findEntities*().
 
+### Исправлено
+* Исправлен баг в регулярном выражении Regexp.OPEN_TAG.
+
 ## v1.2.0 - 20.01.2023
 ### Добавлено
 * Добавлен AUTHOR.MD.

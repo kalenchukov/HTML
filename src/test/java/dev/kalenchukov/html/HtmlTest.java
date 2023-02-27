@@ -32,7 +32,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -1510,6 +1509,9 @@ public class HtmlTest
 	@ParameterizedTest
 	@ValueSource(strings = {
 		"", " ",
+		"<br/>",
+		"<input value =  yes/>",
+		"</b>",
 		"text<input>", "<link href=>", "<input name='text\">",
 		"<input name=text'>", "<input name='text>", "<input name='te'xt'>",
 		"<input name=text\">", "<input name=\"text>", "<input name=\"te\"xt\">",
@@ -1905,15 +1907,15 @@ public class HtmlTest
 			"<input type='checkbox'  >",
 			"<input value =  yes>",
 
-			"</b>",
-			"</b >",
-			"</table>",
-			"</strong>",
-
 			"<br/>",
 			"<meta charset='UTF-8'/>",
 			"<input type='checkbox'  />",
-			"<input value =  yes/>"
+			"<input value =  yes/>",
+
+			"</b>",
+			"</b >",
+			"</table>",
+			"</strong>"
 		};
 
 		String text = """
