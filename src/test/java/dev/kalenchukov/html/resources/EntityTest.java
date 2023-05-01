@@ -30,6 +30,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Класс проверки констант и методов перечисления {@link Entity}.
+ *
+ * @author Aleksey Kalenchukov
  */
 public class EntityTest
 {

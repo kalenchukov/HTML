@@ -38,6 +38,8 @@ import java.util.regex.Pattern;
 
 /**
  * Класс работы с HTML.
+ *
+ * @author Aleksey Kalenchukov
  */
 public class Html implements Hypertext
 {
