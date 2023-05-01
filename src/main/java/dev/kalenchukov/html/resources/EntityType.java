@@ -26,6 +26,8 @@ package dev.kalenchukov.html.resources;
 
 /**
  * Перечисление типов HTML-сущностей.
+ *
+ * @author Aleksey Kalenchukov
  */
 public enum EntityType
 {

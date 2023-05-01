@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Перечисление HTML-тегов.
+ *
+ * @author Aleksey Kalenchukov
  */
 public enum Tag
 {

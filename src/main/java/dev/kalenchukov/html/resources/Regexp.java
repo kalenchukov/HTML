@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Перечисление шаблонов регулярных выражений.
+ *
+ * @author Aleksey Kalenchukov
  */
 public enum Regexp
 {

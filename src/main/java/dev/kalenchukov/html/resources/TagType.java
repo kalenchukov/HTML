@@ -26,6 +26,8 @@ package dev.kalenchukov.html.resources;
 
 /**
  * Перечисление типов HTML-тегов.
+ *
+ * @author Aleksey Kalenchukov
  */
 public enum TagType
 {

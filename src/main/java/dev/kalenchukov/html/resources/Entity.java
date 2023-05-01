@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Перечисление HTML-сущностей.
+ *
+ * @author Aleksey Kalenchukov
  */
 public enum Entity
 {
