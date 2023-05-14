@@ -75,7 +75,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param text {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void setText(@NotNull final String text)
@@ -99,7 +98,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param tag {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTag(@NotNull final Tag tag)
@@ -113,7 +111,6 @@ public class Html implements Hypertext
 	 *
 	 * @param tag {@inheritDoc}
 	 * @param tagType {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTag(@NotNull final Tag tag, @NotNull final TagType tagType)
@@ -161,8 +158,6 @@ public class Html implements Hypertext
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTags()
@@ -174,7 +169,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param tagType {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTags(@NotNull final TagType tagType)
@@ -187,7 +181,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param excludeTags {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTags(@NotNull final List<@NotNull Tag> excludeTags)
@@ -202,7 +195,6 @@ public class Html implements Hypertext
 	 *
 	 * @param tagType {@inheritDoc}
 	 * @param excludeTags {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteTags(@NotNull final TagType tagType, @NotNull final List<@NotNull Tag> excludeTags)
@@ -214,8 +206,6 @@ public class Html implements Hypertext
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteEntities()
@@ -227,7 +217,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param excludeEntities {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteEntities(@NotNull final List<@NotNull Entity> excludeEntities)
@@ -241,7 +230,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param entity {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteEntity(@NotNull final Entity entity)
@@ -255,7 +243,6 @@ public class Html implements Hypertext
 	 *
 	 * @param entity {@inheritDoc}
 	 * @param entityType {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteEntity(@NotNull final Entity entity, @NotNull EntityType entityType)
@@ -301,8 +288,6 @@ public class Html implements Hypertext
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteComments()
@@ -319,8 +304,6 @@ public class Html implements Hypertext
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteCData()
@@ -337,8 +320,6 @@ public class Html implements Hypertext
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void deleteDoctype()
@@ -358,7 +339,6 @@ public class Html implements Hypertext
 	 *
 	 * @param entity {@inheritDoc}
 	 * @param entityType {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void encodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
@@ -373,7 +353,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param entityType {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void encodeEntities(@NotNull final EntityType entityType)
@@ -386,7 +365,6 @@ public class Html implements Hypertext
 	 *
 	 * @param entityType {@inheritDoc}
 	 * @param excludeEntities {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void encodeEntities(@NotNull final EntityType entityType,
@@ -405,9 +383,6 @@ public class Html implements Hypertext
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @param entity {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntity(@NotNull final Entity entity)
@@ -421,7 +396,6 @@ public class Html implements Hypertext
 	 *
 	 * @param entity {@inheritDoc}
 	 * @param entityType {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
@@ -467,8 +441,6 @@ public class Html implements Hypertext
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntities()
@@ -480,7 +452,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param entityType {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType)
@@ -493,7 +464,6 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param excludeEntities {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntities(@NotNull final List<@NotNull Entity> excludeEntities)
@@ -508,7 +478,6 @@ public class Html implements Hypertext
 	 *
 	 * @param entityType {@inheritDoc}
 	 * @param excludeEntities {@inheritDoc}
-	 * @return {@inheritDoc}
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType,
