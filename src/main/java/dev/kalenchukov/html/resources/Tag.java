@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Перечисление HTML-тегов.
  *
- * @author Aleksey Kalenchukov
+ * @author Алексей Каленчуков
  */
 public enum Tag
 {

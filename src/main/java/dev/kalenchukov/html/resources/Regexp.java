@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Перечисление шаблонов регулярных выражений.
  *
- * @author Aleksey Kalenchukov
+ * @author Алексей Каленчуков
  */
 public enum Regexp
 {

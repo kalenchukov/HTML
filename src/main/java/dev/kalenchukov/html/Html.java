@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
 /**
  * Класс работы с HTML.
  *
- * @author Aleksey Kalenchukov
+ * @author Алексей Каленчуков
  */
 public class Html implements Hypertext
 {

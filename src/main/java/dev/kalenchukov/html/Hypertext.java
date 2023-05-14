@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * Интерфейс для реализации класса работы с гипертекстом.
  *
- * @author Aleksey Kalenchukov
+ * @author Алексей Каленчуков
  */
 public interface Hypertext
 {
