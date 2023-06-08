@@ -39,7 +39,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getSymbol()}.
 	 */
 	@Test
-	public void testGetSymbol()
+	public void getSymbol()
 	{
 		assertEquals(Character.valueOf('#'), Entity.NUM.getSymbol());
 	}
@@ -48,7 +48,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getEntity(EntityType)}.
 	 */
 	@Test
-	public void testGetEntity()
+	public void getEntity()
 	{
 		assertEquals("num", Entity.NUM.getEntity(EntityType.NAME));
 		assertEquals("35", Entity.NUM.getEntity(EntityType.NUMERIC));
@@ -59,7 +59,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getMnemonic(EntityType)}.
 	 */
 	@Test
-	public void testGetMnemonic()
+	public void getMnemonic()
 	{
 		assertEquals("&num;", Entity.NUM.getMnemonic(EntityType.NAME));
 		assertEquals("&#35;", Entity.NUM.getMnemonic(EntityType.NUMERIC));
@@ -70,7 +70,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getEntityName()}.
 	 */
 	@Test
-	public void testGetEntityName()
+	public void getEntityName()
 	{
 		assertEquals("num", Entity.NUM.getEntityName());
 	}
@@ -79,7 +79,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getEntityNumeric()}.
 	 */
 	@Test
-	public void testGetEntityNumeric()
+	public void getEntityNumeric()
 	{
 		assertEquals("35", Entity.NUM.getEntityNumeric());
 	}
@@ -88,7 +88,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getEntityUnicode()}.
 	 */
 	@Test
-	public void testGetEntityUnicode()
+	public void getEntityUnicode()
 	{
 		assertEquals("23", Entity.NUM.getEntityUnicode());
 	}
@@ -97,7 +97,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getMnemonicName()}.
 	 */
 	@Test
-	public void testGetMnemonicName()
+	public void getMnemonicName()
 	{
 		assertEquals("&num;", Entity.NUM.getMnemonicName());
 	}
@@ -106,7 +106,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getMnemonicNumeric()}.
 	 */
 	@Test
-	public void testGetMnemonicNumeric()
+	public void getMnemonicNumeric()
 	{
 		assertEquals("&#35;", Entity.NUM.getMnemonicNumeric());
 	}
@@ -115,7 +115,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getMnemonicUnicode()}.
 	 */
 	@Test
-	public void testGetMnemonicUnicode()
+	public void getMnemonicUnicode()
 	{
 		assertEquals("&#X23;", Entity.NUM.getMnemonicUnicode());
 	}

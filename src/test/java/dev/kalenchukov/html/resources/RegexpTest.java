@@ -60,7 +60,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#COMMENT}.
 	 */
 	@Test
-	public void testGroupComment()
+	public void groupComment()
 	{
 		String string = "<!-- Комментарий -->";
 
@@ -80,7 +80,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#ENTITY_NAME}.
 	 */
 	@Test
-	public void testGroupEntityName()
+	public void groupEntityName()
 	{
 		String string = "&DownArrowBar;";
 
@@ -100,7 +100,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#ENTITY_NUMERIC}.
 	 */
 	@Test
-	public void testGroupEntityNumeric()
+	public void groupEntityNumeric()
 	{
 		String string = "&#0010590;";
 
@@ -121,7 +121,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#ENTITY_UNICODE}.
 	 */
 	@Test
-	public void testGroupEntityUnicode()
+	public void groupEntityUnicode()
 	{
 		String string = "&#X000154;";
 
@@ -142,7 +142,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#DOCTYPE}.
 	 */
 	@Test
-	public void testGroupDoctype()
+	public void groupDoctype()
 	{
 		String string = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">";
 
@@ -172,7 +172,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#CLOSE_TAG}.
 	 */
 	@Test
-	public void testGroupCloseTag()
+	public void groupCloseTag()
 	{
 		String string = "</form >";
 
@@ -192,7 +192,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#SELF_CLOSING_TAG}.
 	 */
 	@Test
-	public void testGroupSelfClosingTag()
+	public void groupSelfClosingTag()
 	{
 		String string = "<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>";
 
@@ -219,7 +219,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#OPEN_TAG}.
 	 */
 	@Test
-	public void testGroupOpenTag()
+	public void groupOpenTag()
 	{
 		String string = "<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">";
 
@@ -245,7 +245,7 @@ public class RegexpTest
 	 * Проверка групп константы {@link Regexp#CDATA}.
 	 */
 	@Test
-	public void testGroupCData()
+	public void groupCData()
 	{
 		String string = "<![CDATA[ Текст ]]>";
 
