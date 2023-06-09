@@ -49,12 +49,14 @@ public class HtmlTest
 	@Test
 	public void getText()
 	{
-		String text = "text 123 текст";
+		String value = "text 123 текст";
+		String expected = "text 123 текст";
 
-		Hypertext html = new Html(text);
-		html.getText();
+		Hypertext html = new Html(value);
 
-		assertEquals(text, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -63,12 +65,15 @@ public class HtmlTest
 	@Test
 	public void setText()
 	{
-		String text = "text 123 текст";
+		String value = "text 123 текст";
+		String expected = "text 123 текст";
 
-		Hypertext html = new Html("text");
-		html.setText(text);
+		Hypertext html = new Html("");
+		html.setText(value);
 
-		assertEquals(text, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -77,16 +82,20 @@ public class HtmlTest
 	@Test
 	public void deleteDoctype()
 	{
-		String text = """
+		String value = """
 			<!DOCTYPE html>
 			<b><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 				"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></b>
 			""";
 
-		Hypertext html = new Html(text);
+		String expected = "<b></b>";
+
+		Hypertext html = new Html(value);
 		html.deleteDoctype();
 
-		assertEquals("<b></b>", html.getText().trim());
+		String actual = html.getText().trim();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -95,7 +104,7 @@ public class HtmlTest
 	@Test
 	public void deleteComments()
 	{
-		String text = """
+		String value = """
 			<html><!-- Комментарий --></html>
 			<!--
 				Комментарий
@@ -103,10 +112,14 @@ public class HtmlTest
 			-->
 			""";
 
-		Hypertext html = new Html(text);
+		String expected = "<html></html>";
+
+		Hypertext html = new Html(value);
 		html.deleteComments();
 
-		assertEquals("<html></html>", html.getText().trim());
+		String actual = html.getText().trim();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -115,7 +128,7 @@ public class HtmlTest
 	@Test
 	public void deleteCData()
 	{
-		String text = """
+		String value = """
 			<html>
 			<![CDATA[x<y]]>Текст<![CDATA[
 			cdata ->
@@ -124,10 +137,14 @@ public class HtmlTest
 			</html>
 			""";
 
-		Hypertext html = new Html(text);
+		String expected = "<html>\nТекст\n</html>";
+
+		Hypertext html = new Html(value);
 		html.deleteCData();
 
-		assertEquals("<html>\nТекст\n</html>", html.getText().trim());
+		String actual = html.getText().trim();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -136,7 +153,7 @@ public class HtmlTest
 	@Test
 	public void deleteTag()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -152,10 +169,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTag(Tag.A);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -164,7 +183,7 @@ public class HtmlTest
 	@Test
 	public void deleteTags()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -180,10 +199,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTags();
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -192,7 +213,7 @@ public class HtmlTest
 	@Test
 	public void deleteTagsExclude()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -208,10 +229,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTags(List.of(Tag.B, Tag.BR));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -220,7 +243,7 @@ public class HtmlTest
 	@Test
 	public void deleteSelfClosingTags()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -236,10 +259,12 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом</a> и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTags(TagType.SELF_CLOSING);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -248,7 +273,7 @@ public class HtmlTest
 	@Test
 	public void deleteSelfClosingTagsExclude()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -264,10 +289,12 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом</a> и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTags(TagType.SELF_CLOSING, List.of(Tag.BR));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -276,7 +303,7 @@ public class HtmlTest
 	@Test
 	public void deleteSelfClosingTag()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -292,10 +319,12 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом</a> и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTag(Tag.BR, TagType.SELF_CLOSING);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -304,7 +333,7 @@ public class HtmlTest
 	@Test
 	public void deleteOpenTags()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -320,10 +349,12 @@ public class HtmlTest
 			братьями Малькольмом</a> и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTags(TagType.OPEN);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -332,7 +363,7 @@ public class HtmlTest
 	@Test
 	public void deleteOpenTagsExclude()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -348,10 +379,12 @@ public class HtmlTest
 			братьями Малькольмом</a> и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTags(TagType.OPEN, List.of(Tag.B));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -360,7 +393,7 @@ public class HtmlTest
 	@Test
 	public void deleteOpenTag()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -376,10 +409,12 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом</a> и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTag(Tag.B, TagType.OPEN);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -388,7 +423,7 @@ public class HtmlTest
 	@Test
 	public void deleteCloseTags()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -404,10 +439,12 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTags(TagType.CLOSE);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -416,7 +453,7 @@ public class HtmlTest
 	@Test
 	public void deleteCloseTagsExclude()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -432,10 +469,12 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTags(TagType.CLOSE, List.of(Tag.B));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -444,7 +483,7 @@ public class HtmlTest
 	@Test
 	public void deleteCloseTag()
 	{
-		String text = """
+		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
 			<<<i>переменный ток/постоянный ток</i>>>) — австралийская <a href = rock.html >рок-группа</a>,<br/>
 			сформированная <input disabled value-one = yes>в Сиднее в ноябре <a href="/year" target='_blank' html-tag="t-a-g"><strong>1973
@@ -460,10 +499,12 @@ public class HtmlTest
 			братьями <a href = 'https://yandex.ru/search/?text=Малькольмом&lr=0' >Малькольмом и Ангусом Янгами.<input value = yes />
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteTag(Tag.A, TagType.CLOSE);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -472,7 +513,7 @@ public class HtmlTest
 	@Test
 	public void deleteEntityName()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -488,10 +529,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteEntity(Entity.LT, EntityType.NAME);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -500,7 +543,7 @@ public class HtmlTest
 	@Test
 	public void deleteEntityNumeric()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -516,10 +559,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteEntity(Entity.LT, EntityType.NUMERIC);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -528,7 +573,7 @@ public class HtmlTest
 	@Test
 	public void deleteEntityUnicode()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#X3C;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -544,10 +589,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteEntity(Entity.LT, EntityType.UNICODE);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -556,7 +603,7 @@ public class HtmlTest
 	@Test
 	public void deleteEntities()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&lt;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -572,10 +619,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteEntities();
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -584,7 +633,7 @@ public class HtmlTest
 	@Test
 	public void deleteEntitiesExclude()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&lt;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -600,10 +649,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.deleteEntities(List.of(Entity.LT, Entity.GT));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -612,7 +663,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntityName()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -628,10 +679,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntity(Entity.LT, EntityType.NAME);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -640,7 +693,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntityNumeric()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -656,10 +709,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntity(Entity.LT, EntityType.NUMERIC);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -668,7 +723,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntityUnicode()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -684,10 +739,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntity(Entity.LT, EntityType.UNICODE);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -696,7 +753,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntitiesName()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -712,10 +769,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&period;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntities(EntityType.NAME);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -724,7 +783,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntitiesNumeric()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -740,10 +799,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntities(EntityType.NUMERIC);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -752,7 +813,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntitiesUnicode()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -768,10 +829,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#X2E;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntities(EntityType.UNICODE);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -780,7 +843,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntitiesNameExclude()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -796,10 +859,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&period;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntities(EntityType.NAME, List.of(Entity.LT, Entity.GT));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -808,7 +873,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntitiesNumericExclude()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -824,10 +889,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntities(EntityType.NUMERIC, List.of(Entity.LT, Entity.GT));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -836,7 +903,7 @@ public class HtmlTest
 	@Test
 	public void encodeEntitiesUnicodeExclude()
 	{
-		String text = """
+		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
 			<<переменный ток/постоянный ток>>) — австралийская рок-группа,
 			сформированная в Сиднее в ноябре 1973
@@ -852,10 +919,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#X2E;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.encodeEntities(EntityType.UNICODE, List.of(Entity.LT, Entity.GT));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -864,7 +933,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntity()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&lt;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -880,10 +949,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntity(Entity.LT);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -892,7 +963,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntityName()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&lt;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -908,10 +979,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntity(Entity.LT, EntityType.NAME);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -920,7 +993,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntityNumeric()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&lt;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -936,10 +1009,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntity(Entity.MDASH, EntityType.NUMERIC);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -948,7 +1023,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntityUnicode()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&lt;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#X2014; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -964,10 +1039,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&#46;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntity(Entity.MDASH, EntityType.UNICODE);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -976,7 +1053,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntities()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&lt;переменный ток&#47;постоянный ток&gt;&gt;&rpar; &#8212; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -992,10 +1069,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntities();
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -1004,7 +1083,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntitiesName()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;&#x3C;переменный ток&sol;постоянный ток&#62;&#X0003E;&gt;&rpar; &mdash; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -1020,10 +1099,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntities(EntityType.NAME);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -1032,7 +1113,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntitiesNumeric()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&#59; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;&#x3C;переменный ток&sol;постоянный ток&#62;&#X0003E;&gt;&rpar; &#x2014; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -1048,10 +1129,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&period;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntities(EntityType.NUMERIC);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -1060,7 +1143,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntitiesUnicode()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&#59; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;&#x3C;переменный ток&sol;постоянный ток&#62;&#X0003E;&gt;&rpar; &#x2014; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -1076,10 +1159,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntities(EntityType.UNICODE);
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -1088,7 +1173,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntitiesExclude()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;&#x3C;переменный ток&sol;постоянный ток&#62;&#X0003E;&gt;&rpar; &mdash; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -1104,10 +1189,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntities(List.of(Entity.LT, Entity.GT));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -1116,7 +1203,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntitiesNameExclude()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;&#x3C;переменный ток&sol;постоянный ток&#62;&#X0003E;&gt;&rpar; &mdash; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -1132,10 +1219,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntities(EntityType.NAME, List.of(Entity.LT, Entity.GT));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -1144,7 +1233,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntitiesNumericExclude()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&#59; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;&#x3C;переменный ток&sol;постоянный ток&#62;&#X0003E;&gt;&rpar; &#x2014; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -1160,10 +1249,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами&period;
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntities(EntityType.NUMERIC, List.of(Entity.LT, Entity.GT));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -1172,7 +1263,7 @@ public class HtmlTest
 	@Test
 	public void decodeEntitiesUnicodeExclude()
 	{
-		String text = """
+		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&#59; сокращённо от англ&period; alternating current&sol;direct current
 			&lt;&#60;&#x3C;переменный ток&sol;постоянный ток&#62;&#X0003E;&gt;&rpar; &#x2014; австралийская рок-группа&comma;
 			сформированная в Сиднее в ноябре 1973
@@ -1188,10 +1279,12 @@ public class HtmlTest
 			братьями Малькольмом и Ангусом Янгами.
 			""";
 
-		Hypertext html = new Html(text);
+		Hypertext html = new Html(value);
 		html.decodeEntities(EntityType.UNICODE, List.of(Entity.LT, Entity.GT));
 
-		assertEquals(expected, html.getText());
+		String actual = html.getText();
+
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -1206,7 +1299,11 @@ public class HtmlTest
 	})
 	public void isComment(String value)
 	{
-		assertTrue(new Html(value).isComment());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isComment();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1226,7 +1323,11 @@ public class HtmlTest
 	})
 	public void isCommentNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isComment());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isComment();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1240,7 +1341,11 @@ public class HtmlTest
 	})
 	public void isEntity(String value)
 	{
-		assertTrue(new Html(value).isEntity());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isEntity();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1255,7 +1360,11 @@ public class HtmlTest
 	})
 	public void isEntityNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isEntity());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isEntity();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1267,7 +1376,11 @@ public class HtmlTest
 	})
 	public void isEntityName(String value)
 	{
-		assertTrue(new Html(value).isEntityName());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isEntityName();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1281,7 +1394,11 @@ public class HtmlTest
 	})
 	public void isEntityNameNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isEntityName());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isEntityName();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1294,7 +1411,11 @@ public class HtmlTest
 	})
 	public void isEntityNumeric(String value)
 	{
-		assertTrue(new Html(value).isEntityNumeric());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isEntityNumeric();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1307,7 +1428,11 @@ public class HtmlTest
 	})
 	public void isEntityNumericNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isEntityNumeric());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isEntityNumeric();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1319,7 +1444,11 @@ public class HtmlTest
 	})
 	public void isEntityUnicode(String value)
 	{
-		assertTrue(new Html(value).isEntityUnicode());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isEntityUnicode();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1333,7 +1462,11 @@ public class HtmlTest
 	})
 	public void isEntityUnicodeNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isEntityUnicode());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isEntityUnicode();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1353,7 +1486,11 @@ public class HtmlTest
 	})
 	public void isDoctype(String value)
 	{
-		assertTrue(new Html(value).isDoctype());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isDoctype();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1380,7 +1517,11 @@ public class HtmlTest
 	})
 	public void isDoctypeNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isDoctype());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isDoctype();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1396,7 +1537,11 @@ public class HtmlTest
 	})
 	public void isTag(String value)
 	{
-		assertTrue(new Html(value).isTag());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isTag();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1411,7 +1556,11 @@ public class HtmlTest
 	})
 	public void isTagNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isTag());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isTag();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1423,7 +1572,11 @@ public class HtmlTest
 	})
 	public void isCloseTag(String value)
 	{
-		assertTrue(new Html(value).isCloseTag());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isCloseTag();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1435,7 +1588,11 @@ public class HtmlTest
 	})
 	public void isCloseTagNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isCloseTag());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isCloseTag();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1459,7 +1616,11 @@ public class HtmlTest
 	})
 	public void isSelfClosingTag(String value)
 	{
-		assertTrue(new Html(value).isSelfClosingTag());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isSelfClosingTag();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1478,7 +1639,11 @@ public class HtmlTest
 	})
 	public void isSelfClosingTagNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isSelfClosingTag());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isSelfClosingTag();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1502,7 +1667,11 @@ public class HtmlTest
 	})
 	public void isOpenTag(String value)
 	{
-		assertTrue(new Html(value).isOpenTag());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isOpenTag();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1524,7 +1693,11 @@ public class HtmlTest
 	})
 	public void isOpenTagNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isOpenTag());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isOpenTag();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1539,7 +1712,11 @@ public class HtmlTest
 	})
 	public void isCData(String value)
 	{
-		assertTrue(new Html(value).isCData());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isCData();
+
+		assertTrue(actual);
 	}
 
 	/**
@@ -1555,7 +1732,11 @@ public class HtmlTest
 	})
 	public void isCDataNotCorrect(String value)
 	{
-		assertFalse(new Html(value).isCData());
+		Hypertext html = new Html(value);
+
+		boolean actual = html.isCData();
+
+		assertFalse(actual);
 	}
 
 	/**
@@ -1564,14 +1745,7 @@ public class HtmlTest
 	@Test
 	public void findComments()
 	{
-		String[] htmlComment = {
-			"<!--Всё в свое время, зима и весна-->",
-			"<!-- яблоку место упасть\nКаждому вору возможность украсть\nКаждой собаке палку и кость-->",
-			"<!--,-->",
-			"<!---->"
-		};
-
-		String text = """
+		String value = """
 			Песня без слов, ночь без сна
 			<!--Всё в свое время, зима и весна-->
 			Каждой звезде свой неба кусок
@@ -1601,9 +1775,18 @@ public class HtmlTest
 			Весь мир идёт на меня войной
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"<!--Всё в свое время, зима и весна-->",
+				"<!-- яблоку место упасть\nКаждому вору возможность украсть\nКаждой собаке палку и кость-->",
+				"<!--,-->",
+				"<!---->"
+		};
 
-		assertArrayEquals(htmlComment, html.findComments().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findComments();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1612,14 +1795,7 @@ public class HtmlTest
 	@Test
 	public void findCData()
 	{
-		String[] cData = {
-			"<![CDATA[Здесь не понятно, где лицо, а где рыло,]]>",
-			"<![CDATA[Здесь в сено не втыкаются вилы,\nА рыба проходит сквозь сеть.\nИ не ясно, где море, где суша,\nГде золото, а где медь.]]>",
-			"<![CDATA[...]]>",
-			"<![CDATA[]]>"
-		};
-
-		String text = """
+		String value = """
 			<![CDATA[Здесь не понятно, где лицо, а где рыло,]]>
 			И не понятно, где пряник, где плеть.
 			<![CDATA[Здесь в сено не втыкаются вилы,
@@ -1654,9 +1830,18 @@ public class HtmlTest
 			План такой - нам с тобой...
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"<![CDATA[Здесь не понятно, где лицо, а где рыло,]]>",
+				"<![CDATA[Здесь в сено не втыкаются вилы,\nА рыба проходит сквозь сеть.\nИ не ясно, где море, где суша,\nГде золото, а где медь.]]>",
+				"<![CDATA[...]]>",
+				"<![CDATA[]]>"
+		};
 
-		assertArrayEquals(cData, html.findCData().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findCData();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1665,24 +1850,7 @@ public class HtmlTest
 	@Test
 	public void findEntities()
 	{
-		String[] htmlEntity = {
-			"&frac14;",
-			"&amp;",
-			"&commat;",
-			"&lt;",
-
-			"&#44;",
-			"&#169;",
-			"&#10589;",
-			"&#10590;",
-
-			"&#X22C8;",
-			"&#x224E;",
-			"&#X0000141;",
-			"&#X000000BB;"
-		};
-
-		String text = """
+		String value = """
 			Как много веселых ребят,
 			И все делают &frac14; велосипед,
 			А один из них как-нибудь утром придумает порох.
@@ -1708,9 +1876,28 @@ public class HtmlTest
 			У меня есть вопрос, на который ты не дашь мне ответ.
 			&#X000000BB;""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"&frac14;",
+				"&amp;",
+				"&commat;",
+				"&lt;",
 
-		assertArrayEquals(htmlEntity, html.findEntities().toArray());
+				"&#44;",
+				"&#169;",
+				"&#10589;",
+				"&#10590;",
+
+				"&#X22C8;",
+				"&#x224E;",
+				"&#X0000141;",
+				"&#X000000BB;"
+		};
+
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findEntities();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1719,14 +1906,7 @@ public class HtmlTest
 	@Test
 	public void findEntitiesName()
 	{
-		String[] htmlEntityName = {
-			"&frac14;",
-			"&amp;",
-			"&commat;",
-			"&lt;"
-		};
-
-		String text = """
+		String value = """
 			Как много веселых ребят,
 			И все делают &frac14; велосипед,
 			А один из них как-нибудь утром придумает порох.
@@ -1752,9 +1932,18 @@ public class HtmlTest
 			У меня есть вопрос, на который ты не дашь мне ответ.
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"&frac14;",
+				"&amp;",
+				"&commat;",
+				"&lt;"
+		};
 
-		assertArrayEquals(htmlEntityName, html.findEntitiesName().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findEntitiesName();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1763,14 +1952,7 @@ public class HtmlTest
 	@Test
 	public void findEntitiesNumeric()
 	{
-		String[] htmlEntityNumeric = {
-			"&#44;",
-			"&#169;",
-			"&#10589;",
-			"&#10590;"
-		};
-
-		String text = """
+		String value = """
 			В моем доме не видно стены,
 			В моем небе &#44;не видно луны.
 			Я слеп, но я вижу тебя,
@@ -1804,9 +1986,18 @@ public class HtmlTest
 			Дождь для нас...
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"&#44;",
+				"&#169;",
+				"&#10589;",
+				"&#10590;"
+		};
 
-		assertArrayEquals(htmlEntityNumeric, html.findEntitiesNumeric().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findEntitiesNumeric();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1815,14 +2006,7 @@ public class HtmlTest
 	@Test
 	public void findEntitiesUnicode()
 	{
-		String[] htmlEntityUnicode = {
-			"&#X22C8;",
-			"&#x224E;",
-			"&#X0000141;",
-			"&#X000000BB;"
-		};
-
-		String text = """
+		String value = """
 			Ночь, день -
 			Спать &#X22C8;лень.
 			Есть дым -&#x224E;
@@ -1851,9 +2035,18 @@ public class HtmlTest
 			Завтра вставать.
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"&#X22C8;",
+				"&#x224E;",
+				"&#X0000141;",
+				"&#X000000BB;"
+		};
 
-		assertArrayEquals(htmlEntityUnicode, html.findEntitiesUnicode().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findEntitiesUnicode();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1862,14 +2055,7 @@ public class HtmlTest
 	@Test
 	public void findDoctype()
 	{
-		String[] htmlDoctype = {
-			"<!DOCTYPE html>",
-			"<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'\n'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>",
-			"<!DOCTYPE html PUBLIC \"+//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">",
-			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" 'http://www.w3.org/TR/html4/loose.dtd'>"
-		};
-
-		String text = """
+		String value = """
 			<!DOCTYPE html>Они говорят: им нельзя рисковать,
 			Потому что у них есть дом,
 			В доме горит свет.
@@ -1892,9 +2078,18 @@ public class HtmlTest
 			Я ухожу.
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"<!DOCTYPE html>",
+				"<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'\n'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>",
+				"<!DOCTYPE html PUBLIC \"+//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">",
+				"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" 'http://www.w3.org/TR/html4/loose.dtd'>"
+		};
 
-		assertArrayEquals(htmlDoctype, html.findDoctype().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findDoctype();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1903,24 +2098,7 @@ public class HtmlTest
 	@Test
 	public void findTags()
 	{
-		String[] htmlTags = {
-			"<b>",
-			"<meta charset='UTF-8'>",
-			"<input type='checkbox'  >",
-			"<input value =  yes>",
-
-			"<br/>",
-			"<meta charset='UTF-8'/>",
-			"<input type='checkbox'  />",
-			"<input value =  yes/>",
-
-			"</b>",
-			"</b >",
-			"</table>",
-			"</strong>"
-		};
-
-		String text = """
+		String value = """
 			О-o, это <b>странное место Камчатка,
 			О-o, это сладкое слово "Камчатка".<meta charset='UTF-8'>
 			Но на этой земле я не вижу тебя,
@@ -1943,9 +2121,28 @@ public class HtmlTest
 			Ну и пусть...<input value =  yes/>
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"<b>",
+				"<meta charset='UTF-8'>",
+				"<input type='checkbox'  >",
+				"<input value =  yes>",
 
-		assertArrayEquals(htmlTags, html.findTags().toArray());
+				"<br/>",
+				"<meta charset='UTF-8'/>",
+				"<input type='checkbox'  />",
+				"<input value =  yes/>",
+
+				"</b>",
+				"</b >",
+				"</table>",
+				"</strong>"
+		};
+
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findTags();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1954,14 +2151,7 @@ public class HtmlTest
 	@Test
 	public void findCloseTags()
 	{
-		String[] htmlCloseTag = {
-			"</form>",
-			"</b >",
-			"</table>",
-			"</strong>",
-		};
-
-		String text = """
+		String value = """
 			О-o, это странное место Камчатка,
 			О-o, это сладкое</form> слово "Камчатка".
 			Но на этой земле я не вижу тебя,
@@ -1984,9 +2174,18 @@ public class HtmlTest
 			Ну и пусть...
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"</form>",
+				"</b >",
+				"</table>",
+				"</strong>",
+		};
 
-		assertArrayEquals(htmlCloseTag, html.findCloseTags().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findCloseTags();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -1995,14 +2194,7 @@ public class HtmlTest
 	@Test
 	public void findOpenTags()
 	{
-		String[] htmlOpenTag = {
-			"<b>",
-			"<meta charset='UTF-8'>",
-			"<input type='checkbox'  >",
-			"<input value =  yes>",
-		};
-
-		String text = """
+		String value = """
 			Солдат шел по улице домой
 			И <b>увидел этих ребят.
 			"Кто ваша мама, ребята?" -
@@ -2028,9 +2220,18 @@ public class HtmlTest
 			Папа - стакан портвейна.
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"<b>",
+				"<meta charset='UTF-8'>",
+				"<input type='checkbox'  >",
+				"<input value =  yes>",
+		};
 
-		assertArrayEquals(htmlOpenTag, html.findOpenTags().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findOpenTags();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 
 	/**
@@ -2039,14 +2240,7 @@ public class HtmlTest
 	@Test
 	public void findSelfClosingTags()
 	{
-		String[] htmlOpenTag = {
-			"<br/>",
-			"<meta charset='UTF-8'/>",
-			"<input type='checkbox'  />",
-			"<input value =  yes/>",
-		};
-
-		String text = """
+		String value = """
 			У меня есть дом, только нет ключей,
 			У меня есть солнце, но оно среди туч,<br/>
 			Есть голова<meta charset='UTF-8'/>, только нет плечей,
@@ -2076,8 +2270,17 @@ public class HtmlTest
 			И место для шага вперед.
 			""";
 
-		Hypertext html = new Html(text);
+		String[] expected = {
+				"<br/>",
+				"<meta charset='UTF-8'/>",
+				"<input type='checkbox'  />",
+				"<input value =  yes/>",
+		};
 
-		assertArrayEquals(htmlOpenTag, html.findSelfClosingTags().toArray());
+		Hypertext html = new Html(value);
+
+		List<String> actual = html.findSelfClosingTags();
+
+		assertArrayEquals(expected, actual.toArray());
 	}
 }
