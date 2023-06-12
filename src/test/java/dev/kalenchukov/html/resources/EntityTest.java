@@ -41,29 +41,89 @@ public class EntityTest
 	@Test
 	public void getSymbol()
 	{
-		assertEquals(Character.valueOf('#'), Entity.NUM.getSymbol());
+		Entity entity = Entity.NUM;
+
+		Character actualSymbol = entity.getSymbol();
+
+		assertEquals('#', actualSymbol);
 	}
 
 	/**
 	 * Проверка метода {@link Entity#getEntity(EntityType)}.
 	 */
 	@Test
-	public void getEntity()
+	public void getEntityTypeName()
 	{
-		assertEquals("num", Entity.NUM.getEntity(EntityType.NAME));
-		assertEquals("35", Entity.NUM.getEntity(EntityType.NUMERIC));
-		assertEquals("23", Entity.NUM.getEntity(EntityType.UNICODE));
+		Entity entity = Entity.NUM;
+
+		String actualEntity = entity.getEntity(EntityType.NAME);
+
+		assertEquals("num", actualEntity);
+	}
+
+	/**
+	 * Проверка метода {@link Entity#getEntity(EntityType)}.
+	 */
+	@Test
+	public void getEntityTypeNumeric()
+	{
+		Entity entity = Entity.NUM;
+
+		String actualEntity = entity.getEntity(EntityType.NUMERIC);
+
+		assertEquals("35", actualEntity);
+	}
+
+	/**
+	 * Проверка метода {@link Entity#getEntity(EntityType)}.
+	 */
+	@Test
+	public void getEntityTypeUnicode()
+	{
+		Entity entity = Entity.NUM;
+
+		String actualEntity = entity.getEntity(EntityType.UNICODE);
+
+		assertEquals("23", actualEntity);
 	}
 
 	/**
 	 * Проверка метода {@link Entity#getMnemonic(EntityType)}.
 	 */
 	@Test
-	public void getMnemonic()
+	public void getMnemonicTypeName()
 	{
-		assertEquals("&num;", Entity.NUM.getMnemonic(EntityType.NAME));
-		assertEquals("&#35;", Entity.NUM.getMnemonic(EntityType.NUMERIC));
-		assertEquals("&#X23;", Entity.NUM.getMnemonic(EntityType.UNICODE));
+		Entity entity = Entity.NUM;
+
+		String actualMnemonic = entity.getMnemonic(EntityType.NAME);
+
+		assertEquals("&num;", actualMnemonic);
+	}
+
+	/**
+	 * Проверка метода {@link Entity#getMnemonic(EntityType)}.
+	 */
+	@Test
+	public void getMnemonicTypeNumeric()
+	{
+		Entity entity = Entity.NUM;
+
+		String actualMnemonic = entity.getMnemonic(EntityType.NUMERIC);
+
+		assertEquals("&#35;", actualMnemonic);
+	}
+
+	/**
+	 * Проверка метода {@link Entity#getMnemonic(EntityType)}.
+	 */
+	@Test
+	public void getMnemonicTypeUnicode()
+	{
+		Entity entity = Entity.NUM;
+
+		String actualMnemonic = entity.getMnemonic(EntityType.UNICODE);
+
+		assertEquals("&#X23;", actualMnemonic);
 	}
 
 	/**
@@ -72,7 +132,11 @@ public class EntityTest
 	@Test
 	public void getEntityName()
 	{
-		assertEquals("num", Entity.NUM.getEntityName());
+		Entity entity = Entity.NUM;
+
+		String actualEntityName = entity.getEntityName();
+
+		assertEquals("num", actualEntityName);
 	}
 
 	/**
@@ -81,7 +145,11 @@ public class EntityTest
 	@Test
 	public void getEntityNumeric()
 	{
-		assertEquals("35", Entity.NUM.getEntityNumeric());
+		Entity entity = Entity.NUM;
+
+		String actualEntityNumeric = entity.getEntityNumeric();
+
+		assertEquals("35", actualEntityNumeric);
 	}
 
 	/**
@@ -90,7 +158,11 @@ public class EntityTest
 	@Test
 	public void getEntityUnicode()
 	{
-		assertEquals("23", Entity.NUM.getEntityUnicode());
+		Entity entity = Entity.NUM;
+
+		String actualUnicode = entity.getEntityUnicode();
+
+		assertEquals("23", actualUnicode);
 	}
 
 	/**
@@ -99,7 +171,11 @@ public class EntityTest
 	@Test
 	public void getMnemonicName()
 	{
-		assertEquals("&num;", Entity.NUM.getMnemonicName());
+		Entity entity = Entity.NUM;
+
+		String MnemonicName = entity.getMnemonicName();
+
+		assertEquals("&num;", MnemonicName);
 	}
 
 	/**
@@ -108,7 +184,11 @@ public class EntityTest
 	@Test
 	public void getMnemonicNumeric()
 	{
-		assertEquals("&#35;", Entity.NUM.getMnemonicNumeric());
+		Entity entity = Entity.NUM;
+
+		String actualMnemonicNumeric = entity.getMnemonicNumeric();
+
+		assertEquals("&#35;", actualMnemonicNumeric);
 	}
 
 	/**
@@ -117,6 +197,10 @@ public class EntityTest
 	@Test
 	public void getMnemonicUnicode()
 	{
-		assertEquals("&#X23;", Entity.NUM.getMnemonicUnicode());
+		Entity entity = Entity.NUM;
+
+		String actualMnemonicUnicode = entity.getMnemonicUnicode();
+
+		assertEquals("&#X23;", actualMnemonicUnicode);
 	}
 }

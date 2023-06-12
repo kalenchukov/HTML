@@ -255,7 +255,8 @@ public class Html implements Hypertext
 				Regexp.ENTITY_NAME.getPattern().replace(
 					"(?<name>[0-9A-Z]+)",
 					"(?<name>" + entity.getEntity(entityType) + ")"
-				)
+				),
+				Pattern.UNICODE_CASE
 			)
 		);
 
@@ -265,7 +266,8 @@ public class Html implements Hypertext
 				Regexp.ENTITY_NUMERIC.getPattern().replace(
 					"(?<numericLeast>[0-9]+)",
 					"(?<numericLeast>" + entity.getEntity(entityType) + ")"
-				)
+				),
+				Pattern.UNICODE_CASE
 			)
 		);
 
@@ -294,7 +296,7 @@ public class Html implements Hypertext
 	{
 		Pattern pattern = Pattern.compile(
 			Regexp.COMMENT.getPattern(),
-			Pattern.CASE_INSENSITIVE + Pattern.DOTALL
+			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE + Pattern.DOTALL
 		);
 
 		Matcher matcher = pattern.matcher(this.text);
@@ -310,7 +312,7 @@ public class Html implements Hypertext
 	{
 		Pattern pattern = Pattern.compile(
 			Regexp.CDATA.getPattern(),
-			Pattern.CASE_INSENSITIVE + Pattern.DOTALL
+			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE + Pattern.DOTALL
 		);
 
 		Matcher matcher = pattern.matcher(this.text);
@@ -326,7 +328,7 @@ public class Html implements Hypertext
 	{
 		Pattern pattern = Pattern.compile(
 			Regexp.DOCTYPE.getPattern(),
-			Pattern.CASE_INSENSITIVE + Pattern.DOTALL
+			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE + Pattern.DOTALL
 		);
 
 		Matcher matcher = pattern.matcher(this.text);

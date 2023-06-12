@@ -24,6 +24,7 @@
 
 package dev.kalenchukov.html.resources;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
@@ -44,7 +45,11 @@ public class RegexpTest
 	@Test
 	public void getGroup()
 	{
-		assertEquals("comment", Regexp.COMMENT.getGroup());
+		Regexp regexp = Regexp.COMMENT;
+
+		String actualGroup = regexp.getGroup();
+
+		assertEquals("comment", actualGroup);
 	}
 
 	/**
@@ -53,211 +58,246 @@ public class RegexpTest
 	@Test
 	public void getPattern()
 	{
-		assertTrue( Regexp.COMMENT.getPattern().length() > 0);
+		Regexp regexp = Regexp.COMMENT;
+
+		String actualPattern = regexp.getPattern();
+
+		assertFalse(actualPattern.isEmpty());
 	}
 
 	/**
-	 * Проверка групп константы {@link Regexp#COMMENT}.
+	 * Класс проверки регулярного выражения констант перечисления {@link Regexp}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@Test
-	public void groupComment()
+	@Nested
+	public class PatternTest
 	{
-		String string = "<!-- Комментарий -->";
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#COMMENT}.
+		 */
+		@Test
+		public void comment()
+		{
+			String value = "<!-- Комментарий -->";
+			Pattern pattern = Pattern.compile(
+				Regexp.COMMENT.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(value);
+			assertTrue(matcher.matches());
 
-		Pattern pattern = Pattern.compile(
-			Regexp.COMMENT.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
+			String actualGroup1 = matcher.group("comment");
+			String actualGroup2 = matcher.group("value");
 
-		assertTrue(matcher.find());
+			assertEquals("<!-- Комментарий -->", actualGroup1);
+			assertEquals(" Комментарий ", actualGroup2);
+		}
 
-		assertEquals("<!-- Комментарий -->", matcher.group(Regexp.COMMENT.getGroup()));
-		assertEquals(" Комментарий ", matcher.group("value"));
-	}
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#ENTITY_NAME}.
+		 */
+		@Test
+		public void entityName()
+		{
+			String value = "&DownArrowBar;";
+			Pattern pattern = Pattern.compile(
+				Regexp.ENTITY_NAME.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(value);
+			assertTrue(matcher.matches());
 
-	/**
-	 * Проверка групп константы {@link Regexp#ENTITY_NAME}.
-	 */
-	@Test
-	public void groupEntityName()
-	{
-		String string = "&DownArrowBar;";
+			String actualGroup1 = matcher.group("entity");
+			String actualGroup2 = matcher.group("name");
 
-		Pattern pattern = Pattern.compile(
-			Regexp.ENTITY_NAME.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
+			assertEquals("&DownArrowBar;", actualGroup1);
+			assertEquals("DownArrowBar", actualGroup2);
+		}
 
-		assertTrue(matcher.find());
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#ENTITY_NUMERIC}.
+		 */
+		@Test
+		public void entityNumeric()
+		{
+			String value = "&#0010590;";
+			Pattern pattern = Pattern.compile(
+				Regexp.ENTITY_NUMERIC.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(value);
+			assertTrue(matcher.matches());
 
-		assertEquals("&DownArrowBar;", matcher.group(Regexp.ENTITY_NAME.getGroup()));
-		assertEquals("DownArrowBar", matcher.group("name"));
-	}
+			String actualGroup1 = matcher.group("entity");
+			String actualGroup2 = matcher.group("numeric");
+			String actualGroup3 = matcher.group("numericLeast");
 
-	/**
-	 * Проверка групп константы {@link Regexp#ENTITY_NUMERIC}.
-	 */
-	@Test
-	public void groupEntityNumeric()
-	{
-		String string = "&#0010590;";
+			assertEquals("&#0010590;", actualGroup1);
+			assertEquals("0010590", actualGroup2);
+			assertEquals("10590", actualGroup3);
+		}
 
-		Pattern pattern = Pattern.compile(
-			Regexp.ENTITY_NUMERIC.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#ENTITY_UNICODE}.
+		 */
+		@Test
+		public void entityUnicode()
+		{
+			String value = "&#X000154;";
+			Pattern pattern = Pattern.compile(
+				Regexp.ENTITY_UNICODE.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(value);
+			assertTrue(matcher.matches());
 
-		assertTrue(matcher.find());
+			String actualGroup1 = matcher.group("entity");
+			String actualGroup2 = matcher.group("unicode");
+			String actualGroup3 = matcher.group("unicodeLeast");
 
-		assertEquals("&#0010590;", matcher.group(Regexp.ENTITY_NUMERIC.getGroup()));
-		assertEquals("0010590", matcher.group("numeric"));
-		assertEquals("10590", matcher.group("numericLeast"));
-	}
+			assertEquals("&#X000154;", actualGroup1);
+			assertEquals("000154", actualGroup2);
+			assertEquals("154", actualGroup3);
+		}
 
-	/**
-	 * Проверка групп константы {@link Regexp#ENTITY_UNICODE}.
-	 */
-	@Test
-	public void groupEntityUnicode()
-	{
-		String string = "&#X000154;";
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#DOCTYPE}.
+		 */
+		@Test
+		public void doctype()
+		{
+			String value = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">";
+			Pattern pattern = Pattern.compile(
+				Regexp.DOCTYPE.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(value);
+			assertTrue(matcher.matches());
 
-		Pattern pattern = Pattern.compile(
-			Regexp.ENTITY_UNICODE.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
+			String actualGroup1 = matcher.group("doctype");
+			String actualGroup2 = matcher.group("rootElement");
+			String actualGroup3 = matcher.group("public");
+			String actualGroup4 = matcher.group("dtd");
+			String actualGroup5 = matcher.group("registration");
+			String actualGroup6 = matcher.group("organization");
+			String actualGroup7 = matcher.group("documentType");
+			String actualGroup8 = matcher.group("language");
+			String actualGroup9 = matcher.group("url");
 
-		assertTrue(matcher.find());
+			assertEquals(
+				"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+				actualGroup1
+			);
+			assertEquals("HTML", actualGroup2);
+			assertEquals("PUBLIC", actualGroup3);
+			assertEquals("-//W3C//DTD HTML 4.01//EN", actualGroup4);
+			assertEquals("-", actualGroup5);
+			assertEquals("W3C", actualGroup6);
+			assertEquals("DTD HTML 4.01", actualGroup7);
+			assertEquals("EN", actualGroup8);
+			assertEquals("http://www.w3.org/TR/html4/strict.dtd", actualGroup9);
+		}
 
-		assertEquals("&#X000154;", matcher.group(Regexp.ENTITY_UNICODE.getGroup()));
-		assertEquals("000154", matcher.group("unicode"));
-		assertEquals("154", matcher.group("unicodeLeast"));
-	}
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#CLOSE_TAG}.
+		 */
+		@Test
+		public void closeTag()
+		{
+			String value = "</form >";
+			Pattern pattern = Pattern.compile(
+				Regexp.CLOSE_TAG.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(value);
+			assertTrue(matcher.matches());
 
-	/**
-	 * Проверка групп константы {@link Regexp#DOCTYPE}.
-	 */
-	@Test
-	public void groupDoctype()
-	{
-		String string = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">";
+			String actualGroup1 = matcher.group("tag");
+			String actualGroup2 = matcher.group("name");
 
-		Pattern pattern = Pattern.compile(
-			Regexp.DOCTYPE.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
+			assertEquals("</form >", actualGroup1);
+			assertEquals("form", actualGroup2);
+		}
 
-		assertTrue(matcher.find());
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#SELF_CLOSING_TAG}.
+		 */
+		@Test
+		public void selfClosingTag()
+		{
+			String value = "<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>";
 
-		assertEquals(
-			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-			matcher.group(Regexp.DOCTYPE.getGroup())
-		);
-		assertEquals("HTML", matcher.group("rootElement"));
-		assertEquals("PUBLIC", matcher.group("public"));
-		assertEquals("-//W3C//DTD HTML 4.01//EN", matcher.group("dtd"));
-		assertEquals("-", matcher.group("registration"));
-		assertEquals("W3C", matcher.group("organization"));
-		assertEquals("DTD HTML 4.01", matcher.group("documentType"));
-		assertEquals("EN", matcher.group("language"));
-		assertEquals("http://www.w3.org/TR/html4/strict.dtd", matcher.group("url"));
-	}
+			Pattern pattern = Pattern.compile(
+				Regexp.SELF_CLOSING_TAG.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(value);
+			assertTrue(matcher.matches());
 
-	/**
-	 * Проверка групп константы {@link Regexp#CLOSE_TAG}.
-	 */
-	@Test
-	public void groupCloseTag()
-	{
-		String string = "</form >";
+			String actualGroup1 = matcher.group("tag");
+			String actualGroup2 = matcher.group("name");
+			String actualGroup3 = matcher.group("params");
 
-		Pattern pattern = Pattern.compile(
-			Regexp.CLOSE_TAG.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
+			assertEquals(
+				"<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
+				actualGroup1
+			);
+			assertEquals("input", actualGroup2);
+			assertEquals(
+				" name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"",
+				actualGroup3
+			);
+		}
 
-		assertTrue(matcher.find());
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#OPEN_TAG}.
+		 */
+		@Test
+		public void openTag()
+		{
+			String string = "<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">";
+			Pattern pattern = Pattern.compile(
+				Regexp.OPEN_TAG.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(string);
+			assertTrue(matcher.matches());
 
-		assertEquals("</form >", matcher.group(Regexp.CLOSE_TAG.getGroup()));
-		assertEquals("form", matcher.group("name"));
-	}
+			String actualGroup1 = matcher.group("tag");
+			String actualGroup2 = matcher.group("name");
+			String actualGroup3 = matcher.group("params");
 
-	/**
-	 * Проверка групп константы {@link Regexp#SELF_CLOSING_TAG}.
-	 */
-	@Test
-	public void groupSelfClosingTag()
-	{
-		String string = "<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>";
+			assertEquals(
+				"<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">",
+				actualGroup1
+			);
+			assertEquals("meta", actualGroup2);
+			assertEquals(
+				" name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"",
+				actualGroup3
+			);
+		}
 
-		Pattern pattern = Pattern.compile(
-			Regexp.SELF_CLOSING_TAG.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
+		/**
+		 * Проверка регулярного выражения константы {@link Regexp#CDATA}.
+		 */
+		@Test
+		public void cData()
+		{
+			String string = "<![CDATA[ Текст ]]>";
+			Pattern pattern = Pattern.compile(
+				Regexp.CDATA.getPattern(),
+				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
+			);
+			Matcher matcher = pattern.matcher(string);
+			assertTrue(matcher.matches());
 
-		assertTrue(matcher.find());
+			String actualGroup1 = matcher.group("cdata");
+			String actualGroup2 = matcher.group("value");
 
-		assertEquals(
-			"<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
-			matcher.group(Regexp.SELF_CLOSING_TAG.getGroup())
-		);
-		assertEquals("input", matcher.group("name"));
-		assertEquals(
-			" name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"",
-			matcher.group("params")
-		);
-	}
-
-	/**
-	 * Проверка групп константы {@link Regexp#OPEN_TAG}.
-	 */
-	@Test
-	public void groupOpenTag()
-	{
-		String string = "<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">";
-
-		Pattern pattern = Pattern.compile(
-			Regexp.OPEN_TAG.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
-
-		assertTrue(matcher.find());
-
-		assertEquals(
-			"<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">",
-			matcher.group(Regexp.OPEN_TAG.getGroup())
-		);
-		assertEquals("meta", matcher.group("name"));
-		assertEquals(
-			" name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"",
-			matcher.group("params"));
-	}
-
-	/**
-	 * Проверка групп константы {@link Regexp#CDATA}.
-	 */
-	@Test
-	public void groupCData()
-	{
-		String string = "<![CDATA[ Текст ]]>";
-
-		Pattern pattern = Pattern.compile(
-			Regexp.CDATA.getPattern(),
-			Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
-		);
-		Matcher matcher = pattern.matcher(string);
-
-		assertTrue(matcher.find());
-
-		assertEquals("<![CDATA[ Текст ]]>", matcher.group(Regexp.CDATA.getGroup()));
-		assertEquals(" Текст ", matcher.group("value"));
+			assertEquals("<![CDATA[ Текст ]]>", actualGroup1);
+			assertEquals(" Текст ", actualGroup2);
+		}
 	}
 }
