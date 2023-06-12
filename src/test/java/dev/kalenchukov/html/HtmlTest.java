@@ -34,7 +34,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Класс проверки методов класса {@link Html}.
@@ -56,7 +56,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class HtmlTest
 
 		String actualString = html.getText().trim();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class HtmlTest
 
 		String actualString = html.getText().trim();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class HtmlTest
 
 		String actualString = html.getText().trim();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -233,7 +233,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -263,7 +263,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -293,7 +293,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -323,7 +323,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -353,7 +353,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -383,7 +383,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -413,7 +413,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -443,7 +443,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -473,7 +473,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -503,7 +503,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -533,7 +533,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -563,7 +563,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -593,7 +593,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -623,7 +623,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -653,7 +653,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -683,7 +683,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -713,7 +713,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -743,7 +743,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -773,7 +773,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -803,7 +803,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -833,7 +833,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -863,7 +863,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -893,7 +893,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -923,7 +923,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -953,7 +953,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -983,7 +983,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1013,7 +1013,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1043,7 +1043,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1073,7 +1073,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1103,7 +1103,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1133,7 +1133,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1163,7 +1163,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1193,7 +1193,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1223,7 +1223,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1253,7 +1253,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1283,7 +1283,7 @@ public class HtmlTest
 
 		String actualString = html.getText();
 
-		assertEquals(expectedString, actualString);
+		assertThat(actualString).isEqualTo(expectedString);
 	}
 
 	/**
@@ -1302,7 +1302,7 @@ public class HtmlTest
 
 		boolean actual = html.isComment();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1326,7 +1326,7 @@ public class HtmlTest
 
 		boolean actual = html.isComment();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1344,7 +1344,7 @@ public class HtmlTest
 
 		boolean actual = html.isEntity();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1363,7 +1363,7 @@ public class HtmlTest
 
 		boolean actual = html.isEntity();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1379,7 +1379,7 @@ public class HtmlTest
 
 		boolean actual = html.isEntityName();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1397,7 +1397,7 @@ public class HtmlTest
 
 		boolean actual = html.isEntityName();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1414,7 +1414,7 @@ public class HtmlTest
 
 		boolean actual = html.isEntityNumeric();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1431,7 +1431,7 @@ public class HtmlTest
 
 		boolean actual = html.isEntityNumeric();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1447,7 +1447,7 @@ public class HtmlTest
 
 		boolean actual = html.isEntityUnicode();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1465,7 +1465,7 @@ public class HtmlTest
 
 		boolean actual = html.isEntityUnicode();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1489,7 +1489,7 @@ public class HtmlTest
 
 		boolean actual = html.isDoctype();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1520,7 +1520,7 @@ public class HtmlTest
 
 		boolean actual = html.isDoctype();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1540,7 +1540,7 @@ public class HtmlTest
 
 		boolean actual = html.isTag();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1559,7 +1559,7 @@ public class HtmlTest
 
 		boolean actual = html.isTag();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1575,7 +1575,7 @@ public class HtmlTest
 
 		boolean actual = html.isCloseTag();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1591,7 +1591,7 @@ public class HtmlTest
 
 		boolean actual = html.isCloseTag();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1619,7 +1619,7 @@ public class HtmlTest
 
 		boolean actual = html.isSelfClosingTag();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1642,7 +1642,7 @@ public class HtmlTest
 
 		boolean actual = html.isSelfClosingTag();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1670,7 +1670,7 @@ public class HtmlTest
 
 		boolean actual = html.isOpenTag();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1696,7 +1696,7 @@ public class HtmlTest
 
 		boolean actual = html.isOpenTag();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1715,7 +1715,7 @@ public class HtmlTest
 
 		boolean actual = html.isCData();
 
-		assertTrue(actual);
+		assertThat(actual).isTrue();
 	}
 
 	/**
@@ -1735,7 +1735,7 @@ public class HtmlTest
 
 		boolean actual = html.isCData();
 
-		assertFalse(actual);
+		assertThat(actual).isFalse();
 	}
 
 	/**
@@ -1774,18 +1774,18 @@ public class HtmlTest
 			Весь мир идёт на меня войной
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"<!--Всё в свое время, зима и весна-->",
 				"<!-- яблоку место упасть\nКаждому вору возможность украсть\nКаждой собаке палку и кость-->",
 				"<!--,-->",
 				"<!---->"
-		};
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findComments();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -1829,18 +1829,18 @@ public class HtmlTest
 			План такой - нам с тобой...
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"<![CDATA[Здесь не понятно, где лицо, а где рыло,]]>",
 				"<![CDATA[Здесь в сено не втыкаются вилы,\nА рыба проходит сквозь сеть.\nИ не ясно, где море, где суша,\nГде золото, а где медь.]]>",
 				"<![CDATA[...]]>",
 				"<![CDATA[]]>"
-		};
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findCData();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -1875,7 +1875,7 @@ public class HtmlTest
 			У меня есть вопрос, на который ты не дашь мне ответ.
 			&#X000000BB;""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"&frac14;",
 				"&amp;",
 				"&commat;",
@@ -1890,13 +1890,13 @@ public class HtmlTest
 				"&#x224E;",
 				"&#X0000141;",
 				"&#X000000BB;"
-		};
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findEntities();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -1931,18 +1931,18 @@ public class HtmlTest
 			У меня есть вопрос, на который ты не дашь мне ответ.
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"&frac14;",
 				"&amp;",
 				"&commat;",
 				"&lt;"
-		};
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findEntitiesName();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -1985,18 +1985,18 @@ public class HtmlTest
 			Дождь для нас...
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"&#44;",
 				"&#169;",
 				"&#10589;",
 				"&#10590;"
-		};
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findEntitiesNumeric();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -2034,18 +2034,18 @@ public class HtmlTest
 			Завтра вставать.
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"&#X22C8;",
 				"&#x224E;",
 				"&#X0000141;",
 				"&#X000000BB;"
-		};
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findEntitiesUnicode();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -2077,18 +2077,18 @@ public class HtmlTest
 			Я ухожу.
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"<!DOCTYPE html>",
 				"<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'\n'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>",
 				"<!DOCTYPE html PUBLIC \"+//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">",
 				"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" 'http://www.w3.org/TR/html4/loose.dtd'>"
-		};
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findDoctype();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -2120,7 +2120,7 @@ public class HtmlTest
 			Ну и пусть...<input value =  yes/>
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"<b>",
 				"<meta charset='UTF-8'>",
 				"<input type='checkbox'  >",
@@ -2135,13 +2135,13 @@ public class HtmlTest
 				"</b >",
 				"</table>",
 				"</strong>"
-		};
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findTags();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -2173,18 +2173,18 @@ public class HtmlTest
 			Ну и пусть...
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"</form>",
 				"</b >",
 				"</table>",
-				"</strong>",
-		};
+				"</strong>"
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findCloseTags();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -2219,18 +2219,18 @@ public class HtmlTest
 			Папа - стакан портвейна.
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"<b>",
 				"<meta charset='UTF-8'>",
 				"<input type='checkbox'  >",
-				"<input value =  yes>",
-		};
+				"<input value =  yes>"
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findOpenTags();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 
 	/**
@@ -2269,17 +2269,17 @@ public class HtmlTest
 			И место для шага вперед.
 			""";
 
-		String[] expectedArray = {
+		List<String> expectedList = List.of(
 				"<br/>",
 				"<meta charset='UTF-8'/>",
 				"<input type='checkbox'  />",
-				"<input value =  yes/>",
-		};
+				"<input value =  yes/>"
+		);
 
 		Hypertext html = new Html(value);
 
 		List<String> actualList = html.findSelfClosingTags();
 
-		assertArrayEquals(expectedArray, actualList.toArray());
+		assertThat(actualList).containsSequence(expectedList);
 	}
 }

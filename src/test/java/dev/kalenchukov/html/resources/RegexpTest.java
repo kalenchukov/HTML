@@ -30,7 +30,7 @@ import org.junit.jupiter.api.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Класс проверки констант и методов перечисления {@link Regexp}.
@@ -49,7 +49,7 @@ public class RegexpTest
 
 		String actualGroup = regexp.getGroup();
 
-		assertEquals("comment", actualGroup);
+		assertThat(actualGroup).isEqualTo("comment");
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class RegexpTest
 
 		String actualPattern = regexp.getPattern();
 
-		assertFalse(actualPattern.isEmpty());
+		assertThat(actualPattern).isNotEmpty();
 	}
 
 	/**
@@ -85,13 +85,13 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(value);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("comment");
 			String actualGroup2 = matcher.group("value");
 
-			assertEquals("<!-- Комментарий -->", actualGroup1);
-			assertEquals(" Комментарий ", actualGroup2);
+			assertThat(actualGroup1).isEqualTo("<!-- Комментарий -->");
+			assertThat(actualGroup2).isEqualTo(" Комментарий ");
 		}
 
 		/**
@@ -106,13 +106,13 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(value);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("entity");
 			String actualGroup2 = matcher.group("name");
 
-			assertEquals("&DownArrowBar;", actualGroup1);
-			assertEquals("DownArrowBar", actualGroup2);
+			assertThat(actualGroup1).isEqualTo("&DownArrowBar;");
+			assertThat(actualGroup2).isEqualTo("DownArrowBar");
 		}
 
 		/**
@@ -127,15 +127,15 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(value);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("entity");
 			String actualGroup2 = matcher.group("numeric");
 			String actualGroup3 = matcher.group("numericLeast");
 
-			assertEquals("&#0010590;", actualGroup1);
-			assertEquals("0010590", actualGroup2);
-			assertEquals("10590", actualGroup3);
+			assertThat(actualGroup1).isEqualTo("&#0010590;");
+			assertThat(actualGroup2).isEqualTo("0010590");
+			assertThat(actualGroup3).isEqualTo("10590");
 		}
 
 		/**
@@ -150,15 +150,15 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(value);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("entity");
 			String actualGroup2 = matcher.group("unicode");
 			String actualGroup3 = matcher.group("unicodeLeast");
 
-			assertEquals("&#X000154;", actualGroup1);
-			assertEquals("000154", actualGroup2);
-			assertEquals("154", actualGroup3);
+			assertThat(actualGroup1).isEqualTo("&#X000154;");
+			assertThat(actualGroup2).isEqualTo("000154");
+			assertThat(actualGroup3).isEqualTo("154");
 		}
 
 		/**
@@ -173,7 +173,7 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(value);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("doctype");
 			String actualGroup2 = matcher.group("rootElement");
@@ -185,18 +185,15 @@ public class RegexpTest
 			String actualGroup8 = matcher.group("language");
 			String actualGroup9 = matcher.group("url");
 
-			assertEquals(
-				"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-				actualGroup1
-			);
-			assertEquals("HTML", actualGroup2);
-			assertEquals("PUBLIC", actualGroup3);
-			assertEquals("-//W3C//DTD HTML 4.01//EN", actualGroup4);
-			assertEquals("-", actualGroup5);
-			assertEquals("W3C", actualGroup6);
-			assertEquals("DTD HTML 4.01", actualGroup7);
-			assertEquals("EN", actualGroup8);
-			assertEquals("http://www.w3.org/TR/html4/strict.dtd", actualGroup9);
+			assertThat(actualGroup1).isEqualTo("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">");
+			assertThat(actualGroup2).isEqualTo("HTML");
+			assertThat(actualGroup3).isEqualTo("PUBLIC");
+			assertThat(actualGroup4).isEqualTo("-//W3C//DTD HTML 4.01//EN");
+			assertThat(actualGroup5).isEqualTo("-");
+			assertThat(actualGroup6).isEqualTo("W3C");
+			assertThat(actualGroup7).isEqualTo("DTD HTML 4.01");
+			assertThat(actualGroup8).isEqualTo("EN");
+			assertThat(actualGroup9).isEqualTo("http://www.w3.org/TR/html4/strict.dtd");
 		}
 
 		/**
@@ -211,13 +208,13 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(value);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("tag");
 			String actualGroup2 = matcher.group("name");
 
-			assertEquals("</form >", actualGroup1);
-			assertEquals("form", actualGroup2);
+			assertThat(actualGroup1).isEqualTo("</form >");
+			assertThat(actualGroup2).isEqualTo("form");
 		}
 
 		/**
@@ -233,21 +230,15 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(value);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("tag");
 			String actualGroup2 = matcher.group("name");
 			String actualGroup3 = matcher.group("params");
 
-			assertEquals(
-				"<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
-				actualGroup1
-			);
-			assertEquals("input", actualGroup2);
-			assertEquals(
-				" name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"",
-				actualGroup3
-			);
+			assertThat(actualGroup1).isEqualTo("<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>");
+			assertThat(actualGroup2).isEqualTo("input");
+			assertThat(actualGroup3).isEqualTo(" name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"");
 		}
 
 		/**
@@ -262,21 +253,15 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(string);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("tag");
 			String actualGroup2 = matcher.group("name");
 			String actualGroup3 = matcher.group("params");
 
-			assertEquals(
-				"<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">",
-				actualGroup1
-			);
-			assertEquals("meta", actualGroup2);
-			assertEquals(
-				" name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"",
-				actualGroup3
-			);
+			assertThat(actualGroup1).isEqualTo("<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">");
+			assertThat(actualGroup2).isEqualTo("meta");
+			assertThat(actualGroup3).isEqualTo(" name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"");
 		}
 
 		/**
@@ -291,13 +276,13 @@ public class RegexpTest
 				Pattern.UNICODE_CASE + Pattern.CASE_INSENSITIVE
 			);
 			Matcher matcher = pattern.matcher(string);
-			assertTrue(matcher.matches());
+			assertThat(matcher.matches()).isTrue();
 
 			String actualGroup1 = matcher.group("cdata");
 			String actualGroup2 = matcher.group("value");
 
-			assertEquals("<![CDATA[ Текст ]]>", actualGroup1);
-			assertEquals(" Текст ", actualGroup2);
+			assertThat(actualGroup1).isEqualTo("<![CDATA[ Текст ]]>");
+			assertThat(actualGroup2).isEqualTo(" Текст ");
 		}
 	}
 }

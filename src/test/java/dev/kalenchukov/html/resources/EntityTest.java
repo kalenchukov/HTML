@@ -26,7 +26,7 @@ package dev.kalenchukov.html.resources;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Класс проверки констант и методов перечисления {@link Entity}.
@@ -43,9 +43,9 @@ public class EntityTest
 	{
 		Entity entity = Entity.NUM;
 
-		Character actualSymbol = entity.getSymbol();
+		char actualSymbol = entity.getSymbol();
 
-		assertEquals('#', actualSymbol);
+		assertThat(actualSymbol).isEqualTo('#');
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class EntityTest
 
 		String actualEntity = entity.getEntity(EntityType.NAME);
 
-		assertEquals("num", actualEntity);
+		assertThat(actualEntity).isEqualTo("num");
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class EntityTest
 
 		String actualEntity = entity.getEntity(EntityType.NUMERIC);
 
-		assertEquals("35", actualEntity);
+		assertThat(actualEntity).isEqualTo("35");
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class EntityTest
 
 		String actualEntity = entity.getEntity(EntityType.UNICODE);
 
-		assertEquals("23", actualEntity);
+		assertThat(actualEntity).isEqualTo("23");
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class EntityTest
 
 		String actualMnemonic = entity.getMnemonic(EntityType.NAME);
 
-		assertEquals("&num;", actualMnemonic);
+		assertThat(actualMnemonic).isEqualTo("&num;");
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class EntityTest
 
 		String actualMnemonic = entity.getMnemonic(EntityType.NUMERIC);
 
-		assertEquals("&#35;", actualMnemonic);
+		assertThat(actualMnemonic).isEqualTo("&#35;");
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class EntityTest
 
 		String actualMnemonic = entity.getMnemonic(EntityType.UNICODE);
 
-		assertEquals("&#X23;", actualMnemonic);
+		assertThat(actualMnemonic).isEqualTo("&#X23;");
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class EntityTest
 
 		String actualEntityName = entity.getEntityName();
 
-		assertEquals("num", actualEntityName);
+		assertThat(actualEntityName).isEqualTo("num");
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class EntityTest
 
 		String actualEntityNumeric = entity.getEntityNumeric();
 
-		assertEquals("35", actualEntityNumeric);
+		assertThat(actualEntityNumeric).isEqualTo("35");
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class EntityTest
 
 		String actualUnicode = entity.getEntityUnicode();
 
-		assertEquals("23", actualUnicode);
+		assertThat(actualUnicode).isEqualTo("23");
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class EntityTest
 
 		String MnemonicName = entity.getMnemonicName();
 
-		assertEquals("&num;", MnemonicName);
+		assertThat(MnemonicName).isEqualTo("&num;");
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class EntityTest
 
 		String actualMnemonicNumeric = entity.getMnemonicNumeric();
 
-		assertEquals("&#35;", actualMnemonicNumeric);
+		assertThat(actualMnemonicNumeric).isEqualTo("&#35;");
 	}
 
 	/**
@@ -201,6 +201,6 @@ public class EntityTest
 
 		String actualMnemonicUnicode = entity.getMnemonicUnicode();
 
-		assertEquals("&#X23;", actualMnemonicUnicode);
+		assertThat(actualMnemonicUnicode).isEqualTo("&#X23;");
 	}
 }
