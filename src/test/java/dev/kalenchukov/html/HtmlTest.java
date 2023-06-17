@@ -28,6 +28,7 @@ import dev.kalenchukov.html.resources.Entity;
 import dev.kalenchukov.html.resources.EntityType;
 import dev.kalenchukov.html.resources.Tag;
 import dev.kalenchukov.html.resources.TagType;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -1287,455 +1288,681 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#isComment()}.
+	 * Класс проверки метода {@link Html#isComment()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"<!---->", "<!-- -->", "<!--  -->",
-		"<!-- 12345 -->", "<!-- Комментарий -->", "<!-- Comment -->",
-		"<!-- Comment-->", "<!--Комментарий -->",
-		"<!--\n\t12345\n-->", "<!--\n12345 -->"
-	})
-	public void isComment(String value)
+	@Nested
+	public class IsComment
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isComment()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"<!---->",
+			"<!-- -->",
+			"<!--  -->",
+			"<!-- 12345 -->",
+			"<!-- Комментарий -->",
+			"<!-- Comment -->",
+			"<!-- Comment-->",
+			"<!--Комментарий -->",
+			"<!--\n\t12345\n-->",
+			"<!--\n12345 -->"
+		})
+		public void isComment(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isComment();
+			boolean actual = html.isComment();
 
-		assertThat(actual).isTrue();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isComment()} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"",
+			" ",
+			"34546<!-- Comment -->",
+			"<!- Комментарий -->",
+			"<-- Комментарий -->",
+			"<!-- Комментарий ->",
+			"<!-- Комментарий --",
+			"<!--< Comment -->",
+			"<!---> Comment -->",
+			"<!-- Comment<!--->",
+			"<!-- Comm<!--ent -->",
+			"<!-- Comm-->ent -->",
+			"<!-- Comm--!>ent -->",
+			"<!-- <!--Comment -->",
+			"<!-- -->Comment -->",
+			"<!-- --!>Comment -->",
+			"<!-- Comment<!-- -->",
+			"<!-- Comment--> -->",
+			"<!-- Comment--!> -->",
+			"<!--\n\tComment\n-->\n"
+		})
+		public void isCommentNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isComment();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isComment()} с некорректным значением.
+	 * Класс проверки метода {@link Html#isEntity()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"34546<!-- Comment -->",
-		"<!- Комментарий -->", "<-- Комментарий -->",
-		"<!-- Комментарий ->", "<!-- Комментарий --",
-		"<!--< Comment -->", "<!---> Comment -->", "<!-- Comment<!--->",
-		"<!-- Comm<!--ent -->", "<!-- Comm-->ent -->", "<!-- Comm--!>ent -->",
-		"<!-- <!--Comment -->", "<!-- -->Comment -->", "<!-- --!>Comment -->",
-		"<!-- Comment<!-- -->", "<!-- Comment--> -->", "<!-- Comment--!> -->",
-		"<!--\n\tComment\n-->\n"
-	})
-	public void isCommentNotCorrect(String value)
+	@Nested
+	public class IsEntity
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isEntity()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"&dd;",
+			"&dollar;",
+			"&DownArrowBar;",
+			"&ecir;",
+			"&DD;",
+			"&frac14;",
+			"&#038;",
+			"&#38;",
+			"&#256;",
+			"&#0038;",
+			"&#8501;",
+			"&#10590;",
+			"&#010590;",
+			"&#0010590;",
+			"&#0000000000000010590;",
+			"&#XB0;",
+			"&#x394;",
+			"&#X2223;",
+			"&#X154;",
+			"&#x00000000000000BB;"
+		})
+		public void isEntity(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isComment();
+			boolean actual = html.isEntity();
 
-		assertThat(actual).isFalse();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isEntity()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"",
+			" ",
+			"34546&DownArrowBar;",
+			"&",
+			";",
+			"&;",
+			"&d;",
+			"ecir;",
+			"&ecir",
+			"&3124;",
+			"&1DownArrowBar;",
+			"34546&#8501;",
+			"&#3;",
+			"#256;",
+			"&256;",
+			"&#256",
+			"&#2D56;",
+			"34546&#XB0;",
+			"&#x3;",
+			"#XB0;",
+			"&#B0;",
+			"&#B0"
+		})
+		public void isEntityNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isEntity();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isEntity()}.
+	 * Класс проверки метода {@link Html#isEntityName()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"&dd;", "&dollar;", "&DownArrowBar;", "&ecir;", "&DD;", "&frac14;",
-		"&#038;", "&#38;", "&#256;", "&#0038;", "&#8501;", "&#10590;", "&#010590;", "&#0010590;", "&#0000000000000010590;",
-		"&#XB0;", "&#x394;", "&#X2223;", "&#X154;", "&#x00000000000000BB;"
-	})
-	public void isEntity(String value)
+	@Nested
+	public class IsEntityName
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isEntityName()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"&dd;", "&dollar;", "&DownArrowBar;", "&ecir;", "&DD;", "&frac14;"
+		})
+		public void isEntityName(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isEntity();
+			boolean actual = html.isEntityName();
 
-		assertThat(actual).isTrue();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isEntityName} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"", " ", "34546&DownArrowBar;", "&", ";", "&;", "&d;", "ecir;", "&ecir", "&3124;", "&1DownArrowBar;"
+		})
+		public void isEntityNameNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isEntityName();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isEntity()}.
+	 * Класс проверки метода {@link Html#isEntityNumeric()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"34546&DownArrowBar;", "&", ";", "&;", "&d;", "ecir;", "&ecir", "&3124;", "&1DownArrowBar;",
-		"34546&#8501;", "&#3;", "#256;", "&256;", "&#256", "&#2D56;", "34546&#XB0;",
-		"&#x3;", "#XB0;", "&#B0;", "&#B0"
-	})
-	public void isEntityNotCorrect(String value)
+	@Nested
+	public class IsEntityNumeric
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isEntityNumeric()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"&#038;",
+			"&#38;",
+			"&#256;",
+			"&#0038;",
+			"&#8501;",
+			"&#10590;",
+			"&#010590;",
+			"&#0010590;",
+			"&#0000000000000010590;"
+		})
+		public void isEntityNumeric(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isEntity();
+			boolean actual = html.isEntityNumeric();
 
-		assertThat(actual).isFalse();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isEntityNumeric} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"", " ", "34546&#8501;", "&#3;", "#256;", "&256;", "&#256", "&#2D56;"
+		})
+		public void isEntityNumericNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isEntityNumeric();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isEntityName()}.
+	 * Класс проверки метода {@link Html#isEntityUnicode()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"&dd;", "&dollar;", "&DownArrowBar;", "&ecir;", "&DD;", "&frac14;"
-	})
-	public void isEntityName(String value)
+	@Nested
+	public class IsEntityUnicode
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isEntityUnicode()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"&#XB0;", "&#x394;", "&#X2223;", "&#X154;", "&#x00000000000000BB;"
+		})
+		public void isEntityUnicode(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isEntityName();
+			boolean actual = html.isEntityUnicode();
 
-		assertThat(actual).isTrue();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isEntityUnicode()} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"", " ", "34546&#XB0;", "&#x3;", "#XB0;", "&XB0;", "&#B0;", "&#B0"
+		})
+		public void isEntityUnicodeNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isEntityUnicode();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isEntityName} с некорректным значением.
+	 * Класс проверки метода {@link Html#isDoctype()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"34546&DownArrowBar;",
-		"&", ";", "&;", "&d;", "ecir;", "&ecir", "&3124;", "&1DownArrowBar;"
-	})
-	public void isEntityNameNotCorrect(String value)
+	@Nested
+	public class IsDoctype
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isDoctype()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"<!DOCTYPE html>",
+			"<!DOCTYPE  html >",
+			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"+//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC   '-//W3C//DTD HTML 4.01 Transitional//EN' \"http://www.w3.org/TR/html4/loose.dtd\">",
+			"<!DOCTYPE HTML  PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\"  'http://www.w3.org/TR/html4/frameset.dtd'>",
+			"<!DOCTYPE html  PUBLIC  '-//W3C//DTD XHTML 1.0 Strict//EN'   'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd' >",
+			"<!DOCTYPE html PUBLIC\n'-//W3C//DTD XHTML 1.0 Frameset//EN'\n'http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd' \n>",
+			"<!DOCTYPE html PUBLIC\n\t\"-//W3C//DTD XHTML 1.1//EN\"\n\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">"
+		})
+		public void isDoctype(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isEntityName();
+			boolean actual = html.isDoctype();
 
-		assertThat(actual).isFalse();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isDoctype()} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"",
+			" ",
+			"<DOCTYPE>",
+			"<DOCTYPE html>",
+			"text<!DOCTYPE html>",
+			"<!DOCTYPE HTML PUBLIC>",
+			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"\">",
+			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">",
+			"<!DOCTYPE HTML PUBLIC \"//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"-//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"-//W3C//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"\" \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"http://www.w3.org/TR/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR'/html4/strict.dtd\">",
+			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" 'http://www.w3.org/TR\"/html4/strict.dtd'>"
+		})
+		public void isDoctypeNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isDoctype();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isEntityNumeric()}.
+	 * Класс проверки метода {@link Html#isTag()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"&#038;", "&#38;", "&#256;", "&#0038;", "&#8501;",
-		"&#10590;", "&#010590;", "&#0010590;", "&#0000000000000010590;"
-	})
-	public void isEntityNumeric(String value)
+	@Nested
+	public class IsTag
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isTag()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"<form>",
+			"<b >",
+			"<br  >",
+			"<input value>",
+			"<input value=yes>",
+			"</form>",
+			"</form >",
+			"</form  >",
+			"<meta/>",
+			"<meta />",
+			"<meta charset='UTF-8' />",
+			"<meta charset=\"UTF-8\"/>"
 
-		boolean actual = html.isEntityNumeric();
+		})
+		public void isTag(String value)
+		{
+			Hypertext html = new Html(value);
 
-		assertThat(actual).isTrue();
+			boolean actual = html.isTag();
+
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isTag()} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"",
+			" ",
+			"text<input>",
+			"<link href=>",
+			"<input name='text\">",
+			"</ form>",
+			"< /form>",
+			"text</form>",
+			"text<input/>",
+			"<input name='text\"/>"
+		})
+		public void isTagNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isTag();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isEntityNumeric} с некорректным значением.
+	 * Класс проверки метода {@link Html#isCloseTag()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ", "34546&#8501;", "&#3;",
-		"#256;", "&256;", "&#256", "&#2D56;"
-	})
-	public void isEntityNumericNotCorrect(String value)
+	@Nested
+	public class IsCloseTag
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isCloseTag()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"</form>", "</form >", "</form  >"
+		})
+		public void isCloseTag(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isEntityNumeric();
+			boolean actual = html.isCloseTag();
 
-		assertThat(actual).isFalse();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isCloseTag()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"", " ", "</ form>", "< /form>", "text</form>"
+		})
+		public void isCloseTagNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isCloseTag();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isEntityUnicode()}.
+	 * Класс проверки метода {@link Html#isSelfClosingTag()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"&#XB0;", "&#x394;", "&#X2223;", "&#X154;", "&#x00000000000000BB;"
-	})
-	public void isEntityUnicode(String value)
+	@Nested
+	public class IsSelfClosingTag
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isSelfClosingTag()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"<meta/>",
+			"<meta />",
+			"<meta charset='UTF-8' />",
+			"<meta charset=\"UTF-8\"/>",
+			"<meta />",
+			"<meta  />",
+			"<meta value/>",
+			"<meta value=yes/>",
+			"<meta value = yes />",
+			"<meta value  =  yes  />",
+			"<input id=''/>",
+			"<input id=\"\"/>",
+			"<meta charset='UTF-8'/>",
+			"<meta charset=\"UTF-8\"/>",
+			"<meta name='123'/>",
+			"<meta name=' текст'/>",
+			"<meta name=' текст 123'/>",
+			"<meta name=\"input name\"/>",
+			"<meta name=\"0123456789\"/>",
+			"<input id='input-id'/>",
+			"<input id=\"input-id-123\"/>",
+			"<input name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
+			"<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
+			"<input id  ='ID' qwe-attr =  \"my_attribute\"  />",
+			"<input qwe_attr =  \"my_attribute\"  />",
+			"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=''/>"
+		})
+		public void isSelfClosingTag(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isEntityUnicode();
+			boolean actual = html.isSelfClosingTag();
 
-		assertThat(actual).isTrue();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isSelfClosingTag()} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"",
+			" ",
+			"text<input/>",
+			"<link href=/>",
+			"<input name='text\"/>",
+			"<input name=text'/>",
+			"<input name='text/>",
+			"<input name='te'xt'/>",
+			"<input name=text\"/>",
+			"<input name=\"text/>",
+			"<input name=\"te\"xt\"/>",
+			"< input/>",
+			"<input/",
+			"input/>",
+			"<input id=='input-id'/>",
+			"<input id = = 'input-id'/>",
+			"<input id=''input-id'/>",
+			"<input id='input-id''/>",
+			"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=/>"
+		})
+		public void isSelfClosingTagNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isSelfClosingTag();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isEntityUnicode()} с некорректным значением.
+	 * Класс проверки метода {@link Html#isOpenTag()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"34546&#XB0;", "&#x3;",
-		"#XB0;", "&XB0;", "&#B0;", "&#B0"
-	})
-	public void isEntityUnicodeNotCorrect(String value)
+	@Nested
+	public class IsOpenTag
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isOpenTag()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"<form>",
+			"<form >",
+			"<form  >",
+			"<input value>",
+			"<input value=yes>",
+			"<input value = yes >",
+			"<input value  =  yes  >",
+			"<input id=''>",
+			"<input id=\"\">",
+			"<input type=\"checkbox\">",
+			"<input type='checkbox'>",
+			"<input name='123'>",
+			"<input name=' текст'>",
+			"<input name=' текст 123'>",
+			"<input name=\"input name\">",
+			"<input name=\"0123456789\">",
+			"<input id='input-id'>",
+			"<input id=\"input-id-123\">",
+			"<meta charset=\"UTF-8\">",
+			"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\">",
+			"<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">",
+			"<input id  ='ID' qwe-attr =  \"my_attribute\"  >",
+			"<input qwe_attr =  \"my_attribute\"  >",
+			"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\nhref=''>"
+		})
+		public void isOpenTag(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isEntityUnicode();
+			boolean actual = html.isOpenTag();
 
-		assertThat(actual).isFalse();
+			assertThat(actual).isTrue();
+		}
+
+		/**
+		 * Проверка метода {@link Html#isOpenTag()} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"",
+			" ",
+			"<br/>",
+			"<input value =  yes/>",
+			"</b>",
+			"text<input>",
+			"<link href=>",
+			"<input name='text\">",
+			"<input name=text'>",
+			"<input name='text>",
+			"<input name='te'xt'>",
+			"<input name=text\">",
+			"<input name=\"text>",
+			"<input name=\"te\"xt\">",
+			"< input>",
+			"<input",
+			"input>",
+			"<input id=='input-id'>",
+			"<input id = = 'input-id'>",
+			"<input id=''input-id'>",
+			"<input id='input-id''>",
+			"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=>"
+		})
+		public void isOpenTagNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
+
+			boolean actual = html.isOpenTag();
+
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
-	 * Проверка метода {@link Html#isDoctype()}.
+	 * Класс проверки метода {@link Html#isCData()}.
+	 *
+	 * @author Алексей Каленчуков
 	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"<!DOCTYPE html>",
-		"<!DOCTYPE  html >",
-		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"+//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC   '-//W3C//DTD HTML 4.01 Transitional//EN' \"http://www.w3.org/TR/html4/loose.dtd\">",
-		"<!DOCTYPE HTML  PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\"  'http://www.w3.org/TR/html4/frameset.dtd'>",
-		"<!DOCTYPE html  PUBLIC  '-//W3C//DTD XHTML 1.0 Strict//EN'   'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd' >",
-		"<!DOCTYPE html PUBLIC\n'-//W3C//DTD XHTML 1.0 Frameset//EN'\n'http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd' \n>",
-		"<!DOCTYPE html PUBLIC\n\t\"-//W3C//DTD XHTML 1.1//EN\"\n\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">"
-	})
-	public void isDoctype(String value)
+	@Nested
+	public class IsCData
 	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isCData()}.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"<![CDATA[]]>",
+			"<![CDATA[ ]]>",
+			"<![CDATA[  ]]>",
+			"<![CDATA[ 12345 ]]>",
+			"<![CDATA[ Текст ]]>",
+			"<![CDATA[ Text ]]>",
+			"<![CDATA[ Text]]>",
+			"<![CDATA[Текст ]]>",
+			"<![CDATA[\n\n]]>",
+			"<![CDATA[\n\t12345\n]]>",
+			"<![CDATA[\n\t12345 ]]>"
+		})
+		public void isCData(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isDoctype();
+			boolean actual = html.isCData();
 
-		assertThat(actual).isTrue();
-	}
+			assertThat(actual).isTrue();
+		}
 
-	/**
-	 * Проверка метода {@link Html#isDoctype()} с некорректным значением.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"<DOCTYPE>",
-		"<DOCTYPE html>",
-		"text<!DOCTYPE html>",
-		"<!DOCTYPE HTML PUBLIC>",
-		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"\">",
-		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">",
-		"<!DOCTYPE HTML PUBLIC \"//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"-//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"-//W3C//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"\" \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"http://www.w3.org/TR/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR'/html4/strict.dtd\">",
-		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" 'http://www.w3.org/TR\"/html4/strict.dtd'>"
-	})
-	public void isDoctypeNotCorrect(String value)
-	{
-		Hypertext html = new Html(value);
+		/**
+		 * Проверка метода {@link Html#isCData()} с некорректным значением.
+		 */
+		@ParameterizedTest
+		@ValueSource(strings = {
+			"",
+			" ",
+			"2134<![CDATA[ Text ]]>",
+			"<[CDATA[ Текст ]]>",
+			"<![CDATA[ Текст ]>",
+			"<![CDATA[ Текст ]]",
+			"<![CDATA[ Te]]>xt ]]>",
+			"<![CDATA[ ]]>Text ]]>",
+			"<![CDATA[ Text]]> ]]>",
+			"<![CDATA[\n\tText\n]]>\n"
+		})
+		public void isCDataNotCorrect(String value)
+		{
+			Hypertext html = new Html(value);
 
-		boolean actual = html.isDoctype();
+			boolean actual = html.isCData();
 
-		assertThat(actual).isFalse();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isTag()}.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"<form>", "<b >", "<br  >", "<input value>", "<input value=yes>",
-		"</form>", "</form >", "</form  >",
-		"<meta/>", "<meta />",
-		"<meta charset='UTF-8' />", "<meta charset=\"UTF-8\"/>"
-
-	})
-	public void isTag(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isTag();
-
-		assertThat(actual).isTrue();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isTag()} с некорректным значением.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"text<input>", "<link href=>", "<input name='text\">",
-		"</ form>", "< /form>", "text</form>",
-		"text<input/>", "<input name='text\"/>"
-	})
-	public void isTagNotCorrect(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isTag();
-
-		assertThat(actual).isFalse();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isCloseTag()}.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"</form>", "</form >", "</form  >"
-	})
-	public void isCloseTag(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isCloseTag();
-
-		assertThat(actual).isTrue();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isCloseTag()}.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ", "</ form>", "< /form>", "text</form>"
-	})
-	public void isCloseTagNotCorrect(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isCloseTag();
-
-		assertThat(actual).isFalse();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isSelfClosingTag()}.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"<meta/>", "<meta />",
-		"<meta charset='UTF-8' />", "<meta charset=\"UTF-8\"/>",
-		"<meta />", "<meta  />",
-		"<meta value/>", "<meta value=yes/>", "<meta value = yes />", "<meta value  =  yes  />",
-		"<input id=''/>", "<input id=\"\"/>",
-		"<meta charset='UTF-8'/>", "<meta charset=\"UTF-8\"/>",
-		"<meta name='123'/>", "<meta name=' текст'/>", "<meta name=' текст 123'/>",
-		"<meta name=\"input name\"/>", "<meta name=\"0123456789\"/>",
-		"<input id='input-id'/>", "<input id=\"input-id-123\"/>",
-		"<input name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
-		"<input name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\"/>",
-		"<input id  ='ID' qwe-attr =  \"my_attribute\"  />", "<input qwe_attr =  \"my_attribute\"  />",
-		"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=''/>"
-	})
-	public void isSelfClosingTag(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isSelfClosingTag();
-
-		assertThat(actual).isTrue();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isSelfClosingTag()} с некорректным значением.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"text<input/>", "<link href=/>", "<input name='text\"/>",
-		"<input name=text'/>", "<input name='text/>", "<input name='te'xt'/>",
-		"<input name=text\"/>", "<input name=\"text/>", "<input name=\"te\"xt\"/>",
-		"< input/>", "<input/", "input/>",
-		"<input id=='input-id'/>", "<input id = = 'input-id'/>",
-		"<input id=''input-id'/>", "<input id='input-id''/>",
-		"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=/>"
-	})
-	public void isSelfClosingTagNotCorrect(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isSelfClosingTag();
-
-		assertThat(actual).isFalse();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isOpenTag()}.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"<form>", "<form >", "<form  >",
-		"<input value>", "<input value=yes>", "<input value = yes >", "<input value  =  yes  >",
-		"<input id=''>", "<input id=\"\">",
-		"<input type=\"checkbox\">", "<input type='checkbox'>",
-		"<input name='123'>", "<input name=' текст'>", "<input name=' текст 123'>",
-		"<input name=\"input name\">", "<input name=\"0123456789\">",
-		"<input id='input-id'>", "<input id=\"input-id-123\">",
-		"<meta charset=\"UTF-8\">",
-		"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=0\">",
-		"<meta name=viewport content=\"width=device-width, initial-scale=1, user-scalable=0\">",
-		"<input id  ='ID' qwe-attr =  \"my_attribute\"  >",
-		"<input qwe_attr =  \"my_attribute\"  >",
-		"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\nhref=''>"
-	})
-	public void isOpenTag(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isOpenTag();
-
-		assertThat(actual).isTrue();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isOpenTag()} с некорректным значением.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"<br/>",
-		"<input value =  yes/>",
-		"</b>",
-		"text<input>", "<link href=>", "<input name='text\">",
-		"<input name=text'>", "<input name='text>", "<input name='te'xt'>",
-		"<input name=text\">", "<input name=\"text>", "<input name=\"te\"xt\">",
-		"< input>", "<input", "input>",
-		"<input id=='input-id'>", "<input id = = 'input-id'>",
-		"<input id=''input-id'>", "<input id='input-id''>",
-		"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=>"
-	})
-	public void isOpenTagNotCorrect(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isOpenTag();
-
-		assertThat(actual).isFalse();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isCData()}.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"<![CDATA[]]>", "<![CDATA[ ]]>", "<![CDATA[  ]]>",
-		"<![CDATA[ 12345 ]]>", "<![CDATA[ Текст ]]>", "<![CDATA[ Text ]]>",
-		"<![CDATA[ Text]]>", "<![CDATA[Текст ]]>",
-		"<![CDATA[\n\n]]>", "<![CDATA[\n\t12345\n]]>", "<![CDATA[\n\t12345 ]]>"
-	})
-	public void isCData(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isCData();
-
-		assertThat(actual).isTrue();
-	}
-
-	/**
-	 * Проверка метода {@link Html#isCData()} с некорректным значением.
-	 */
-	@ParameterizedTest
-	@ValueSource(strings = {
-		"", " ",
-		"2134<![CDATA[ Text ]]>", "<[CDATA[ Текст ]]>",
-		"<![CDATA[ Текст ]>", "<![CDATA[ Текст ]]",
-		"<![CDATA[ Te]]>xt ]]>", "<![CDATA[ ]]>Text ]]>", "<![CDATA[ Text]]> ]]>",
-		"<![CDATA[\n\tText\n]]>\n"
-	})
-	public void isCDataNotCorrect(String value)
-	{
-		Hypertext html = new Html(value);
-
-		boolean actual = html.isCData();
-
-		assertThat(actual).isFalse();
+			assertThat(actual).isFalse();
+		}
 	}
 
 	/**
