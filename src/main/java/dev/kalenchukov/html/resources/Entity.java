@@ -26,6 +26,8 @@ package dev.kalenchukov.html.resources;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * Перечисление HTML-сущностей.
  *
@@ -3981,8 +3983,7 @@ public enum Entity
 	/**
 	 * Специальный символ.
 	 */
-	@NotNull
-	private final Character symbol;
+	private final char symbol;
 
 	/**
 	 * HTML-сущность специального символа в виде имени.
@@ -4010,11 +4011,15 @@ public enum Entity
 	 * @param numeric HTML-сущность специального символа в виде числа.
 	 * @param unicode HTML-сущность специального символа в виде unicode.
 	 */
-	Entity(@NotNull final Character symbol,
+	Entity(final char symbol,
 		   @NotNull final String name,
 		   @NotNull final String numeric,
 		   @NotNull final String unicode)
 	{
+		Objects.requireNonNull(name);
+		Objects.requireNonNull(numeric);
+		Objects.requireNonNull(unicode);
+
 		this.symbol = symbol;
 		this.name = name;
 		this.numeric = numeric;
@@ -4026,8 +4031,7 @@ public enum Entity
 	 *
 	 * @return специальный символ.
 	 */
-	@NotNull
-	public Character getSymbol()
+	public char getSymbol()
 	{
 		return this.symbol;
 	}
@@ -4041,6 +4045,8 @@ public enum Entity
 	@NotNull
 	public String getEntity(@NotNull final EntityType entityType)
 	{
+		Objects.requireNonNull(entityType);
+
 		return switch (entityType)
 			{
 				case NAME: yield this.getEntityName();
@@ -4091,6 +4097,8 @@ public enum Entity
 	@NotNull
 	public String getMnemonic(@NotNull final EntityType entityType)
 	{
+		Objects.requireNonNull(entityType);
+
 		return switch (entityType)
 			{
 				case NAME: yield this.getMnemonicName();

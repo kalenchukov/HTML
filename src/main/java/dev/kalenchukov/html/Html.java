@@ -68,6 +68,8 @@ public class Html implements Hypertext
 	 */
 	public Html(@NotNull final String text)
 	{
+		Objects.requireNonNull(text);
+
 		this.text = text;
 	}
 
@@ -79,6 +81,8 @@ public class Html implements Hypertext
 	@Override
 	public void setText(@NotNull final String text)
 	{
+		Objects.requireNonNull(text);
+
 		this.text = text;
 	}
 
@@ -102,6 +106,8 @@ public class Html implements Hypertext
 	@Override
 	public void deleteTag(@NotNull final Tag tag)
 	{
+		Objects.requireNonNull(tag);
+
 		Arrays.stream(TagType.values())
 			  .forEach(tagType -> this.deleteTag(tag, tagType));
 	}
@@ -115,6 +121,9 @@ public class Html implements Hypertext
 	@Override
 	public void deleteTag(@NotNull final Tag tag, @NotNull final TagType tagType)
 	{
+		Objects.requireNonNull(tag);
+		Objects.requireNonNull(tagType);
+
 		Map<TagType, Pattern> patterns = new HashMap<>();
 
 		patterns.put(
@@ -173,6 +182,8 @@ public class Html implements Hypertext
 	@Override
 	public void deleteTags(@NotNull final TagType tagType)
 	{
+		Objects.requireNonNull(tagType);
+
 		Arrays.stream(Tag.values())
 			  .forEach(tag -> this.deleteTag(tag, tagType));
 	}
@@ -185,6 +196,8 @@ public class Html implements Hypertext
 	@Override
 	public void deleteTags(@NotNull final List<@NotNull Tag> excludeTags)
 	{
+		Objects.requireNonNull(excludeTags);
+
 		Arrays.stream(Tag.values())
 			  .filter(tag -> !excludeTags.contains(tag))
 			  .forEach(this::deleteTag);
@@ -199,6 +212,9 @@ public class Html implements Hypertext
 	@Override
 	public void deleteTags(@NotNull final TagType tagType, @NotNull final List<@NotNull Tag> excludeTags)
 	{
+		Objects.requireNonNull(tagType);
+		Objects.requireNonNull(excludeTags);
+
 		Arrays.stream(Tag.values())
 			  .filter(tag -> !excludeTags.contains(tag))
 			  .forEach(tag -> this.deleteTag(tag, tagType));
@@ -221,6 +237,8 @@ public class Html implements Hypertext
 	@Override
 	public void deleteEntities(@NotNull final List<@NotNull Entity> excludeEntities)
 	{
+		Objects.requireNonNull(excludeEntities);
+
 		Arrays.stream(Entity.values())
 			  .filter(entity -> !excludeEntities.contains(entity))
 			  .forEach(this::deleteEntity);
@@ -234,6 +252,8 @@ public class Html implements Hypertext
 	@Override
 	public void deleteEntity(@NotNull final Entity entity)
 	{
+		Objects.requireNonNull(entity);
+
 		Arrays.stream(EntityType.values())
 			  .forEach(entityType -> this.deleteEntity(entity, entityType));
 	}
@@ -247,6 +267,9 @@ public class Html implements Hypertext
 	@Override
 	public void deleteEntity(@NotNull final Entity entity, @NotNull EntityType entityType)
 	{
+		Objects.requireNonNull(entity);
+		Objects.requireNonNull(entityType);
+
 		Map<EntityType, Pattern> patterns = new HashMap<>();
 
 		patterns.put(
@@ -345,8 +368,11 @@ public class Html implements Hypertext
 	@Override
 	public void encodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
 	{
+		Objects.requireNonNull(entity);
+		Objects.requireNonNull(entityType);
+
 		this.text = this.text.replaceAll(
-			Pattern.quote(entity.getSymbol().toString()),
+			Pattern.quote(String.valueOf(entity.getSymbol())),
 			entity.getMnemonic(entityType)
 		);
 	}
@@ -359,6 +385,8 @@ public class Html implements Hypertext
 	@Override
 	public void encodeEntities(@NotNull final EntityType entityType)
 	{
+		Objects.requireNonNull(entityType);
+
 		this.encodeEntities(entityType, Collections.emptyList());
 	}
 
@@ -372,6 +400,9 @@ public class Html implements Hypertext
 	public void encodeEntities(@NotNull final EntityType entityType,
 							   @NotNull final List<@NotNull Entity> excludeEntities)
 	{
+		Objects.requireNonNull(entityType);
+		Objects.requireNonNull(excludeEntities);
+
 		// В первую очередь, кодируются управляющие символы.
 		CONTROL_SYMBOLS.stream()
 			  .filter(controlSymbol -> !excludeEntities.contains(controlSymbol))
@@ -389,6 +420,8 @@ public class Html implements Hypertext
 	@Override
 	public void decodeEntity(@NotNull final Entity entity)
 	{
+		Objects.requireNonNull(entity);
+
 		Arrays.stream(EntityType.values())
 			  .forEach(entityType -> this.decodeEntity(entity, entityType));
 	}
@@ -402,6 +435,9 @@ public class Html implements Hypertext
 	@Override
 	public void decodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
 	{
+		Objects.requireNonNull(entity);
+		Objects.requireNonNull(entityType);
+
 		Map<EntityType, Pattern> patterns = new HashMap<>();
 
 		patterns.put(
@@ -438,7 +474,7 @@ public class Html implements Hypertext
 		Matcher matcher = patterns.get(entityType)
 								  .matcher(this.text);
 
-		this.text = matcher.replaceAll(entity.getSymbol().toString());
+		this.text = matcher.replaceAll(String.valueOf(entity.getSymbol()));
 	}
 
 	/**
@@ -458,6 +494,8 @@ public class Html implements Hypertext
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType)
 	{
+		Objects.requireNonNull(entityType);
+
 		Arrays.stream(Entity.values())
 			  .forEach(entity -> this.decodeEntity(entity, entityType));
 	}
@@ -470,6 +508,8 @@ public class Html implements Hypertext
 	@Override
 	public void decodeEntities(@NotNull final List<@NotNull Entity> excludeEntities)
 	{
+		Objects.requireNonNull(excludeEntities);
+
 		Arrays.stream(Entity.values())
 			  .filter(entity -> !excludeEntities.contains(entity))
 			  .forEach(this::decodeEntity);
@@ -485,6 +525,9 @@ public class Html implements Hypertext
 	public void decodeEntities(@NotNull final EntityType entityType,
 							   @NotNull final List<@NotNull Entity> excludeEntities)
 	{
+		Objects.requireNonNull(entityType);
+		Objects.requireNonNull(excludeEntities);
+
 		Arrays.stream(Entity.values())
 			  .filter(entity -> !excludeEntities.contains(entity))
 			  .forEach(entity -> this.decodeEntity(entity, entityType));
@@ -820,6 +863,8 @@ public class Html implements Hypertext
 	 */
 	private boolean is(@NotNull final Regexp regexp)
 	{
+		Objects.requireNonNull(regexp);
+
 		return this.is(regexp, 0);
 	}
 
@@ -830,8 +875,10 @@ public class Html implements Hypertext
 	 * @param flags флаги регулярного выражения.
 	 * @return {@code true}, если строка является значением, иначе {@code false}.
 	 */
-	private boolean is(@NotNull final Regexp regexp, @NotNull final Integer flags)
+	private boolean is(@NotNull final Regexp regexp, final int flags)
 	{
+		Objects.requireNonNull(regexp);
+
 		final Pattern pattern = Pattern.compile(regexp.getPattern(), flags);
 		final Matcher matcher = pattern.matcher(this.getText());
 
@@ -847,6 +894,8 @@ public class Html implements Hypertext
 	@NotNull
 	private List<@NotNull String> find(@NotNull final Regexp regexp)
 	{
+		Objects.requireNonNull(regexp);
+
 		return this.find(regexp, 0);
 	}
 
@@ -858,8 +907,10 @@ public class Html implements Hypertext
 	 */
 	@Unmodifiable
 	@NotNull
-	private List<@NotNull String> find(@NotNull final Regexp regexp, @NotNull final Integer flags)
+	private List<@NotNull String> find(@NotNull final Regexp regexp, final int flags)
 	{
+		Objects.requireNonNull(regexp);
+
 		final List<String> values = new ArrayList<>();
 
 		final Pattern pattern = Pattern.compile(regexp.getPattern(), flags);
