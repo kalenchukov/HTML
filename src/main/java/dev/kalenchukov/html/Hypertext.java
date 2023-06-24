@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Интерфейс для реализации класса работы с гипертекстом.
@@ -98,7 +99,7 @@ public interface Hypertext
 	 *
 	 * @param excludeTags коллекция HTML-тегов которые не будут удалены.
 	 */
-	void deleteTags(@NotNull List<@NotNull Tag> excludeTags);
+	void deleteTags(@NotNull Set<@NotNull Tag> excludeTags);
 
 	/**
 	 * Удаляет все HTML-теги.
@@ -106,7 +107,7 @@ public interface Hypertext
 	 * @param tagType тип HTML-тега.
 	 * @param excludeTags коллекция HTML-тегов которые не будут удалены.
 	 */
-	void deleteTags(@NotNull TagType tagType, @NotNull List<@NotNull Tag> excludeTags);
+	void deleteTags(@NotNull TagType tagType, @NotNull Set<@NotNull Tag> excludeTags);
 
 	/**
 	 * Удаляет HTML-сущность.
@@ -133,7 +134,7 @@ public interface Hypertext
 	 *
 	 * @param excludeEntities коллекция HTML-сущностей которые не будут удалены.
 	 */
-	void deleteEntities(@NotNull List<@NotNull Entity> excludeEntities);
+	void deleteEntities(@NotNull Set<@NotNull Entity> excludeEntities);
 
 	/**
 	 * Преобразует специальный символ на соответствующую HTML-сущность.
@@ -156,7 +157,7 @@ public interface Hypertext
 	 * @param entityType тип HTML-сущностей.
 	 * @param excludeEntities коллекция символов которые не будут преобразованы.
 	 */
-	void encodeEntities(@NotNull EntityType entityType, @NotNull List<@NotNull Entity> excludeEntities);
+	void encodeEntities(@NotNull EntityType entityType, @NotNull Set<@NotNull Entity> excludeEntities);
 
 	/**
 	 * Преобразует HTML-сущность в соответствующий специальный символ.
@@ -190,7 +191,7 @@ public interface Hypertext
 	 *
 	 * @param excludeEntities коллекция HTML-сущностей которые не будут преобразованы.
 	 */
-	void decodeEntities(@NotNull List<@NotNull Entity> excludeEntities);
+	void decodeEntities(@NotNull Set<@NotNull Entity> excludeEntities);
 
 	/**
 	 * Преобразует все HTML-сущности в соответствующие специальные символы.
@@ -198,7 +199,7 @@ public interface Hypertext
 	 * @param excludeEntities коллекция HTML-сущностей которые не будут преобразованы.
 	 * @param entityType тип HTML-сущностей.
 	 */
-	void decodeEntities(@NotNull EntityType entityType, @NotNull List<@NotNull Entity> excludeEntities);
+	void decodeEntities(@NotNull EntityType entityType, @NotNull Set<@NotNull Entity> excludeEntities);
 
 	/**
 	 * Проверяет, является ли строка HTML-комментарием.

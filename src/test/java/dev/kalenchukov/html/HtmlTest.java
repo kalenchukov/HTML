@@ -34,6 +34,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -208,7 +209,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#deleteTags(List)}.
+	 * Проверка метода {@link Html#deleteTags(Set)}.
 	 */
 	@Test
 	public void deleteTagsExclude()
@@ -230,7 +231,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.deleteTags(List.of(Tag.B, Tag.BR));
+		html.deleteTags(Set.of(Tag.B, Tag.BR));
 
 		String actualString = html.getText();
 
@@ -268,7 +269,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#deleteTags(TagType, List)}.
+	 * Проверка метода {@link Html#deleteTags(TagType, Set)}.
 	 */
 	@Test
 	public void deleteSelfClosingTagsExclude()
@@ -290,7 +291,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.deleteTags(TagType.SELF_CLOSING, List.of(Tag.BR));
+		html.deleteTags(TagType.SELF_CLOSING, Set.of(Tag.BR));
 
 		String actualString = html.getText();
 
@@ -358,7 +359,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#deleteTags(TagType, List)}.
+	 * Проверка метода {@link Html#deleteTags(TagType, Set)}.
 	 */
 	@Test
 	public void deleteOpenTagsExclude()
@@ -380,7 +381,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.deleteTags(TagType.OPEN, List.of(Tag.B));
+		html.deleteTags(TagType.OPEN, Set.of(Tag.B));
 
 		String actualString = html.getText();
 
@@ -448,7 +449,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#deleteTags(TagType, List)}.
+	 * Проверка метода {@link Html#deleteTags(TagType, Set)}.
 	 */
 	@Test
 	public void deleteCloseTagsExclude()
@@ -470,7 +471,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.deleteTags(TagType.CLOSE, List.of(Tag.B));
+		html.deleteTags(TagType.CLOSE, Set.of(Tag.B));
 
 		String actualString = html.getText();
 
@@ -628,7 +629,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#deleteEntities(List)}.
+	 * Проверка метода {@link Html#deleteEntities(Set)}.
 	 */
 	@Test
 	public void deleteEntitiesExclude()
@@ -650,7 +651,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.deleteEntities(List.of(Entity.LT, Entity.GT));
+		html.deleteEntities(Set.of(Entity.LT, Entity.GT));
 
 		String actualString = html.getText();
 
@@ -838,7 +839,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#encodeEntities(EntityType, List)}.
+	 * Проверка метода {@link Html#encodeEntities(EntityType, Set)}.
 	 */
 	@Test
 	public void encodeEntitiesNameExclude()
@@ -860,7 +861,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.encodeEntities(EntityType.NAME, List.of(Entity.LT, Entity.GT));
+		html.encodeEntities(EntityType.NAME, Set.of(Entity.LT, Entity.GT));
 
 		String actualString = html.getText();
 
@@ -868,7 +869,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#encodeEntities(EntityType, List)}.
+	 * Проверка метода {@link Html#encodeEntities(EntityType, Set)}.
 	 */
 	@Test
 	public void encodeEntitiesNumericExclude()
@@ -890,7 +891,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.encodeEntities(EntityType.NUMERIC, List.of(Entity.LT, Entity.GT));
+		html.encodeEntities(EntityType.NUMERIC, Set.of(Entity.LT, Entity.GT));
 
 		String actualString = html.getText();
 
@@ -898,7 +899,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#encodeEntities(EntityType, List)}.
+	 * Проверка метода {@link Html#encodeEntities(EntityType, Set)}.
 	 */
 	@Test
 	public void encodeEntitiesUnicodeExclude()
@@ -920,7 +921,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.encodeEntities(EntityType.UNICODE, List.of(Entity.LT, Entity.GT));
+		html.encodeEntities(EntityType.UNICODE, Set.of(Entity.LT, Entity.GT));
 
 		String actualString = html.getText();
 
@@ -1168,7 +1169,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#decodeEntities(List)}.
+	 * Проверка метода {@link Html#decodeEntities(Set)}.
 	 */
 	@Test
 	public void decodeEntitiesExclude()
@@ -1190,7 +1191,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.decodeEntities(List.of(Entity.LT, Entity.GT));
+		html.decodeEntities(Set.of(Entity.LT, Entity.GT));
 
 		String actualString = html.getText();
 
@@ -1198,7 +1199,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#decodeEntities(EntityType, List)}.
+	 * Проверка метода {@link Html#decodeEntities(EntityType, Set)}.
 	 */
 	@Test
 	public void decodeEntitiesNameExclude()
@@ -1220,7 +1221,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.decodeEntities(EntityType.NAME, List.of(Entity.LT, Entity.GT));
+		html.decodeEntities(EntityType.NAME, Set.of(Entity.LT, Entity.GT));
 
 		String actualString = html.getText();
 
@@ -1228,7 +1229,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#decodeEntities(EntityType, List)}.
+	 * Проверка метода {@link Html#decodeEntities(EntityType, Set)}.
 	 */
 	@Test
 	public void decodeEntitiesNumericExclude()
@@ -1250,7 +1251,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.decodeEntities(EntityType.NUMERIC, List.of(Entity.LT, Entity.GT));
+		html.decodeEntities(EntityType.NUMERIC, Set.of(Entity.LT, Entity.GT));
 
 		String actualString = html.getText();
 
@@ -1258,7 +1259,7 @@ public class HtmlTest
 	}
 
 	/**
-	 * Проверка метода {@link Html#decodeEntities(EntityType, List)}.
+	 * Проверка метода {@link Html#decodeEntities(EntityType, Set)}.
 	 */
 	@Test
 	public void decodeEntitiesUnicodeExclude()
@@ -1280,7 +1281,7 @@ public class HtmlTest
 			""";
 
 		Hypertext html = new Html(value);
-		html.decodeEntities(EntityType.UNICODE, List.of(Entity.LT, Entity.GT));
+		html.decodeEntities(EntityType.UNICODE, Set.of(Entity.LT, Entity.GT));
 
 		String actualString = html.getText();
 

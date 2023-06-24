@@ -585,7 +585,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.deleteTags(List.of(Tag.BR));
+html.deleteTags(Set.of(Tag.BR));
 ```
 
 Результат выполнения:
@@ -600,7 +600,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.deleteTags(TagType.OPEN, List.of(Tag.B));
+html.deleteTags(TagType.OPEN, Set.of(Tag.B));
 ```
 
 Результат выполнения:
@@ -667,7 +667,7 @@ ACDC
     """;
 
 Html html = new Html(text);
-html.deleteEntities(List.of(Entity.LT, Entity.GT));
+html.deleteEntities(Set.of(Entity.LT, Entity.GT));
 ```
 
 Результат выполнения:
@@ -718,7 +718,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.encodeEntities(EntityType.NAME, List.of(Entity.GT));
+html.encodeEntities(EntityType.NAME, Set.of(Entity.GT));
 ```
 
 Результат выполнения:
@@ -803,7 +803,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.decodeEntities(List.of(Entity.LT, Entity.GT));
+html.decodeEntities(Set.of(Entity.LT, Entity.GT));
 ```
 
 Результат выполнения:
@@ -820,7 +820,7 @@ String text = """
     """;
 
 Html html = new Html(text);
-html.decodeEntities(EntityType.NAME, List.of(Entity.LT));
+html.decodeEntities(EntityType.NAME, Set.of(Entity.LT));
 ```
 
 Результат выполнения:

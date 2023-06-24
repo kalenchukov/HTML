@@ -171,7 +171,7 @@ public class Html implements Hypertext
 	@Override
 	public void deleteTags()
 	{
-		this.deleteTags(Collections.emptyList());
+		this.deleteTags(Collections.emptySet());
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class Html implements Hypertext
 	 * @param excludeTags {@inheritDoc}
 	 */
 	@Override
-	public void deleteTags(@NotNull final List<@NotNull Tag> excludeTags)
+	public void deleteTags(@NotNull final Set<@NotNull Tag> excludeTags)
 	{
 		Objects.requireNonNull(excludeTags);
 
@@ -210,7 +210,7 @@ public class Html implements Hypertext
 	 * @param excludeTags {@inheritDoc}
 	 */
 	@Override
-	public void deleteTags(@NotNull final TagType tagType, @NotNull final List<@NotNull Tag> excludeTags)
+	public void deleteTags(@NotNull final TagType tagType, @NotNull final Set<@NotNull Tag> excludeTags)
 	{
 		Objects.requireNonNull(tagType);
 		Objects.requireNonNull(excludeTags);
@@ -226,7 +226,7 @@ public class Html implements Hypertext
 	@Override
 	public void deleteEntities()
 	{
-		this.deleteEntities(Collections.emptyList());
+		this.deleteEntities(Collections.emptySet());
 	}
 
 	/**
@@ -235,7 +235,7 @@ public class Html implements Hypertext
 	 * @param excludeEntities {@inheritDoc}
 	 */
 	@Override
-	public void deleteEntities(@NotNull final List<@NotNull Entity> excludeEntities)
+	public void deleteEntities(@NotNull final Set<@NotNull Entity> excludeEntities)
 	{
 		Objects.requireNonNull(excludeEntities);
 
@@ -387,7 +387,7 @@ public class Html implements Hypertext
 	{
 		Objects.requireNonNull(entityType);
 
-		this.encodeEntities(entityType, Collections.emptyList());
+		this.encodeEntities(entityType, Collections.emptySet());
 	}
 
 	/**
@@ -398,7 +398,7 @@ public class Html implements Hypertext
 	 */
 	@Override
 	public void encodeEntities(@NotNull final EntityType entityType,
-							   @NotNull final List<@NotNull Entity> excludeEntities)
+							   @NotNull final Set<@NotNull Entity> excludeEntities)
 	{
 		Objects.requireNonNull(entityType);
 		Objects.requireNonNull(excludeEntities);
@@ -483,7 +483,7 @@ public class Html implements Hypertext
 	@Override
 	public void decodeEntities()
 	{
-		this.decodeEntities(Collections.emptyList());
+		this.decodeEntities(Collections.emptySet());
 	}
 
 	/**
@@ -506,7 +506,7 @@ public class Html implements Hypertext
 	 * @param excludeEntities {@inheritDoc}
 	 */
 	@Override
-	public void decodeEntities(@NotNull final List<@NotNull Entity> excludeEntities)
+	public void decodeEntities(@NotNull final Set<@NotNull Entity> excludeEntities)
 	{
 		Objects.requireNonNull(excludeEntities);
 
@@ -523,7 +523,7 @@ public class Html implements Hypertext
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType,
-							   @NotNull final List<@NotNull Entity> excludeEntities)
+							   @NotNull final Set<@NotNull Entity> excludeEntities)
 	{
 		Objects.requireNonNull(entityType);
 		Objects.requireNonNull(excludeEntities);
