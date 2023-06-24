@@ -50,7 +50,7 @@ Regexp.ENTITY_NUMERIC;
 ```
 
 ### Проверка
-#### Проверка HTML комментария
+#### Проверка HTML-комментария
 ```java
 String text = "<!-- Комментарий -->";
 
@@ -63,7 +63,7 @@ html.isComment();
 true
 ```
 
-#### Проверка HTML сущности
+#### Проверка HTML-сущности
 ```java
 String text = "&asymp;";
 
@@ -76,7 +76,7 @@ html.isEntity();
 true
 ```
 
-#### Проверка HTML сущности в виде имени
+#### Проверка HTML-сущности в виде имени
 ```java
 String text = "&asymp;";
 
@@ -89,7 +89,7 @@ html.isEntityName();
 true
 ```
 
-#### Проверка HTML сущности в виде числа
+#### Проверка HTML-сущности в виде числа
 ```java
 String text = "&38;";
 
@@ -102,7 +102,7 @@ html.isEntityNumeric();
 true
 ```
 
-#### Проверка HTML сущности в виде unicode
+#### Проверка HTML-сущности в виде unicode
 ```java
 String text = "&#X22C8;";
 
@@ -115,7 +115,7 @@ html.isEntityUnicode();
 true
 ```
 
-#### Проверка типа HTML документа
+#### Проверка типа HTML-документа
 ```java
 String text = "<!DOCTYPE html>";
 
@@ -128,7 +128,7 @@ html.isDoctype();
 true
 ```
 
-#### Проверка HTML тега
+#### Проверка HTML-тега
 ```java
 String text = "<b class='xa-xa'>";
 
@@ -141,7 +141,7 @@ html.isTag();
 true
 ```
 
-#### Проверка открывающего HTML тега
+#### Проверка открывающего HTML-тега
 ```java
 String text = "<input type='checkbox'>";
 
@@ -154,7 +154,7 @@ html.isOpenTag();
 true
 ```
 
-#### Проверка самозакрывающегося HTML тега
+#### Проверка самозакрывающегося HTML-тега
 ```java
 String text = "<input type='checkbox' />";
 
@@ -167,7 +167,7 @@ html.isSelfClosingTag();
 true
 ```
 
-#### Проверка закрывающего HTML тега
+#### Проверка закрывающего HTML-тега
 ```java
 String text = "</form>";
 
@@ -194,7 +194,7 @@ true
 ```
 
 ### Поиск
-#### Поиск HTML комментариев
+#### Поиск HTML-комментариев
 ```java
 String text = """
     Песня без слов, ночь без сна
@@ -342,7 +342,7 @@ html.findEntitiesUnicode();
 ]
 ```
 
-#### Поиск типа HTML документа
+#### Поиск типа HTML-документа
 ```java
 String text = """
     <!DOCTYPE html>Они говорят: им нельзя рисковать,
@@ -366,7 +366,7 @@ html.findDoctype();
 ]
 ```
 
-#### Поиск HTML тегов
+#### Поиск HTML-тегов
 ```java
 String text = """
     Солдат шел по улице домой
@@ -388,7 +388,7 @@ html.findTags();
 ]
 ```
 
-#### Поиск открывающих HTML тегов
+#### Поиск открывающих HTML-тегов
 ```java
 String text = """
     Солдат шел по улице домой
@@ -409,7 +409,7 @@ html.findOpenTags();
 ]
 ```
 
-#### Поиск закрывающих HTML тегов
+#### Поиск закрывающих HTML-тегов
 ```java
 String text = """
     О-o, это странное место Камчатка,
@@ -433,7 +433,7 @@ html.findCloseTags();
 */
 
 ```
-#### Поиск самозакрывающихся HTML тегов
+#### Поиск самозакрывающихся HTML-тегов
 ```java
 String text = """
     У меня есть дом, только нет ключей,

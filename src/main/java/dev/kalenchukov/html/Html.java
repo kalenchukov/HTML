@@ -859,7 +859,7 @@ public class Html implements Hypertext
 	 * Проверяет, является ли строка значением.
 	 *
 	 * @param regexp регулярное выражение.
-	 * @return {@code true}, если строка является значением, иначе {@code false}.
+	 * @return {@code true}, если соответствует {@code regexp}, иначе {@code false}.
 	 */
 	private boolean is(@NotNull final Regexp regexp)
 	{
@@ -873,7 +873,7 @@ public class Html implements Hypertext
 	 *
 	 * @param regexp регулярное выражение.
 	 * @param flags флаги регулярного выражения.
-	 * @return {@code true}, если строка является значением, иначе {@code false}.
+	 * @return {@code true}, если соответствует {@code regexp}, иначе {@code false}.
 	 */
 	private boolean is(@NotNull final Regexp regexp, final int flags)
 	{
