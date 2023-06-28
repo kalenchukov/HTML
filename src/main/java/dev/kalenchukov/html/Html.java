@@ -65,6 +65,7 @@ public class Html implements Hypertext
 	 * Конструктор для {@code Html}.
 	 *
 	 * @param text текст для обработки.
+	 * @throws NullPointerException если в качестве {@code text} передан {@code null}.
 	 */
 	public Html(@NotNull final String text)
 	{
@@ -77,6 +78,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param text {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code text} передан {@code null}.
 	 */
 	@Override
 	public void setText(@NotNull final String text)
@@ -102,6 +104,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param tag {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code tag} передан {@code null}.
 	 */
 	@Override
 	public void deleteTag(@NotNull final Tag tag)
@@ -117,6 +120,8 @@ public class Html implements Hypertext
 	 *
 	 * @param tag {@inheritDoc}
 	 * @param tagType {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code tag} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code tagType} передан {@code null}.
 	 */
 	@Override
 	public void deleteTag(@NotNull final Tag tag, @NotNull final TagType tagType)
@@ -178,6 +183,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param tagType {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code tagType} передан {@code null}.
 	 */
 	@Override
 	public void deleteTags(@NotNull final TagType tagType)
@@ -192,6 +198,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param excludeTags {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code excludeTags} передан {@code null}.
 	 */
 	@Override
 	public void deleteTags(@NotNull final Set<@NotNull Tag> excludeTags)
@@ -208,6 +215,8 @@ public class Html implements Hypertext
 	 *
 	 * @param tagType {@inheritDoc}
 	 * @param excludeTags {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code tagType} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code excludeTags} передан {@code null}.
 	 */
 	@Override
 	public void deleteTags(@NotNull final TagType tagType, @NotNull final Set<@NotNull Tag> excludeTags)
@@ -233,6 +242,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param excludeEntities {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code excludeEntities} передан {@code null}.
 	 */
 	@Override
 	public void deleteEntities(@NotNull final Set<@NotNull Entity> excludeEntities)
@@ -248,6 +258,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param entity {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entity} передан {@code null}.
 	 */
 	@Override
 	public void deleteEntity(@NotNull final Entity entity)
@@ -263,6 +274,8 @@ public class Html implements Hypertext
 	 *
 	 * @param entity {@inheritDoc}
 	 * @param entityType {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entity} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
 	 */
 	@Override
 	public void deleteEntity(@NotNull final Entity entity, @NotNull EntityType entityType)
@@ -364,6 +377,8 @@ public class Html implements Hypertext
 	 *
 	 * @param entity {@inheritDoc}
 	 * @param entityType {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entity} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
 	 */
 	@Override
 	public void encodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
@@ -381,6 +396,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param entityType {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
 	 */
 	@Override
 	public void encodeEntities(@NotNull final EntityType entityType)
@@ -395,6 +411,8 @@ public class Html implements Hypertext
 	 *
 	 * @param entityType {@inheritDoc}
 	 * @param excludeEntities {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code excludeEntities} передан {@code null}.
 	 */
 	@Override
 	public void encodeEntities(@NotNull final EntityType entityType,
@@ -416,6 +434,9 @@ public class Html implements Hypertext
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @param entity {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entity} передан {@code null}.
 	 */
 	@Override
 	public void decodeEntity(@NotNull final Entity entity)
@@ -431,6 +452,8 @@ public class Html implements Hypertext
 	 *
 	 * @param entity {@inheritDoc}
 	 * @param entityType {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entity} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
 	 */
 	@Override
 	public void decodeEntity(@NotNull final Entity entity, @NotNull final EntityType entityType)
@@ -490,6 +513,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param entityType {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType)
@@ -504,6 +528,7 @@ public class Html implements Hypertext
 	 * {@inheritDoc}
 	 *
 	 * @param excludeEntities {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code excludeEntities} передан {@code null}.
 	 */
 	@Override
 	public void decodeEntities(@NotNull final Set<@NotNull Entity> excludeEntities)
@@ -520,6 +545,8 @@ public class Html implements Hypertext
 	 *
 	 * @param entityType {@inheritDoc}
 	 * @param excludeEntities {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code excludeEntities} передан {@code null}.
 	 */
 	@Override
 	public void decodeEntities(@NotNull final EntityType entityType,
@@ -860,6 +887,7 @@ public class Html implements Hypertext
 	 *
 	 * @param regexp регулярное выражение.
 	 * @return {@code true}, если соответствует {@code regexp}, иначе {@code false}.
+	 * @throws NullPointerException если в качестве {@code regexp} передан {@code null}.
 	 */
 	private boolean is(@NotNull final Regexp regexp)
 	{
@@ -874,6 +902,7 @@ public class Html implements Hypertext
 	 * @param regexp регулярное выражение.
 	 * @param flags флаги регулярного выражения.
 	 * @return {@code true}, если соответствует {@code regexp}, иначе {@code false}.
+	 * @throws NullPointerException если в качестве {@code regexp} передан {@code null}.
 	 */
 	private boolean is(@NotNull final Regexp regexp, final int flags)
 	{
@@ -889,6 +918,7 @@ public class Html implements Hypertext
 	 * Выполняет поиск значений.
 	 *
 	 * @return коллекцию с найденными значениями.
+	 * @throws NullPointerException если в качестве {@code regexp} передан {@code null}.
 	 */
 	@Unmodifiable
 	@NotNull
@@ -904,6 +934,7 @@ public class Html implements Hypertext
 	 *
 	 * @param flags флаги регулярного выражения.
 	 * @return коллекцию с найденными значениями.
+	 * @throws NullPointerException если в качестве {@code regexp} передан {@code null}.
 	 */
 	@Unmodifiable
 	@NotNull

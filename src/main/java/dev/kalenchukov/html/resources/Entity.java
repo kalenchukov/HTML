@@ -4010,6 +4010,9 @@ public enum Entity
 	 * @param name HTML-сущность специального символа в виде имени.
 	 * @param numeric HTML-сущность специального символа в виде числа.
 	 * @param unicode HTML-сущность специального символа в виде unicode.
+	 * @throws NullPointerException если в качестве {@code name} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code numeric} передан {@code null}.
+	 * @throws NullPointerException если в качестве {@code unicode} передан {@code null}.
 	 */
 	Entity(final char symbol,
 		   @NotNull final String name,
@@ -4041,6 +4044,7 @@ public enum Entity
 	 *
 	 * @param entityType тип HTML-сущности.
 	 * @return HTML-сущность специального символа.
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
 	 */
 	@NotNull
 	public String getEntity(@NotNull final EntityType entityType)
@@ -4093,6 +4097,7 @@ public enum Entity
 	 *
 	 * @param entityType тип HTML-сущности.
 	 * @return HTML-сущность специального символа.
+	 * @throws NullPointerException если в качестве {@code entityType} передан {@code null}.
 	 */
 	@NotNull
 	public String getMnemonic(@NotNull final EntityType entityType)
