@@ -22,7 +22,27 @@
  * SOFTWARE.
  */
 
+package dev.kalenchukov.html.types;
+
 /**
- * Предоставляет перечисления, необходимые для определения типов.
+ * Перечисление типов HTML-сущностей.
+ *
+ * @author Алексей Каленчуков
  */
-package dev.kalenchukov.html.resources;
+public enum EntityType
+{
+	/**
+	 * Имя.
+	 */
+	NAME,
+
+	/**
+	 * Число.
+	 */
+	NUMERIC,
+
+	/**
+	 * Unicode.
+	 */
+	UNICODE;
+}

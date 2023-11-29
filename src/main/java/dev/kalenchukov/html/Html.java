@@ -24,11 +24,11 @@
 
 package dev.kalenchukov.html;
 
-import dev.kalenchukov.html.resources.Entity;
-import dev.kalenchukov.html.resources.EntityType;
-import dev.kalenchukov.html.resources.Tag;
-import dev.kalenchukov.html.resources.TagType;
-import dev.kalenchukov.html.resources.Regexp;
+import dev.kalenchukov.html.types.Entity;
+import dev.kalenchukov.html.types.EntityType;
+import dev.kalenchukov.html.types.Tag;
+import dev.kalenchukov.html.types.TagType;
+import dev.kalenchukov.html.types.Regexp;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 

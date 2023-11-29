@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.kalenchukov.html.resources;
+package dev.kalenchukov.html.types;
 
 /**
  * Перечисление типов HTML-тегов.

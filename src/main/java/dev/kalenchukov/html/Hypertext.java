@@ -24,7 +24,7 @@
 
 package dev.kalenchukov.html;
 
-import dev.kalenchukov.html.resources.*;
+import dev.kalenchukov.html.types.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 

@@ -6,5 +6,5 @@ module dev.kalenchukov.html
 	requires org.jetbrains.annotations;
 
 	exports dev.kalenchukov.html;
-	exports dev.kalenchukov.html.resources;
+	exports dev.kalenchukov.html.types;
 }
