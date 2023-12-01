@@ -52,7 +52,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getEntity(EntityType)}.
 	 */
 	@Test
-	public void getEntityTypeName()
+	public void getEntityWithTypeName()
 	{
 		Entity entity = Entity.NUM;
 
@@ -65,7 +65,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getEntity(EntityType)}.
 	 */
 	@Test
-	public void getEntityTypeNumeric()
+	public void getEntityWithTypeNumeric()
 	{
 		Entity entity = Entity.NUM;
 
@@ -78,7 +78,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getEntity(EntityType)}.
 	 */
 	@Test
-	public void getEntityTypeUnicode()
+	public void getEntityWithTypeUnicode()
 	{
 		Entity entity = Entity.NUM;
 
@@ -91,7 +91,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getMnemonic(EntityType)}.
 	 */
 	@Test
-	public void getMnemonicTypeName()
+	public void getMnemonicWithTypeName()
 	{
 		Entity entity = Entity.NUM;
 
@@ -104,7 +104,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getMnemonic(EntityType)}.
 	 */
 	@Test
-	public void getMnemonicTypeNumeric()
+	public void getMnemonicWithTypeNumeric()
 	{
 		Entity entity = Entity.NUM;
 
@@ -117,7 +117,7 @@ public class EntityTest
 	 * Проверка метода {@link Entity#getMnemonic(EntityType)}.
 	 */
 	@Test
-	public void getMnemonicTypeUnicode()
+	public void getMnemonicWithTypeUnicode()
 	{
 		Entity entity = Entity.NUM;
 

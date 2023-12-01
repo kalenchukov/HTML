@@ -212,7 +212,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTags(Set)}.
 	 */
 	@Test
-	public void deleteTagsExclude()
+	public void deleteTagsWithExclude()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -242,7 +242,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTags(TagType)}.
 	 */
 	@Test
-	public void deleteSelfClosingTags()
+	public void deleteTagsWithSelfClosingTags()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -272,7 +272,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTags(TagType, Set)}.
 	 */
 	@Test
-	public void deleteSelfClosingTagsExclude()
+	public void deleteTagsWithSelfClosingTagsExclude()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -302,7 +302,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTag(Tag, TagType)}.
 	 */
 	@Test
-	public void deleteSelfClosingTag()
+	public void deleteTagWithSelfClosingTag()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -332,7 +332,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTags(TagType)}.
 	 */
 	@Test
-	public void deleteOpenTags()
+	public void deleteTagsWithOpenTags()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -362,7 +362,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTags(TagType, Set)}.
 	 */
 	@Test
-	public void deleteOpenTagsExclude()
+	public void deleteTagsWithOpenTagsExclude()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -392,7 +392,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTag(Tag, TagType)}.
 	 */
 	@Test
-	public void deleteOpenTag()
+	public void deleteTagWithOpenTag()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -422,7 +422,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTags(TagType)}.
 	 */
 	@Test
-	public void deleteCloseTags()
+	public void deleteTagsWithCloseTags()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -452,7 +452,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTags(TagType, Set)}.
 	 */
 	@Test
-	public void deleteCloseTagsExclude()
+	public void deleteTagsWithCloseTagsExclude()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -482,7 +482,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteTag(Tag, TagType)}.
 	 */
 	@Test
-	public void deleteCloseTag()
+	public void deleteTagWithCloseTag()
 	{
 		String value = """
 			<b>AC/DC</b> (эй-си/ди-си; сокращённо от англ. alternating current/direct current<br />
@@ -512,7 +512,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void deleteEntityName()
+	public void deleteEntityWithName()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -542,7 +542,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void deleteEntityNumeric()
+	public void deleteEntityWithNumeric()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -572,7 +572,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void deleteEntityUnicode()
+	public void deleteEntityWithUnicode()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -632,7 +632,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#deleteEntities(Set)}.
 	 */
 	@Test
-	public void deleteEntitiesExclude()
+	public void deleteEntitiesWithExclude()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -662,7 +662,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void encodeEntityName()
+	public void encodeEntityWithName()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -692,7 +692,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void encodeEntityNumeric()
+	public void encodeEntityWithNumeric()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -722,7 +722,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void encodeEntityUnicode()
+	public void encodeEntityWithUnicode()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -752,7 +752,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntities(EntityType)}.
 	 */
 	@Test
-	public void encodeEntitiesName()
+	public void encodeEntitiesWithName()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -782,7 +782,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntities(EntityType)}.
 	 */
 	@Test
-	public void encodeEntitiesNumeric()
+	public void encodeEntitiesWithNumeric()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -812,7 +812,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntities(EntityType)}.
 	 */
 	@Test
-	public void encodeEntitiesUnicode()
+	public void encodeEntitiesWithUnicode()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -842,7 +842,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntities(EntityType, Set)}.
 	 */
 	@Test
-	public void encodeEntitiesNameExclude()
+	public void encodeEntitiesWithNameExclude()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -872,7 +872,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntities(EntityType, Set)}.
 	 */
 	@Test
-	public void encodeEntitiesNumericExclude()
+	public void encodeEntitiesWithNumericExclude()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -902,7 +902,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#encodeEntities(EntityType, Set)}.
 	 */
 	@Test
-	public void encodeEntitiesUnicodeExclude()
+	public void encodeEntitiesWithUnicodeExclude()
 	{
 		String value = """
 			AC/DC (эй-си/ди-си; сокращённо от англ. alternating current/direct current
@@ -962,7 +962,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void decodeEntityName()
+	public void decodeEntityWithName()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -992,7 +992,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void decodeEntityNumeric()
+	public void decodeEntityWithNumeric()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -1022,7 +1022,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntity(Entity, EntityType)}.
 	 */
 	@Test
-	public void decodeEntityUnicode()
+	public void decodeEntityWithUnicode()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -1082,7 +1082,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntities(EntityType)}.
 	 */
 	@Test
-	public void decodeEntitiesName()
+	public void decodeEntitiesWithName()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -1112,7 +1112,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntities(EntityType)}.
 	 */
 	@Test
-	public void decodeEntitiesNumeric()
+	public void decodeEntitiesWithNumeric()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&#59; сокращённо от англ&period; alternating current&sol;direct current
@@ -1142,7 +1142,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntities(EntityType)}.
 	 */
 	@Test
-	public void decodeEntitiesUnicode()
+	public void decodeEntitiesWithUnicode()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&#59; сокращённо от англ&period; alternating current&sol;direct current
@@ -1172,7 +1172,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntities(Set)}.
 	 */
 	@Test
-	public void decodeEntitiesExclude()
+	public void decodeEntitiesWithExclude()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -1202,7 +1202,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntities(EntityType, Set)}.
 	 */
 	@Test
-	public void decodeEntitiesNameExclude()
+	public void decodeEntitiesWithNameExclude()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&semi; сокращённо от англ&period; alternating current&sol;direct current
@@ -1232,7 +1232,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntities(EntityType, Set)}.
 	 */
 	@Test
-	public void decodeEntitiesNumericExclude()
+	public void decodeEntitiesWithNumericExclude()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&#59; сокращённо от англ&period; alternating current&sol;direct current
@@ -1262,7 +1262,7 @@ public class HtmlTest
 	 * Проверка метода {@link Html#decodeEntities(EntityType, Set)}.
 	 */
 	@Test
-	public void decodeEntitiesUnicodeExclude()
+	public void decodeEntitiesWithUnicodeExclude()
 	{
 		String value = """
 			AC&sol;DC &lpar;эй-си&sol;ди-си&#59; сокращённо от англ&period; alternating current&sol;direct current
@@ -1347,7 +1347,7 @@ public class HtmlTest
 			"<!-- Comment--!> -->",
 			"<!--\n\tComment\n-->\n"
 		})
-		public void isCommentNotCorrect(String value)
+		public void isCommentValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1428,7 +1428,7 @@ public class HtmlTest
 			"&#B0;",
 			"&#B0"
 		})
-		public void isEntityNotCorrect(String value)
+		public void isEntityValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1469,7 +1469,7 @@ public class HtmlTest
 		@ValueSource(strings = {
 			"", " ", "34546&DownArrowBar;", "&", ";", "&;", "&d;", "ecir;", "&ecir", "&3124;", "&1DownArrowBar;"
 		})
-		public void isEntityNameNotCorrect(String value)
+		public void isEntityNameValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1518,7 +1518,7 @@ public class HtmlTest
 		@ValueSource(strings = {
 			"", " ", "34546&#8501;", "&#3;", "#256;", "&256;", "&#256", "&#2D56;"
 		})
-		public void isEntityNumericNotCorrect(String value)
+		public void isEntityNumericValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1559,7 +1559,7 @@ public class HtmlTest
 		@ValueSource(strings = {
 			"", " ", "34546&#XB0;", "&#x3;", "#XB0;", "&XB0;", "&#B0;", "&#B0"
 		})
-		public void isEntityUnicodeNotCorrect(String value)
+		public void isEntityUnicodeValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1624,7 +1624,7 @@ public class HtmlTest
 			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR'/html4/strict.dtd\">",
 			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" 'http://www.w3.org/TR\"/html4/strict.dtd'>"
 		})
-		public void isDoctypeNotCorrect(String value)
+		public void isDoctypeValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1686,7 +1686,7 @@ public class HtmlTest
 			"text<input/>",
 			"<input name='text\"/>"
 		})
-		public void isTagNotCorrect(String value)
+		public void isTagValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1727,7 +1727,7 @@ public class HtmlTest
 		@ValueSource(strings = {
 			"", " ", "</ form>", "< /form>", "text</form>"
 		})
-		public void isCloseTagNotCorrect(String value)
+		public void isCloseTagValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1811,7 +1811,7 @@ public class HtmlTest
 			"<input id='input-id''/>",
 			"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=/>"
 		})
-		public void isSelfClosingTagNotCorrect(String value)
+		public void isSelfClosingTagValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1896,7 +1896,7 @@ public class HtmlTest
 			"<input id='input-id''>",
 			"<link\n\trel=\"icon\"\ntype='image/png'\n\tsizes=\"\"\n\thref=>"
 		})
-		public void isOpenTagNotCorrect(String value)
+		public void isOpenTagValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -1956,7 +1956,7 @@ public class HtmlTest
 			"<![CDATA[ Text]]> ]]>",
 			"<![CDATA[\n\tText\n]]>\n"
 		})
-		public void isCDataNotCorrect(String value)
+		public void isCDataValueInvalid(String value)
 		{
 			Hypertext html = new Html(value);
 
@@ -2013,7 +2013,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findComments();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2031,12 +2031,12 @@ public class HtmlTest
 			Где золото, а где медь.]]>
 			Что построить, и что разрушить,
 			И кому, и зачем здесь петь?
-			
+
 			Нам с тобой: голубых небес навес.
 			Нам с тобой: станет лес глухой стеной.
 			Нам с тобой: из заплеванных колодцев не пить.
 			План такой – нам с тобой<![CDATA[...]]>
-			
+
 			Здесь камни похожи на мыло,
 			А сталь похожа на жесть,
 			И слабость, как сила,
@@ -2050,7 +2050,7 @@ public class HtmlTest
 			Нам с тобой: станет лес глухой стеной.
 			Нам с тобой: из заплеванных колодцев не пить.
 			План такой – нам с тобой...
-			
+
 			Чёрная ночь да в реке вода - нам с тобой.
 			И беда станет не беда. Уезжай...
 			Так, была не была, прости и прощай.
@@ -2068,7 +2068,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findCData();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2124,7 +2124,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findEntities();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2170,7 +2170,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findEntitiesName();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2224,7 +2224,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findEntitiesNumeric();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2273,7 +2273,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findEntitiesUnicode();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2316,7 +2316,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findDoctype();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2369,7 +2369,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findTags();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2412,7 +2412,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findCloseTags();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2458,7 +2458,7 @@ public class HtmlTest
 
 		List<String> actualList = html.findOpenTags();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 
 	/**
@@ -2508,6 +2508,6 @@ public class HtmlTest
 
 		List<String> actualList = html.findSelfClosingTags();
 
-		assertThat(actualList).containsSequence(expectedList);
+		assertThat(actualList).containsExactlyElementsOf(expectedList);
 	}
 }
